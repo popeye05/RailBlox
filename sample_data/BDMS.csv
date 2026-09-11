@@ -1,0 +1,2 @@
+source_record_id,asset_id,section,line,chainage,chainage_unit,department,title,duration,earliest,due,source_timestamp,resources,mandatory,isolation,access,remarks
+BDMS-001,AS-S2-UP,S2-UP,UP,12.5,km,ENG,BDMS illustrative inspection,20,2026-09-10T07:30:00+05:30,2026-09-10T09:30:00+05:30,2026-09-09T12:00:00Z,ENG-1,false,ISO-2,traffic,Illustrative synthetic schema; not a production system interface.

@@ -1,0 +1,16 @@
+.venv
+**/node_modules
+**/dist
+**/__pycache__
+**/*.db
+**/*.db-*
+.git
+.env
+.env.*
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+tmp
+frontend/qa-screenshots
+frontend/test-results

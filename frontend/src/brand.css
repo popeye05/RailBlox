@@ -1,0 +1,117 @@
+/* Full-width railway masthead. The supplied PNGs include transparent right padding. */
+.railway-site { display: flex; flex-direction: column; border-top: 4px solid #e2463d; }
+.railway-site .main-column { margin-left: 0; width: 100%; }
+.railway-site main { max-width: 1512px; padding: 28px 40px; }
+.site-header { background: #fff; }
+.masthead { max-width: 1512px; margin: auto; padding: 22px 40px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 36px; }
+.masthead-brand { display: flex; flex-direction: column; text-decoration: none; flex-shrink: 0; }
+.masthead-logo { display: block; width: 228px; height: 74px; overflow: hidden; }
+.masthead-logo img { display: block; width: 382px; max-width: none; height: auto; }
+.brand-purpose { margin-top: 3px; font-size: 12px; font-weight: 650; letter-spacing: .025em; color: #52606b; }
+.masthead-title { border-left: 1px solid #dde2e7; padding-left: 34px; display: flex; flex-direction: column; gap: 8px; }
+.masthead-title > span { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: #b53830; }
+.masthead-title strong { font-size: 18px; font-weight: 600; letter-spacing: -.4px; color: #273d4a; }
+.network-picker { margin-left: auto; gap: 8px; min-width: 0; }
+.network-picker > span { display: flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: .11em; color: #556774; }
+.network-picker select { width: 285px; max-width: 100%; font-size: 13px; color: #253d4d; background: #f7f9fa; }
+.mobile-menu-toggle { display: none; }
+.navigation-band { background: #182e3d; }
+.navigation-inner { max-width: 1512px; padding: 0 40px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 24px; }
+.primary-navigation { display: flex; flex-wrap: wrap; min-width: 0; align-items: stretch; gap: 3px; }
+.primary-navigation a { min-height: 60px; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; color: #d4dee5; font-size: 14px; font-weight: 550; text-decoration: none; border-bottom: 3px solid transparent; border-top: 3px solid transparent; transition: background .15s; }
+.primary-navigation a:hover { color: #fff; background: #243f50; }
+.primary-navigation a.active { background: #294352; color: #fff; border-bottom-color: #f2675d; font-weight: 700; }
+.primary-navigation a.active svg { color: #ff9a90; }
+.navigation-environment { display: inline-flex; align-items: center; gap: 8px; color: #c5d1d9; font-size: 11px; white-space: nowrap; }
+.navigation-environment > span { width: 6px; height: 6px; border-radius: 50%; background: #e6b975; }
+.network-strip { min-height: 46px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px 35px; padding: 10px max(40px, calc((100% - 1432px) / 2)); border-bottom: 1px solid #dde4e9; background: #f0f4f6; }
+.network-strip .breadcrumb { font-size: 12px; }
+.network-strip .breadcrumb strong { color: #233d50; font-weight: 650; }
+.network-route { display: flex; align-items: center; gap: 10px; color: #405d70; font-family: var(--mono); font-size: 11px; margin-left: auto; }
+.network-route strong { font-weight: 500; }
+.network-route-line { width: 65px; height: 1px; background: #9aadb9; position: relative; }
+.network-route-line:before, .network-route-line:after { content: ''; position: absolute; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #6e889a; }
+.network-route-line:before { left: 0; }
+.network-route-line:after { right: 0; }
+.network-section-count { font-family: var(--sans); border-left: 1px solid #c7d1d8; padding-left: 12px; margin-left: 3px; }
+.network-time { display: flex; align-items: center; gap: 6px; color: #526675; font-size: 11px; }
+.site-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; padding: 25px max(40px, calc((100% - 1432px) / 2)); background: white; border-top: 1px solid #dce3e8; }
+.footer-brand { display: block; width: 180px; height: 93px; overflow: hidden; flex-shrink: 0; }
+.footer-brand img { width: 300px; max-width: none; height: auto; }
+.site-footer p { margin: 0; font-size: 13px; font-weight: 600; color: #334b5b; }
+.site-footer p span { display: block; margin-top: 5px; color: #637580; font-size: 11px; font-weight: 450; }
+.site-footer > a:last-child { margin-left: auto; display: flex; align-items: center; gap: 9px; font-size: 12px; color: #a8322d; text-decoration: none; }
+@media (max-width: 1200px) {
+  .masthead, .navigation-inner { padding-inline: 28px; }
+  .masthead { gap: 26px; }
+  .masthead-title { padding-left: 26px; }
+  .masthead-title strong { font-size: 16px; }
+  .network-picker select { width: 240px; }
+  .primary-navigation a { padding-inline: 16px; }
+  .navigation-environment { display: none; }
+  .network-strip, .site-footer { padding-inline: 28px; }
+  .railway-site main { padding-inline: 28px; }
+}
+@media (max-width: 900px) {
+  .masthead-title { display: none; }
+  .primary-navigation { width: 100%; justify-content: space-between; }
+  .primary-navigation a { padding-inline: 10px; gap: 6px; font-size: 12px; }
+  .network-section-count { display: none; }
+}
+@media (max-width: 700px) {
+  .masthead { padding: 15px 20px 18px; gap: 16px; flex-wrap: wrap; }
+  .masthead-logo { width: 187px; height: 61px; }
+  .masthead-logo img { width: 312px; }
+  .brand-purpose { font-size: 10px; }
+  .mobile-menu-toggle { display: flex; margin-left: auto; padding: 9px; gap: 5px; font-size: 12px; border-color: #c8d2d9; color: #233d50; }
+  .network-picker { order: 3; width: 100%; margin-left: 0; flex-direction: row; align-items: center; gap: 12px; }
+  .network-picker > span { max-width: 85px; font-size: 9px; gap: 5px; }
+  .network-picker select { min-width: 0; width: auto; flex: 1; font-size: 12px; }
+  .navigation-inner { padding-inline: 20px; }
+  .primary-navigation { display: none; }
+  .primary-navigation.is-open { display: grid; grid-template-columns: 1fr 1fr; padding-block: 10px; gap: 4px; }
+  .primary-navigation a { min-height: 48px; justify-content: flex-start; padding-inline: 12px; font-size: 13px; }
+  .navigation-band { min-height: 5px; }
+  .network-strip { padding: 10px 20px; gap: 10px; }
+  .network-route { gap: 7px; font-size: 10px; }
+  .network-route > svg { display: none; }
+  .network-route-line { width: 25px; }
+  .network-time { display: none; }
+  .railway-site main { padding: 24px 20px; }
+  .site-footer { flex-wrap: wrap; padding: 23px 20px; gap: 14px 25px; }
+  .site-footer > a:last-child { margin-left: 0; }
+}
+
+/* Restrained typography: conventional text, tabular figures, technical IDs in mono. */
+h1 { font-size: 1.875rem; letter-spacing: -.45px; }
+h2, h3 { letter-spacing: 0; }
+button, .button { font-weight: 600; box-shadow: none; }
+.primary { background: #ce3b33; border-color: #ce3b33; }
+.primary:hover { background: #b73029; border-color: #b73029; }
+.page-heading p { font-size: .875rem; line-height: 1.6; color: #52616b; }
+.eyebrow, .section-overline { letter-spacing: .055em; font-weight: 600; }
+.masthead-title > span, .plan-state-label, .timeline-group-label { font-family: var(--sans); letter-spacing: .065em; }
+.masthead-title strong { font-weight: 400; letter-spacing: 0; }
+.primary-navigation a { font-size: 14px; font-weight: 400; padding-inline: 24px; }
+.primary-navigation a.active { font-weight: 600; }
+.metric > strong { font-size: 2rem; font-weight: 400; letter-spacing: -.5px; font-variant-numeric: tabular-nums; }
+.metric strong > span { letter-spacing: 0; }
+.metric-label { font-size: 13px; color: #52616b; }
+.metric small { color: #52616b; line-height: 1.5; }
+.station-code { font-family: var(--sans); font-weight: 600; letter-spacing: .04em; }
+.axis-label, .timeline-label-secondary, .timeline-work-duration, .timeline-margin, .schedule-range { font-family: var(--sans); font-variant-numeric: tabular-nums; }
+.overview-summary { padding-top: 19px; }
+.overview-summary strong { font-size: 18px; font-weight: 600; letter-spacing: 0; }
+.overview-check { font-size: 12px; }
+.preset-grid button { gap: 6px; min-height: 110px; justify-content: center; }
+.source-tile h3 { margin-top: 0; }
+.source-tile { padding-top: 20px; }
+.opportunity > button { margin-left: 0; }
+table th { font-weight: 600; }
+table td { line-height: 1.55; }
+@media (max-width: 900px) { .primary-navigation a { padding-inline: 15px; font-size: 13px; } }
+@media (max-width: 700px) {
+  h1 { font-size: 1.75rem; }
+  .primary-navigation a { padding-inline: 12px; }
+  .page-heading p { font-size: .875rem; }
+}

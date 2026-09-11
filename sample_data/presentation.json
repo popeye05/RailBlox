@@ -1,0 +1,8719 @@
+{
+  "id": "presentation-v1",
+  "corridor": "presentation",
+  "name": "Navira–Vayana synthetic corridor",
+  "anchor": "2026-09-09T18:30:00+00:00",
+  "created_at": "2026-09-10T08:15:16.346749+00:00",
+  "rule_version": "SYNTHETIC-1",
+  "seed": 42,
+  "tasks": [
+    {
+      "id": "PM-001",
+      "department": "ENG",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": true,
+      "earliest": 60,
+      "due": 240,
+      "weight": 11,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-0",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-002",
+      "department": "TRD",
+      "asset_id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 240,
+      "due": 420,
+      "weight": 25,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-1",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-003",
+      "department": "S&T",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 420,
+      "due": 600,
+      "weight": 18,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-2",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-004",
+      "department": "ENG",
+      "asset_id": "AS-P2-DN",
+      "section": "P2-DN",
+      "line": "DN",
+      "chainage_m": 16000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 600,
+      "due": 780,
+      "weight": 44,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-3",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-005",
+      "department": "TRD",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 1500,
+      "due": 1680,
+      "weight": 47,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-4",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-006",
+      "department": "S&T",
+      "asset_id": "AS-P3-DN",
+      "section": "P3-DN",
+      "line": "DN",
+      "chainage_m": 28000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": true,
+      "earliest": 1680,
+      "due": 1860,
+      "weight": 12,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-5",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-007",
+      "department": "ENG",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 1860,
+      "due": 2040,
+      "weight": 15,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-6",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-008",
+      "department": "TRD",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "OHE condition inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 2940,
+      "due": 3120,
+      "weight": 24,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-7",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-009",
+      "department": "S&T",
+      "asset_id": "AS-P5-DN",
+      "section": "P5-DN",
+      "line": "DN",
+      "chainage_m": 52000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 3120,
+      "due": 3300,
+      "weight": 45,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-8",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-010",
+      "department": "ENG",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "Rail and fastening inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 3300,
+      "due": 3480,
+      "weight": 44,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-9",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-011",
+      "department": "TRD",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "OHE condition inspection",
+      "duration": 45,
+      "mandatory": true,
+      "earliest": 4380,
+      "due": 4560,
+      "weight": 24,
+      "priority": "High",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-10",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-012",
+      "department": "S&T",
+      "asset_id": "AS-P7-DN",
+      "section": "P7-DN",
+      "line": "DN",
+      "chainage_m": 76000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 4560,
+      "due": 4740,
+      "weight": 47,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-11",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-013",
+      "department": "ENG",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 4740,
+      "due": 4920,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-12",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-014",
+      "department": "TRD",
+      "asset_id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "title": "OHE condition inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 4920,
+      "due": 5100,
+      "weight": 37,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-13",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-015",
+      "department": "S&T",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "Signal apparatus testing",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 5820,
+      "due": 6000,
+      "weight": 27,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-14",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-016",
+      "department": "ENG",
+      "asset_id": "AS-P2-DN",
+      "section": "P2-DN",
+      "line": "DN",
+      "chainage_m": 16000,
+      "title": "Rail and fastening inspection",
+      "duration": 30,
+      "mandatory": true,
+      "earliest": 6000,
+      "due": 6180,
+      "weight": 23,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-15",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-017",
+      "department": "TRD",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 6180,
+      "due": 6360,
+      "weight": 16,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-16",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-018",
+      "department": "S&T",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 7260,
+      "due": 7440,
+      "weight": 34,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-17",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-019",
+      "department": "ENG",
+      "asset_id": "AS-P4-DN",
+      "section": "P4-DN",
+      "line": "DN",
+      "chainage_m": 40000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 7440,
+      "due": 7620,
+      "weight": 32,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": false,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-18",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-020",
+      "department": "TRD",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 7620,
+      "due": 7800,
+      "weight": 48,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-19",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-021",
+      "department": "S&T",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "Signal apparatus testing",
+      "duration": 40,
+      "mandatory": true,
+      "earliest": 8700,
+      "due": 8880,
+      "weight": 12,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-20",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-022",
+      "department": "ENG",
+      "asset_id": "AS-P6-DN",
+      "section": "P6-DN",
+      "line": "DN",
+      "chainage_m": 64000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 8880,
+      "due": 9060,
+      "weight": 44,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-21",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-023",
+      "department": "TRD",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 9060,
+      "due": 9240,
+      "weight": 34,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-22",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-024",
+      "department": "S&T",
+      "asset_id": "AS-P7-DN",
+      "section": "P7-DN",
+      "line": "DN",
+      "chainage_m": 76000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 9240,
+      "due": 9420,
+      "weight": 45,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-23",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-025",
+      "department": "ENG",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 10140,
+      "due": 10320,
+      "weight": 50,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-24",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-026",
+      "department": "TRD",
+      "asset_id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": true,
+      "earliest": 10320,
+      "due": 10500,
+      "weight": 46,
+      "priority": "High",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-25",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-027",
+      "department": "S&T",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 10500,
+      "due": 10680,
+      "weight": 14,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-26",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-028",
+      "department": "ENG",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 11580,
+      "due": 11760,
+      "weight": 24,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-27",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-029",
+      "department": "TRD",
+      "asset_id": "AS-P3-DN",
+      "section": "P3-DN",
+      "line": "DN",
+      "chainage_m": 28000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 11760,
+      "due": 11940,
+      "weight": 15,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-28",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-030",
+      "department": "S&T",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 11940,
+      "due": 12120,
+      "weight": 16,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-29",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-031",
+      "department": "ENG",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": true,
+      "earliest": 13020,
+      "due": 13200,
+      "weight": 27,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-30",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-032",
+      "department": "TRD",
+      "asset_id": "AS-P5-DN",
+      "section": "P5-DN",
+      "line": "DN",
+      "chainage_m": 52000,
+      "title": "OHE condition inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 13200,
+      "due": 13380,
+      "weight": 50,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-31",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-033",
+      "department": "S&T",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "Signal apparatus testing",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 13380,
+      "due": 13560,
+      "weight": 20,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-32",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-034",
+      "department": "ENG",
+      "asset_id": "AS-P6-DN",
+      "section": "P6-DN",
+      "line": "DN",
+      "chainage_m": 64000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 13560,
+      "due": 13740,
+      "weight": 32,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-33",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-035",
+      "department": "TRD",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "OHE condition inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 14460,
+      "due": 14640,
+      "weight": 27,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-34",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-036",
+      "department": "S&T",
+      "asset_id": "AS-P7-DN",
+      "section": "P7-DN",
+      "line": "DN",
+      "chainage_m": 76000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": true,
+      "earliest": 14640,
+      "due": 14820,
+      "weight": 48,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-35",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-037",
+      "department": "ENG",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "Rail and fastening inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 14820,
+      "due": 15000,
+      "weight": 44,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-36",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-038",
+      "department": "TRD",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "OHE condition inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 15900,
+      "due": 16080,
+      "weight": 20,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": false,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-37",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-039",
+      "department": "S&T",
+      "asset_id": "AS-P2-DN",
+      "section": "P2-DN",
+      "line": "DN",
+      "chainage_m": 16000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 16080,
+      "due": 16260,
+      "weight": 34,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-38",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-040",
+      "department": "ENG",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 16260,
+      "due": 16440,
+      "weight": 50,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-39",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-041",
+      "department": "TRD",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "OHE condition inspection",
+      "duration": 30,
+      "mandatory": true,
+      "earliest": 17340,
+      "due": 17520,
+      "weight": 30,
+      "priority": "High",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-40",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-042",
+      "department": "S&T",
+      "asset_id": "AS-P4-DN",
+      "section": "P4-DN",
+      "line": "DN",
+      "chainage_m": 40000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 17520,
+      "due": 17700,
+      "weight": 24,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-41",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-043",
+      "department": "ENG",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 17700,
+      "due": 17880,
+      "weight": 30,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-42",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-044",
+      "department": "TRD",
+      "asset_id": "AS-P5-DN",
+      "section": "P5-DN",
+      "line": "DN",
+      "chainage_m": 52000,
+      "title": "OHE condition inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 17880,
+      "due": 18060,
+      "weight": 27,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-43",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-045",
+      "department": "S&T",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 18780,
+      "due": 18960,
+      "weight": 23,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-44",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-046",
+      "department": "ENG",
+      "asset_id": "AS-P6-DN",
+      "section": "P6-DN",
+      "line": "DN",
+      "chainage_m": 64000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": true,
+      "earliest": 18960,
+      "due": 19140,
+      "weight": 23,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-45",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-047",
+      "department": "TRD",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "OHE condition inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 19140,
+      "due": 19320,
+      "weight": 35,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-46",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-048",
+      "department": "S&T",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 20220,
+      "due": 20400,
+      "weight": 19,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-47",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-049",
+      "department": "ENG",
+      "asset_id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 20400,
+      "due": 20580,
+      "weight": 18,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-48",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-050",
+      "department": "TRD",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "OHE condition inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 20580,
+      "due": 20760,
+      "weight": 45,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-49",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-051",
+      "department": "S&T",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "Signal apparatus testing",
+      "duration": 40,
+      "mandatory": true,
+      "earliest": 21660,
+      "due": 21840,
+      "weight": 47,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-50",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-052",
+      "department": "ENG",
+      "asset_id": "AS-P3-DN",
+      "section": "P3-DN",
+      "line": "DN",
+      "chainage_m": 28000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 21840,
+      "due": 22020,
+      "weight": 47,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-51",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-053",
+      "department": "TRD",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "OHE condition inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 22020,
+      "due": 22200,
+      "weight": 33,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-52",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-054",
+      "department": "S&T",
+      "asset_id": "AS-P4-DN",
+      "section": "P4-DN",
+      "line": "DN",
+      "chainage_m": 40000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 22200,
+      "due": 22380,
+      "weight": 18,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-53",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-055",
+      "department": "ENG",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 23100,
+      "due": 23280,
+      "weight": 15,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-54",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-056",
+      "department": "TRD",
+      "asset_id": "AS-P5-DN",
+      "section": "P5-DN",
+      "line": "DN",
+      "chainage_m": 52000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": true,
+      "earliest": 23280,
+      "due": 23460,
+      "weight": 17,
+      "priority": "High",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-55",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-057",
+      "department": "S&T",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 23460,
+      "due": 23640,
+      "weight": 50,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": false,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-56",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-058",
+      "department": "ENG",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "Rail and fastening inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 24540,
+      "due": 24720,
+      "weight": 37,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-57",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-059",
+      "department": "TRD",
+      "asset_id": "AS-P7-DN",
+      "section": "P7-DN",
+      "line": "DN",
+      "chainage_m": 76000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 24720,
+      "due": 24900,
+      "weight": 34,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-58",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-060",
+      "department": "S&T",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 24900,
+      "due": 25080,
+      "weight": 48,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-59",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-061",
+      "department": "ENG",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": true,
+      "earliest": 25980,
+      "due": 26160,
+      "weight": 43,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-60",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-062",
+      "department": "TRD",
+      "asset_id": "AS-P2-DN",
+      "section": "P2-DN",
+      "line": "DN",
+      "chainage_m": 16000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 26160,
+      "due": 26340,
+      "weight": 45,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-61",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-063",
+      "department": "S&T",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 26340,
+      "due": 26520,
+      "weight": 17,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-62",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-064",
+      "department": "ENG",
+      "asset_id": "AS-P3-DN",
+      "section": "P3-DN",
+      "line": "DN",
+      "chainage_m": 28000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 26520,
+      "due": 26700,
+      "weight": 31,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-63",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-065",
+      "department": "TRD",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 27420,
+      "due": 27600,
+      "weight": 28,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-64",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-066",
+      "department": "S&T",
+      "asset_id": "AS-P4-DN",
+      "section": "P4-DN",
+      "line": "DN",
+      "chainage_m": 40000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": true,
+      "earliest": 27600,
+      "due": 27780,
+      "weight": 20,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-65",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-067",
+      "department": "ENG",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 27780,
+      "due": 27960,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-66",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-068",
+      "department": "TRD",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 28860,
+      "due": 29040,
+      "weight": 42,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-67",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-069",
+      "department": "S&T",
+      "asset_id": "AS-P6-DN",
+      "section": "P6-DN",
+      "line": "DN",
+      "chainage_m": 64000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 29040,
+      "due": 29220,
+      "weight": 42,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-68",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-070",
+      "department": "ENG",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 29220,
+      "due": 29400,
+      "weight": 50,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-69",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-071",
+      "department": "TRD",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": true,
+      "earliest": 30300,
+      "due": 30480,
+      "weight": 50,
+      "priority": "High",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-70",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-072",
+      "department": "S&T",
+      "asset_id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 30480,
+      "due": 30660,
+      "weight": 19,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-71",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-073",
+      "department": "ENG",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "Rail and fastening inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 30660,
+      "due": 30840,
+      "weight": 20,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-72",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-074",
+      "department": "TRD",
+      "asset_id": "AS-P2-DN",
+      "section": "P2-DN",
+      "line": "DN",
+      "chainage_m": 16000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 30840,
+      "due": 31020,
+      "weight": 48,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-73",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-075",
+      "department": "S&T",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "Signal apparatus testing",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 31740,
+      "due": 31920,
+      "weight": 41,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-74",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-076",
+      "department": "ENG",
+      "asset_id": "AS-P3-DN",
+      "section": "P3-DN",
+      "line": "DN",
+      "chainage_m": 28000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": true,
+      "earliest": 31920,
+      "due": 32100,
+      "weight": 17,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-75",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-077",
+      "department": "TRD",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 32100,
+      "due": 32280,
+      "weight": 29,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-76",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-078",
+      "department": "S&T",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 33180,
+      "due": 33360,
+      "weight": 13,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-77",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-079",
+      "department": "ENG",
+      "asset_id": "AS-P5-DN",
+      "section": "P5-DN",
+      "line": "DN",
+      "chainage_m": 52000,
+      "title": "Rail and fastening inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 33360,
+      "due": 33540,
+      "weight": 46,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-78",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-080",
+      "department": "TRD",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 33540,
+      "due": 33720,
+      "weight": 15,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-79",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-081",
+      "department": "S&T",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": true,
+      "earliest": 34620,
+      "due": 34800,
+      "weight": 14,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-80",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-082",
+      "department": "ENG",
+      "asset_id": "AS-P7-DN",
+      "section": "P7-DN",
+      "line": "DN",
+      "chainage_m": 76000,
+      "title": "Rail and fastening inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 34800,
+      "due": 34980,
+      "weight": 18,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "ENG-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-81",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-083",
+      "department": "TRD",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "OHE condition inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 34980,
+      "due": 35160,
+      "weight": 45,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "TRD-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-82",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-084",
+      "department": "S&T",
+      "asset_id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 35160,
+      "due": 35340,
+      "weight": 26,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-83",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-085",
+      "department": "ENG",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 36060,
+      "due": 36240,
+      "weight": 23,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-84",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-086",
+      "department": "TRD",
+      "asset_id": "AS-P2-DN",
+      "section": "P2-DN",
+      "line": "DN",
+      "chainage_m": 16000,
+      "title": "OHE condition inspection",
+      "duration": 30,
+      "mandatory": true,
+      "earliest": 36240,
+      "due": 36420,
+      "weight": 29,
+      "priority": "High",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-85",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-087",
+      "department": "S&T",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "Signal apparatus testing",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 36420,
+      "due": 36600,
+      "weight": 33,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-86",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-088",
+      "department": "ENG",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 37500,
+      "due": 37680,
+      "weight": 43,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-87",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-089",
+      "department": "TRD",
+      "asset_id": "AS-P4-DN",
+      "section": "P4-DN",
+      "line": "DN",
+      "chainage_m": 40000,
+      "title": "OHE condition inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 37680,
+      "due": 37860,
+      "weight": 17,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-88",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-090",
+      "department": "S&T",
+      "asset_id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 37860,
+      "due": 38040,
+      "weight": 24,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-89",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-091",
+      "department": "ENG",
+      "asset_id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": true,
+      "earliest": 38940,
+      "due": 39120,
+      "weight": 31,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-90",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-092",
+      "department": "TRD",
+      "asset_id": "AS-P6-DN",
+      "section": "P6-DN",
+      "line": "DN",
+      "chainage_m": 64000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 39120,
+      "due": 39300,
+      "weight": 47,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "resources": [
+        "TRD-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-91",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-093",
+      "department": "S&T",
+      "asset_id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 39300,
+      "due": 39480,
+      "weight": 47,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "S&T-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-92",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-094",
+      "department": "ENG",
+      "asset_id": "AS-P7-DN",
+      "section": "P7-DN",
+      "line": "DN",
+      "chainage_m": 76000,
+      "title": "Rail and fastening inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 39480,
+      "due": 39660,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-93",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-095",
+      "department": "TRD",
+      "asset_id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "title": "OHE condition inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 40380,
+      "due": 40560,
+      "weight": 50,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": false,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-94",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-096",
+      "department": "S&T",
+      "asset_id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "title": "Signal apparatus testing",
+      "duration": 25,
+      "mandatory": true,
+      "earliest": 40560,
+      "due": 40740,
+      "weight": 24,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-95",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-097",
+      "department": "ENG",
+      "asset_id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "title": "Rail and fastening inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 40740,
+      "due": 40920,
+      "weight": 12,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-96",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-098",
+      "department": "TRD",
+      "asset_id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "title": "OHE condition inspection",
+      "duration": 40,
+      "mandatory": false,
+      "earliest": 41820,
+      "due": 42000,
+      "weight": 14,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TDMS",
+      "source_record_id": "P-97",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-099",
+      "department": "S&T",
+      "asset_id": "AS-P3-DN",
+      "section": "P3-DN",
+      "line": "DN",
+      "chainage_m": 28000,
+      "title": "Signal apparatus testing",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 42000,
+      "due": 42180,
+      "weight": 27,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "resources": [
+        "S&T-2"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "SMMS",
+      "source_record_id": "P-98",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "PM-100",
+      "department": "ENG",
+      "asset_id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "title": "Rail and fastening inspection",
+      "duration": 45,
+      "mandatory": false,
+      "earliest": 0,
+      "due": -1,
+      "weight": 23,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "resources": [
+        "ENG-3"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "P-99",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    }
+  ],
+  "windows": [
+    {
+      "id": "PW-00-0",
+      "start": 120,
+      "end": 240,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-00-1",
+      "start": 300,
+      "end": 420,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-00-2",
+      "start": 480,
+      "end": 600,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-00-3",
+      "start": 660,
+      "end": 780,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-01-0",
+      "start": 1560,
+      "end": 1680,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-01-1",
+      "start": 1740,
+      "end": 1860,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-01-2",
+      "start": 1920,
+      "end": 2040,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-01-3",
+      "start": 2100,
+      "end": 2220,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-02-0",
+      "start": 3000,
+      "end": 3120,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-02-1",
+      "start": 3180,
+      "end": 3300,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-02-2",
+      "start": 3360,
+      "end": 3480,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-02-3",
+      "start": 3540,
+      "end": 3660,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-03-0",
+      "start": 4440,
+      "end": 4560,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-03-1",
+      "start": 4620,
+      "end": 4740,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-03-2",
+      "start": 4800,
+      "end": 4920,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-03-3",
+      "start": 4980,
+      "end": 5100,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-04-0",
+      "start": 5880,
+      "end": 6000,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-04-1",
+      "start": 6060,
+      "end": 6180,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-04-2",
+      "start": 6240,
+      "end": 6360,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-04-3",
+      "start": 6420,
+      "end": 6540,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-05-0",
+      "start": 7320,
+      "end": 7440,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-05-1",
+      "start": 7500,
+      "end": 7620,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-05-2",
+      "start": 7680,
+      "end": 7800,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-05-3",
+      "start": 7860,
+      "end": 7980,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-06-0",
+      "start": 8760,
+      "end": 8880,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-06-1",
+      "start": 8940,
+      "end": 9060,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-06-2",
+      "start": 9120,
+      "end": 9240,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-06-3",
+      "start": 9300,
+      "end": 9420,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-07-0",
+      "start": 10200,
+      "end": 10320,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-07-1",
+      "start": 10380,
+      "end": 10500,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-07-2",
+      "start": 10560,
+      "end": 10680,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-07-3",
+      "start": 10740,
+      "end": 10860,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-08-0",
+      "start": 11640,
+      "end": 11760,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-08-1",
+      "start": 11820,
+      "end": 11940,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-08-2",
+      "start": 12000,
+      "end": 12120,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-08-3",
+      "start": 12180,
+      "end": 12300,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-09-0",
+      "start": 13080,
+      "end": 13200,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-09-1",
+      "start": 13260,
+      "end": 13380,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-09-2",
+      "start": 13440,
+      "end": 13560,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-09-3",
+      "start": 13620,
+      "end": 13740,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-10-0",
+      "start": 14520,
+      "end": 14640,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-10-1",
+      "start": 14700,
+      "end": 14820,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-10-2",
+      "start": 14880,
+      "end": 15000,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-10-3",
+      "start": 15060,
+      "end": 15180,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-11-0",
+      "start": 15960,
+      "end": 16080,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-11-1",
+      "start": 16140,
+      "end": 16260,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-11-2",
+      "start": 16320,
+      "end": 16440,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-11-3",
+      "start": 16500,
+      "end": 16620,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-12-0",
+      "start": 17400,
+      "end": 17520,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-12-1",
+      "start": 17580,
+      "end": 17700,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-12-2",
+      "start": 17760,
+      "end": 17880,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-12-3",
+      "start": 17940,
+      "end": 18060,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-13-0",
+      "start": 18840,
+      "end": 18960,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-13-1",
+      "start": 19020,
+      "end": 19140,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-13-2",
+      "start": 19200,
+      "end": 19320,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-13-3",
+      "start": 19380,
+      "end": 19500,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-14-0",
+      "start": 20280,
+      "end": 20400,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-14-1",
+      "start": 20460,
+      "end": 20580,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-14-2",
+      "start": 20640,
+      "end": 20760,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-14-3",
+      "start": 20820,
+      "end": 20940,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-15-0",
+      "start": 21720,
+      "end": 21840,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-15-1",
+      "start": 21900,
+      "end": 22020,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-15-2",
+      "start": 22080,
+      "end": 22200,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-15-3",
+      "start": 22260,
+      "end": 22380,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-16-0",
+      "start": 23160,
+      "end": 23280,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-16-1",
+      "start": 23340,
+      "end": 23460,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-16-2",
+      "start": 23520,
+      "end": 23640,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-16-3",
+      "start": 23700,
+      "end": 23820,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-17-0",
+      "start": 24600,
+      "end": 24720,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-17-1",
+      "start": 24780,
+      "end": 24900,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-17-2",
+      "start": 24960,
+      "end": 25080,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-17-3",
+      "start": 25140,
+      "end": 25260,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-18-0",
+      "start": 26040,
+      "end": 26160,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-18-1",
+      "start": 26220,
+      "end": 26340,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-18-2",
+      "start": 26400,
+      "end": 26520,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-18-3",
+      "start": 26580,
+      "end": 26700,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-19-0",
+      "start": 27480,
+      "end": 27600,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-19-1",
+      "start": 27660,
+      "end": 27780,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-19-2",
+      "start": 27840,
+      "end": 27960,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-19-3",
+      "start": 28020,
+      "end": 28140,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-20-0",
+      "start": 28920,
+      "end": 29040,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-20-1",
+      "start": 29100,
+      "end": 29220,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-20-2",
+      "start": 29280,
+      "end": 29400,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-20-3",
+      "start": 29460,
+      "end": 29580,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-21-0",
+      "start": 30360,
+      "end": 30480,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-21-1",
+      "start": 30540,
+      "end": 30660,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-21-2",
+      "start": 30720,
+      "end": 30840,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-21-3",
+      "start": 30900,
+      "end": 31020,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-22-0",
+      "start": 31800,
+      "end": 31920,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-22-1",
+      "start": 31980,
+      "end": 32100,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-22-2",
+      "start": 32160,
+      "end": 32280,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-22-3",
+      "start": 32340,
+      "end": 32460,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-23-0",
+      "start": 33240,
+      "end": 33360,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-23-1",
+      "start": 33420,
+      "end": 33540,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-23-2",
+      "start": 33600,
+      "end": 33720,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-23-3",
+      "start": 33780,
+      "end": 33900,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-24-0",
+      "start": 34680,
+      "end": 34800,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-24-1",
+      "start": 34860,
+      "end": 34980,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-24-2",
+      "start": 35040,
+      "end": 35160,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-24-3",
+      "start": 35220,
+      "end": 35340,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-25-0",
+      "start": 36120,
+      "end": 36240,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-25-1",
+      "start": 36300,
+      "end": 36420,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-25-2",
+      "start": 36480,
+      "end": 36600,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-25-3",
+      "start": 36660,
+      "end": 36780,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-26-0",
+      "start": 37560,
+      "end": 37680,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-26-1",
+      "start": 37740,
+      "end": 37860,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-26-2",
+      "start": 37920,
+      "end": 38040,
+      "sections": [
+        "P5-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-26-3",
+      "start": 38100,
+      "end": 38220,
+      "sections": [
+        "P5-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-5"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-27-0",
+      "start": 39000,
+      "end": 39120,
+      "sections": [
+        "P6-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-27-1",
+      "start": 39180,
+      "end": 39300,
+      "sections": [
+        "P6-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-6"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-27-2",
+      "start": 39360,
+      "end": 39480,
+      "sections": [
+        "P7-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-27-3",
+      "start": 39540,
+      "end": 39660,
+      "sections": [
+        "P7-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-7"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-28-0",
+      "start": 40440,
+      "end": 40560,
+      "sections": [
+        "P1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-28-1",
+      "start": 40620,
+      "end": 40740,
+      "sections": [
+        "P1-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-28-2",
+      "start": 40800,
+      "end": 40920,
+      "sections": [
+        "P2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-28-3",
+      "start": 40980,
+      "end": 41100,
+      "sections": [
+        "P2-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-29-0",
+      "start": 41880,
+      "end": 42000,
+      "sections": [
+        "P3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-29-1",
+      "start": 42060,
+      "end": 42180,
+      "sections": [
+        "P3-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-29-2",
+      "start": 42240,
+      "end": 42360,
+      "sections": [
+        "P4-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "PW-29-3",
+      "start": 42420,
+      "end": 42540,
+      "sections": [
+        "P4-DN"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "PISO-4"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    }
+  ],
+  "resources": [
+    {
+      "id": "ENG-1",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "ENG-2",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "ENG-3",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "TRD-1",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "TRD-2",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "TRD-3",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "S&T-1",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "S&T-2",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "S&T-3",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    }
+  ],
+  "sections": [
+    {
+      "id": "P1-UP",
+      "origin": "NVA",
+      "destination": "KDR",
+      "line": "UP",
+      "chainage_start": 0,
+      "chainage_end": 12000,
+      "isolation": "PISO-1"
+    },
+    {
+      "id": "P1-DN",
+      "origin": "NVA",
+      "destination": "KDR",
+      "line": "DN",
+      "chainage_start": 0,
+      "chainage_end": 12000,
+      "isolation": "PISO-1"
+    },
+    {
+      "id": "P2-UP",
+      "origin": "KDR",
+      "destination": "MLR",
+      "line": "UP",
+      "chainage_start": 12000,
+      "chainage_end": 24000,
+      "isolation": "PISO-2"
+    },
+    {
+      "id": "P2-DN",
+      "origin": "KDR",
+      "destination": "MLR",
+      "line": "DN",
+      "chainage_start": 12000,
+      "chainage_end": 24000,
+      "isolation": "PISO-2"
+    },
+    {
+      "id": "P3-UP",
+      "origin": "MLR",
+      "destination": "PNR",
+      "line": "UP",
+      "chainage_start": 24000,
+      "chainage_end": 36000,
+      "isolation": "PISO-3"
+    },
+    {
+      "id": "P3-DN",
+      "origin": "MLR",
+      "destination": "PNR",
+      "line": "DN",
+      "chainage_start": 24000,
+      "chainage_end": 36000,
+      "isolation": "PISO-3"
+    },
+    {
+      "id": "P4-UP",
+      "origin": "PNR",
+      "destination": "SVR",
+      "line": "UP",
+      "chainage_start": 36000,
+      "chainage_end": 48000,
+      "isolation": "PISO-4"
+    },
+    {
+      "id": "P4-DN",
+      "origin": "PNR",
+      "destination": "SVR",
+      "line": "DN",
+      "chainage_start": 36000,
+      "chainage_end": 48000,
+      "isolation": "PISO-4"
+    },
+    {
+      "id": "P5-UP",
+      "origin": "SVR",
+      "destination": "TLP",
+      "line": "UP",
+      "chainage_start": 48000,
+      "chainage_end": 60000,
+      "isolation": "PISO-5"
+    },
+    {
+      "id": "P5-DN",
+      "origin": "SVR",
+      "destination": "TLP",
+      "line": "DN",
+      "chainage_start": 48000,
+      "chainage_end": 60000,
+      "isolation": "PISO-5"
+    },
+    {
+      "id": "P6-UP",
+      "origin": "TLP",
+      "destination": "UDR",
+      "line": "UP",
+      "chainage_start": 60000,
+      "chainage_end": 72000,
+      "isolation": "PISO-6"
+    },
+    {
+      "id": "P6-DN",
+      "origin": "TLP",
+      "destination": "UDR",
+      "line": "DN",
+      "chainage_start": 60000,
+      "chainage_end": 72000,
+      "isolation": "PISO-6"
+    },
+    {
+      "id": "P7-UP",
+      "origin": "UDR",
+      "destination": "VNA",
+      "line": "UP",
+      "chainage_start": 72000,
+      "chainage_end": 84000,
+      "isolation": "PISO-7"
+    },
+    {
+      "id": "P7-DN",
+      "origin": "UDR",
+      "destination": "VNA",
+      "line": "DN",
+      "chainage_start": 72000,
+      "chainage_end": 84000,
+      "isolation": "PISO-7"
+    }
+  ],
+  "assets": [
+    {
+      "id": "AS-P1-UP",
+      "section": "P1-UP",
+      "line": "UP",
+      "chainage_m": 4000,
+      "isolation": [
+        "PISO-1"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P1-DN",
+      "section": "P1-DN",
+      "line": "DN",
+      "chainage_m": 4000,
+      "isolation": [
+        "PISO-1"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P2-UP",
+      "section": "P2-UP",
+      "line": "UP",
+      "chainage_m": 16000,
+      "isolation": [
+        "PISO-2"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P2-DN",
+      "section": "P2-DN",
+      "line": "DN",
+      "chainage_m": 16000,
+      "isolation": [
+        "PISO-2"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P3-UP",
+      "section": "P3-UP",
+      "line": "UP",
+      "chainage_m": 28000,
+      "isolation": [
+        "PISO-3"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P3-DN",
+      "section": "P3-DN",
+      "line": "DN",
+      "chainage_m": 28000,
+      "isolation": [
+        "PISO-3"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P4-UP",
+      "section": "P4-UP",
+      "line": "UP",
+      "chainage_m": 40000,
+      "isolation": [
+        "PISO-4"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P4-DN",
+      "section": "P4-DN",
+      "line": "DN",
+      "chainage_m": 40000,
+      "isolation": [
+        "PISO-4"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P5-UP",
+      "section": "P5-UP",
+      "line": "UP",
+      "chainage_m": 52000,
+      "isolation": [
+        "PISO-5"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P5-DN",
+      "section": "P5-DN",
+      "line": "DN",
+      "chainage_m": 52000,
+      "isolation": [
+        "PISO-5"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P6-UP",
+      "section": "P6-UP",
+      "line": "UP",
+      "chainage_m": 64000,
+      "isolation": [
+        "PISO-6"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P6-DN",
+      "section": "P6-DN",
+      "line": "DN",
+      "chainage_m": 64000,
+      "isolation": [
+        "PISO-6"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P7-UP",
+      "section": "P7-UP",
+      "line": "UP",
+      "chainage_m": 76000,
+      "isolation": [
+        "PISO-7"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-P7-DN",
+      "section": "P7-DN",
+      "line": "DN",
+      "chainage_m": 76000,
+      "isolation": [
+        "PISO-7"
+      ],
+      "verified": true
+    }
+  ],
+  "movements": [
+    {
+      "id": "PF-0-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 1000,
+          "end": 1010
+        },
+        {
+          "section": "P2-UP",
+          "start": 1020,
+          "end": 1030
+        },
+        {
+          "section": "P3-UP",
+          "start": 1040,
+          "end": 1050
+        },
+        {
+          "section": "P4-UP",
+          "start": 1060,
+          "end": 1070
+        },
+        {
+          "section": "P5-UP",
+          "start": 1080,
+          "end": 1090
+        },
+        {
+          "section": "P6-UP",
+          "start": 1100,
+          "end": 1110
+        },
+        {
+          "section": "P7-UP",
+          "start": 1120,
+          "end": 1130
+        }
+      ]
+    },
+    {
+      "id": "PF-0-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 1000,
+          "end": 1010
+        },
+        {
+          "section": "P6-DN",
+          "start": 1020,
+          "end": 1030
+        },
+        {
+          "section": "P5-DN",
+          "start": 1040,
+          "end": 1050
+        },
+        {
+          "section": "P4-DN",
+          "start": 1060,
+          "end": 1070
+        },
+        {
+          "section": "P3-DN",
+          "start": 1080,
+          "end": 1090
+        },
+        {
+          "section": "P2-DN",
+          "start": 1100,
+          "end": 1110
+        },
+        {
+          "section": "P1-DN",
+          "start": 1120,
+          "end": 1130
+        }
+      ]
+    },
+    {
+      "id": "PF-1-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 2440,
+          "end": 2450
+        },
+        {
+          "section": "P2-UP",
+          "start": 2460,
+          "end": 2470
+        },
+        {
+          "section": "P3-UP",
+          "start": 2480,
+          "end": 2490
+        },
+        {
+          "section": "P4-UP",
+          "start": 2500,
+          "end": 2510
+        },
+        {
+          "section": "P5-UP",
+          "start": 2520,
+          "end": 2530
+        },
+        {
+          "section": "P6-UP",
+          "start": 2540,
+          "end": 2550
+        },
+        {
+          "section": "P7-UP",
+          "start": 2560,
+          "end": 2570
+        }
+      ]
+    },
+    {
+      "id": "PF-1-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 2440,
+          "end": 2450
+        },
+        {
+          "section": "P6-DN",
+          "start": 2460,
+          "end": 2470
+        },
+        {
+          "section": "P5-DN",
+          "start": 2480,
+          "end": 2490
+        },
+        {
+          "section": "P4-DN",
+          "start": 2500,
+          "end": 2510
+        },
+        {
+          "section": "P3-DN",
+          "start": 2520,
+          "end": 2530
+        },
+        {
+          "section": "P2-DN",
+          "start": 2540,
+          "end": 2550
+        },
+        {
+          "section": "P1-DN",
+          "start": 2560,
+          "end": 2570
+        }
+      ]
+    },
+    {
+      "id": "PF-2-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 3880,
+          "end": 3890
+        },
+        {
+          "section": "P2-UP",
+          "start": 3900,
+          "end": 3910
+        },
+        {
+          "section": "P3-UP",
+          "start": 3920,
+          "end": 3930
+        },
+        {
+          "section": "P4-UP",
+          "start": 3940,
+          "end": 3950
+        },
+        {
+          "section": "P5-UP",
+          "start": 3960,
+          "end": 3970
+        },
+        {
+          "section": "P6-UP",
+          "start": 3980,
+          "end": 3990
+        },
+        {
+          "section": "P7-UP",
+          "start": 4000,
+          "end": 4010
+        }
+      ]
+    },
+    {
+      "id": "PF-2-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 3880,
+          "end": 3890
+        },
+        {
+          "section": "P6-DN",
+          "start": 3900,
+          "end": 3910
+        },
+        {
+          "section": "P5-DN",
+          "start": 3920,
+          "end": 3930
+        },
+        {
+          "section": "P4-DN",
+          "start": 3940,
+          "end": 3950
+        },
+        {
+          "section": "P3-DN",
+          "start": 3960,
+          "end": 3970
+        },
+        {
+          "section": "P2-DN",
+          "start": 3980,
+          "end": 3990
+        },
+        {
+          "section": "P1-DN",
+          "start": 4000,
+          "end": 4010
+        }
+      ]
+    },
+    {
+      "id": "PF-3-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 5320,
+          "end": 5330
+        },
+        {
+          "section": "P2-UP",
+          "start": 5340,
+          "end": 5350
+        },
+        {
+          "section": "P3-UP",
+          "start": 5360,
+          "end": 5370
+        },
+        {
+          "section": "P4-UP",
+          "start": 5380,
+          "end": 5390
+        },
+        {
+          "section": "P5-UP",
+          "start": 5400,
+          "end": 5410
+        },
+        {
+          "section": "P6-UP",
+          "start": 5420,
+          "end": 5430
+        },
+        {
+          "section": "P7-UP",
+          "start": 5440,
+          "end": 5450
+        }
+      ]
+    },
+    {
+      "id": "PF-3-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 5320,
+          "end": 5330
+        },
+        {
+          "section": "P6-DN",
+          "start": 5340,
+          "end": 5350
+        },
+        {
+          "section": "P5-DN",
+          "start": 5360,
+          "end": 5370
+        },
+        {
+          "section": "P4-DN",
+          "start": 5380,
+          "end": 5390
+        },
+        {
+          "section": "P3-DN",
+          "start": 5400,
+          "end": 5410
+        },
+        {
+          "section": "P2-DN",
+          "start": 5420,
+          "end": 5430
+        },
+        {
+          "section": "P1-DN",
+          "start": 5440,
+          "end": 5450
+        }
+      ]
+    },
+    {
+      "id": "PF-4-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 6760,
+          "end": 6770
+        },
+        {
+          "section": "P2-UP",
+          "start": 6780,
+          "end": 6790
+        },
+        {
+          "section": "P3-UP",
+          "start": 6800,
+          "end": 6810
+        },
+        {
+          "section": "P4-UP",
+          "start": 6820,
+          "end": 6830
+        },
+        {
+          "section": "P5-UP",
+          "start": 6840,
+          "end": 6850
+        },
+        {
+          "section": "P6-UP",
+          "start": 6860,
+          "end": 6870
+        },
+        {
+          "section": "P7-UP",
+          "start": 6880,
+          "end": 6890
+        }
+      ]
+    },
+    {
+      "id": "PF-4-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 6760,
+          "end": 6770
+        },
+        {
+          "section": "P6-DN",
+          "start": 6780,
+          "end": 6790
+        },
+        {
+          "section": "P5-DN",
+          "start": 6800,
+          "end": 6810
+        },
+        {
+          "section": "P4-DN",
+          "start": 6820,
+          "end": 6830
+        },
+        {
+          "section": "P3-DN",
+          "start": 6840,
+          "end": 6850
+        },
+        {
+          "section": "P2-DN",
+          "start": 6860,
+          "end": 6870
+        },
+        {
+          "section": "P1-DN",
+          "start": 6880,
+          "end": 6890
+        }
+      ]
+    },
+    {
+      "id": "PF-5-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 8200,
+          "end": 8210
+        },
+        {
+          "section": "P2-UP",
+          "start": 8220,
+          "end": 8230
+        },
+        {
+          "section": "P3-UP",
+          "start": 8240,
+          "end": 8250
+        },
+        {
+          "section": "P4-UP",
+          "start": 8260,
+          "end": 8270
+        },
+        {
+          "section": "P5-UP",
+          "start": 8280,
+          "end": 8290
+        },
+        {
+          "section": "P6-UP",
+          "start": 8300,
+          "end": 8310
+        },
+        {
+          "section": "P7-UP",
+          "start": 8320,
+          "end": 8330
+        }
+      ]
+    },
+    {
+      "id": "PF-5-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 8200,
+          "end": 8210
+        },
+        {
+          "section": "P6-DN",
+          "start": 8220,
+          "end": 8230
+        },
+        {
+          "section": "P5-DN",
+          "start": 8240,
+          "end": 8250
+        },
+        {
+          "section": "P4-DN",
+          "start": 8260,
+          "end": 8270
+        },
+        {
+          "section": "P3-DN",
+          "start": 8280,
+          "end": 8290
+        },
+        {
+          "section": "P2-DN",
+          "start": 8300,
+          "end": 8310
+        },
+        {
+          "section": "P1-DN",
+          "start": 8320,
+          "end": 8330
+        }
+      ]
+    },
+    {
+      "id": "PF-6-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 9640,
+          "end": 9650
+        },
+        {
+          "section": "P2-UP",
+          "start": 9660,
+          "end": 9670
+        },
+        {
+          "section": "P3-UP",
+          "start": 9680,
+          "end": 9690
+        },
+        {
+          "section": "P4-UP",
+          "start": 9700,
+          "end": 9710
+        },
+        {
+          "section": "P5-UP",
+          "start": 9720,
+          "end": 9730
+        },
+        {
+          "section": "P6-UP",
+          "start": 9740,
+          "end": 9750
+        },
+        {
+          "section": "P7-UP",
+          "start": 9760,
+          "end": 9770
+        }
+      ]
+    },
+    {
+      "id": "PF-6-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 9640,
+          "end": 9650
+        },
+        {
+          "section": "P6-DN",
+          "start": 9660,
+          "end": 9670
+        },
+        {
+          "section": "P5-DN",
+          "start": 9680,
+          "end": 9690
+        },
+        {
+          "section": "P4-DN",
+          "start": 9700,
+          "end": 9710
+        },
+        {
+          "section": "P3-DN",
+          "start": 9720,
+          "end": 9730
+        },
+        {
+          "section": "P2-DN",
+          "start": 9740,
+          "end": 9750
+        },
+        {
+          "section": "P1-DN",
+          "start": 9760,
+          "end": 9770
+        }
+      ]
+    },
+    {
+      "id": "PF-7-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 11080,
+          "end": 11090
+        },
+        {
+          "section": "P2-UP",
+          "start": 11100,
+          "end": 11110
+        },
+        {
+          "section": "P3-UP",
+          "start": 11120,
+          "end": 11130
+        },
+        {
+          "section": "P4-UP",
+          "start": 11140,
+          "end": 11150
+        },
+        {
+          "section": "P5-UP",
+          "start": 11160,
+          "end": 11170
+        },
+        {
+          "section": "P6-UP",
+          "start": 11180,
+          "end": 11190
+        },
+        {
+          "section": "P7-UP",
+          "start": 11200,
+          "end": 11210
+        }
+      ]
+    },
+    {
+      "id": "PF-7-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 11080,
+          "end": 11090
+        },
+        {
+          "section": "P6-DN",
+          "start": 11100,
+          "end": 11110
+        },
+        {
+          "section": "P5-DN",
+          "start": 11120,
+          "end": 11130
+        },
+        {
+          "section": "P4-DN",
+          "start": 11140,
+          "end": 11150
+        },
+        {
+          "section": "P3-DN",
+          "start": 11160,
+          "end": 11170
+        },
+        {
+          "section": "P2-DN",
+          "start": 11180,
+          "end": 11190
+        },
+        {
+          "section": "P1-DN",
+          "start": 11200,
+          "end": 11210
+        }
+      ]
+    },
+    {
+      "id": "PF-8-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 12520,
+          "end": 12530
+        },
+        {
+          "section": "P2-UP",
+          "start": 12540,
+          "end": 12550
+        },
+        {
+          "section": "P3-UP",
+          "start": 12560,
+          "end": 12570
+        },
+        {
+          "section": "P4-UP",
+          "start": 12580,
+          "end": 12590
+        },
+        {
+          "section": "P5-UP",
+          "start": 12600,
+          "end": 12610
+        },
+        {
+          "section": "P6-UP",
+          "start": 12620,
+          "end": 12630
+        },
+        {
+          "section": "P7-UP",
+          "start": 12640,
+          "end": 12650
+        }
+      ]
+    },
+    {
+      "id": "PF-8-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 12520,
+          "end": 12530
+        },
+        {
+          "section": "P6-DN",
+          "start": 12540,
+          "end": 12550
+        },
+        {
+          "section": "P5-DN",
+          "start": 12560,
+          "end": 12570
+        },
+        {
+          "section": "P4-DN",
+          "start": 12580,
+          "end": 12590
+        },
+        {
+          "section": "P3-DN",
+          "start": 12600,
+          "end": 12610
+        },
+        {
+          "section": "P2-DN",
+          "start": 12620,
+          "end": 12630
+        },
+        {
+          "section": "P1-DN",
+          "start": 12640,
+          "end": 12650
+        }
+      ]
+    },
+    {
+      "id": "PF-9-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 13960,
+          "end": 13970
+        },
+        {
+          "section": "P2-UP",
+          "start": 13980,
+          "end": 13990
+        },
+        {
+          "section": "P3-UP",
+          "start": 14000,
+          "end": 14010
+        },
+        {
+          "section": "P4-UP",
+          "start": 14020,
+          "end": 14030
+        },
+        {
+          "section": "P5-UP",
+          "start": 14040,
+          "end": 14050
+        },
+        {
+          "section": "P6-UP",
+          "start": 14060,
+          "end": 14070
+        },
+        {
+          "section": "P7-UP",
+          "start": 14080,
+          "end": 14090
+        }
+      ]
+    },
+    {
+      "id": "PF-9-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 13960,
+          "end": 13970
+        },
+        {
+          "section": "P6-DN",
+          "start": 13980,
+          "end": 13990
+        },
+        {
+          "section": "P5-DN",
+          "start": 14000,
+          "end": 14010
+        },
+        {
+          "section": "P4-DN",
+          "start": 14020,
+          "end": 14030
+        },
+        {
+          "section": "P3-DN",
+          "start": 14040,
+          "end": 14050
+        },
+        {
+          "section": "P2-DN",
+          "start": 14060,
+          "end": 14070
+        },
+        {
+          "section": "P1-DN",
+          "start": 14080,
+          "end": 14090
+        }
+      ]
+    },
+    {
+      "id": "PF-10-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 15400,
+          "end": 15410
+        },
+        {
+          "section": "P2-UP",
+          "start": 15420,
+          "end": 15430
+        },
+        {
+          "section": "P3-UP",
+          "start": 15440,
+          "end": 15450
+        },
+        {
+          "section": "P4-UP",
+          "start": 15460,
+          "end": 15470
+        },
+        {
+          "section": "P5-UP",
+          "start": 15480,
+          "end": 15490
+        },
+        {
+          "section": "P6-UP",
+          "start": 15500,
+          "end": 15510
+        },
+        {
+          "section": "P7-UP",
+          "start": 15520,
+          "end": 15530
+        }
+      ]
+    },
+    {
+      "id": "PF-10-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 15400,
+          "end": 15410
+        },
+        {
+          "section": "P6-DN",
+          "start": 15420,
+          "end": 15430
+        },
+        {
+          "section": "P5-DN",
+          "start": 15440,
+          "end": 15450
+        },
+        {
+          "section": "P4-DN",
+          "start": 15460,
+          "end": 15470
+        },
+        {
+          "section": "P3-DN",
+          "start": 15480,
+          "end": 15490
+        },
+        {
+          "section": "P2-DN",
+          "start": 15500,
+          "end": 15510
+        },
+        {
+          "section": "P1-DN",
+          "start": 15520,
+          "end": 15530
+        }
+      ]
+    },
+    {
+      "id": "PF-11-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 16840,
+          "end": 16850
+        },
+        {
+          "section": "P2-UP",
+          "start": 16860,
+          "end": 16870
+        },
+        {
+          "section": "P3-UP",
+          "start": 16880,
+          "end": 16890
+        },
+        {
+          "section": "P4-UP",
+          "start": 16900,
+          "end": 16910
+        },
+        {
+          "section": "P5-UP",
+          "start": 16920,
+          "end": 16930
+        },
+        {
+          "section": "P6-UP",
+          "start": 16940,
+          "end": 16950
+        },
+        {
+          "section": "P7-UP",
+          "start": 16960,
+          "end": 16970
+        }
+      ]
+    },
+    {
+      "id": "PF-11-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 16840,
+          "end": 16850
+        },
+        {
+          "section": "P6-DN",
+          "start": 16860,
+          "end": 16870
+        },
+        {
+          "section": "P5-DN",
+          "start": 16880,
+          "end": 16890
+        },
+        {
+          "section": "P4-DN",
+          "start": 16900,
+          "end": 16910
+        },
+        {
+          "section": "P3-DN",
+          "start": 16920,
+          "end": 16930
+        },
+        {
+          "section": "P2-DN",
+          "start": 16940,
+          "end": 16950
+        },
+        {
+          "section": "P1-DN",
+          "start": 16960,
+          "end": 16970
+        }
+      ]
+    },
+    {
+      "id": "PF-12-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 18280,
+          "end": 18290
+        },
+        {
+          "section": "P2-UP",
+          "start": 18300,
+          "end": 18310
+        },
+        {
+          "section": "P3-UP",
+          "start": 18320,
+          "end": 18330
+        },
+        {
+          "section": "P4-UP",
+          "start": 18340,
+          "end": 18350
+        },
+        {
+          "section": "P5-UP",
+          "start": 18360,
+          "end": 18370
+        },
+        {
+          "section": "P6-UP",
+          "start": 18380,
+          "end": 18390
+        },
+        {
+          "section": "P7-UP",
+          "start": 18400,
+          "end": 18410
+        }
+      ]
+    },
+    {
+      "id": "PF-12-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 18280,
+          "end": 18290
+        },
+        {
+          "section": "P6-DN",
+          "start": 18300,
+          "end": 18310
+        },
+        {
+          "section": "P5-DN",
+          "start": 18320,
+          "end": 18330
+        },
+        {
+          "section": "P4-DN",
+          "start": 18340,
+          "end": 18350
+        },
+        {
+          "section": "P3-DN",
+          "start": 18360,
+          "end": 18370
+        },
+        {
+          "section": "P2-DN",
+          "start": 18380,
+          "end": 18390
+        },
+        {
+          "section": "P1-DN",
+          "start": 18400,
+          "end": 18410
+        }
+      ]
+    },
+    {
+      "id": "PF-13-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 19720,
+          "end": 19730
+        },
+        {
+          "section": "P2-UP",
+          "start": 19740,
+          "end": 19750
+        },
+        {
+          "section": "P3-UP",
+          "start": 19760,
+          "end": 19770
+        },
+        {
+          "section": "P4-UP",
+          "start": 19780,
+          "end": 19790
+        },
+        {
+          "section": "P5-UP",
+          "start": 19800,
+          "end": 19810
+        },
+        {
+          "section": "P6-UP",
+          "start": 19820,
+          "end": 19830
+        },
+        {
+          "section": "P7-UP",
+          "start": 19840,
+          "end": 19850
+        }
+      ]
+    },
+    {
+      "id": "PF-13-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 19720,
+          "end": 19730
+        },
+        {
+          "section": "P6-DN",
+          "start": 19740,
+          "end": 19750
+        },
+        {
+          "section": "P5-DN",
+          "start": 19760,
+          "end": 19770
+        },
+        {
+          "section": "P4-DN",
+          "start": 19780,
+          "end": 19790
+        },
+        {
+          "section": "P3-DN",
+          "start": 19800,
+          "end": 19810
+        },
+        {
+          "section": "P2-DN",
+          "start": 19820,
+          "end": 19830
+        },
+        {
+          "section": "P1-DN",
+          "start": 19840,
+          "end": 19850
+        }
+      ]
+    },
+    {
+      "id": "PF-14-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 21160,
+          "end": 21170
+        },
+        {
+          "section": "P2-UP",
+          "start": 21180,
+          "end": 21190
+        },
+        {
+          "section": "P3-UP",
+          "start": 21200,
+          "end": 21210
+        },
+        {
+          "section": "P4-UP",
+          "start": 21220,
+          "end": 21230
+        },
+        {
+          "section": "P5-UP",
+          "start": 21240,
+          "end": 21250
+        },
+        {
+          "section": "P6-UP",
+          "start": 21260,
+          "end": 21270
+        },
+        {
+          "section": "P7-UP",
+          "start": 21280,
+          "end": 21290
+        }
+      ]
+    },
+    {
+      "id": "PF-14-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 21160,
+          "end": 21170
+        },
+        {
+          "section": "P6-DN",
+          "start": 21180,
+          "end": 21190
+        },
+        {
+          "section": "P5-DN",
+          "start": 21200,
+          "end": 21210
+        },
+        {
+          "section": "P4-DN",
+          "start": 21220,
+          "end": 21230
+        },
+        {
+          "section": "P3-DN",
+          "start": 21240,
+          "end": 21250
+        },
+        {
+          "section": "P2-DN",
+          "start": 21260,
+          "end": 21270
+        },
+        {
+          "section": "P1-DN",
+          "start": 21280,
+          "end": 21290
+        }
+      ]
+    },
+    {
+      "id": "PF-15-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 22600,
+          "end": 22610
+        },
+        {
+          "section": "P2-UP",
+          "start": 22620,
+          "end": 22630
+        },
+        {
+          "section": "P3-UP",
+          "start": 22640,
+          "end": 22650
+        },
+        {
+          "section": "P4-UP",
+          "start": 22660,
+          "end": 22670
+        },
+        {
+          "section": "P5-UP",
+          "start": 22680,
+          "end": 22690
+        },
+        {
+          "section": "P6-UP",
+          "start": 22700,
+          "end": 22710
+        },
+        {
+          "section": "P7-UP",
+          "start": 22720,
+          "end": 22730
+        }
+      ]
+    },
+    {
+      "id": "PF-15-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 22600,
+          "end": 22610
+        },
+        {
+          "section": "P6-DN",
+          "start": 22620,
+          "end": 22630
+        },
+        {
+          "section": "P5-DN",
+          "start": 22640,
+          "end": 22650
+        },
+        {
+          "section": "P4-DN",
+          "start": 22660,
+          "end": 22670
+        },
+        {
+          "section": "P3-DN",
+          "start": 22680,
+          "end": 22690
+        },
+        {
+          "section": "P2-DN",
+          "start": 22700,
+          "end": 22710
+        },
+        {
+          "section": "P1-DN",
+          "start": 22720,
+          "end": 22730
+        }
+      ]
+    },
+    {
+      "id": "PF-16-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 24040,
+          "end": 24050
+        },
+        {
+          "section": "P2-UP",
+          "start": 24060,
+          "end": 24070
+        },
+        {
+          "section": "P3-UP",
+          "start": 24080,
+          "end": 24090
+        },
+        {
+          "section": "P4-UP",
+          "start": 24100,
+          "end": 24110
+        },
+        {
+          "section": "P5-UP",
+          "start": 24120,
+          "end": 24130
+        },
+        {
+          "section": "P6-UP",
+          "start": 24140,
+          "end": 24150
+        },
+        {
+          "section": "P7-UP",
+          "start": 24160,
+          "end": 24170
+        }
+      ]
+    },
+    {
+      "id": "PF-16-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 24040,
+          "end": 24050
+        },
+        {
+          "section": "P6-DN",
+          "start": 24060,
+          "end": 24070
+        },
+        {
+          "section": "P5-DN",
+          "start": 24080,
+          "end": 24090
+        },
+        {
+          "section": "P4-DN",
+          "start": 24100,
+          "end": 24110
+        },
+        {
+          "section": "P3-DN",
+          "start": 24120,
+          "end": 24130
+        },
+        {
+          "section": "P2-DN",
+          "start": 24140,
+          "end": 24150
+        },
+        {
+          "section": "P1-DN",
+          "start": 24160,
+          "end": 24170
+        }
+      ]
+    },
+    {
+      "id": "PF-17-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 25480,
+          "end": 25490
+        },
+        {
+          "section": "P2-UP",
+          "start": 25500,
+          "end": 25510
+        },
+        {
+          "section": "P3-UP",
+          "start": 25520,
+          "end": 25530
+        },
+        {
+          "section": "P4-UP",
+          "start": 25540,
+          "end": 25550
+        },
+        {
+          "section": "P5-UP",
+          "start": 25560,
+          "end": 25570
+        },
+        {
+          "section": "P6-UP",
+          "start": 25580,
+          "end": 25590
+        },
+        {
+          "section": "P7-UP",
+          "start": 25600,
+          "end": 25610
+        }
+      ]
+    },
+    {
+      "id": "PF-17-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 25480,
+          "end": 25490
+        },
+        {
+          "section": "P6-DN",
+          "start": 25500,
+          "end": 25510
+        },
+        {
+          "section": "P5-DN",
+          "start": 25520,
+          "end": 25530
+        },
+        {
+          "section": "P4-DN",
+          "start": 25540,
+          "end": 25550
+        },
+        {
+          "section": "P3-DN",
+          "start": 25560,
+          "end": 25570
+        },
+        {
+          "section": "P2-DN",
+          "start": 25580,
+          "end": 25590
+        },
+        {
+          "section": "P1-DN",
+          "start": 25600,
+          "end": 25610
+        }
+      ]
+    },
+    {
+      "id": "PF-18-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 26920,
+          "end": 26930
+        },
+        {
+          "section": "P2-UP",
+          "start": 26940,
+          "end": 26950
+        },
+        {
+          "section": "P3-UP",
+          "start": 26960,
+          "end": 26970
+        },
+        {
+          "section": "P4-UP",
+          "start": 26980,
+          "end": 26990
+        },
+        {
+          "section": "P5-UP",
+          "start": 27000,
+          "end": 27010
+        },
+        {
+          "section": "P6-UP",
+          "start": 27020,
+          "end": 27030
+        },
+        {
+          "section": "P7-UP",
+          "start": 27040,
+          "end": 27050
+        }
+      ]
+    },
+    {
+      "id": "PF-18-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 26920,
+          "end": 26930
+        },
+        {
+          "section": "P6-DN",
+          "start": 26940,
+          "end": 26950
+        },
+        {
+          "section": "P5-DN",
+          "start": 26960,
+          "end": 26970
+        },
+        {
+          "section": "P4-DN",
+          "start": 26980,
+          "end": 26990
+        },
+        {
+          "section": "P3-DN",
+          "start": 27000,
+          "end": 27010
+        },
+        {
+          "section": "P2-DN",
+          "start": 27020,
+          "end": 27030
+        },
+        {
+          "section": "P1-DN",
+          "start": 27040,
+          "end": 27050
+        }
+      ]
+    },
+    {
+      "id": "PF-19-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 28360,
+          "end": 28370
+        },
+        {
+          "section": "P2-UP",
+          "start": 28380,
+          "end": 28390
+        },
+        {
+          "section": "P3-UP",
+          "start": 28400,
+          "end": 28410
+        },
+        {
+          "section": "P4-UP",
+          "start": 28420,
+          "end": 28430
+        },
+        {
+          "section": "P5-UP",
+          "start": 28440,
+          "end": 28450
+        },
+        {
+          "section": "P6-UP",
+          "start": 28460,
+          "end": 28470
+        },
+        {
+          "section": "P7-UP",
+          "start": 28480,
+          "end": 28490
+        }
+      ]
+    },
+    {
+      "id": "PF-19-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 28360,
+          "end": 28370
+        },
+        {
+          "section": "P6-DN",
+          "start": 28380,
+          "end": 28390
+        },
+        {
+          "section": "P5-DN",
+          "start": 28400,
+          "end": 28410
+        },
+        {
+          "section": "P4-DN",
+          "start": 28420,
+          "end": 28430
+        },
+        {
+          "section": "P3-DN",
+          "start": 28440,
+          "end": 28450
+        },
+        {
+          "section": "P2-DN",
+          "start": 28460,
+          "end": 28470
+        },
+        {
+          "section": "P1-DN",
+          "start": 28480,
+          "end": 28490
+        }
+      ]
+    },
+    {
+      "id": "PF-20-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 29800,
+          "end": 29810
+        },
+        {
+          "section": "P2-UP",
+          "start": 29820,
+          "end": 29830
+        },
+        {
+          "section": "P3-UP",
+          "start": 29840,
+          "end": 29850
+        },
+        {
+          "section": "P4-UP",
+          "start": 29860,
+          "end": 29870
+        },
+        {
+          "section": "P5-UP",
+          "start": 29880,
+          "end": 29890
+        },
+        {
+          "section": "P6-UP",
+          "start": 29900,
+          "end": 29910
+        },
+        {
+          "section": "P7-UP",
+          "start": 29920,
+          "end": 29930
+        }
+      ]
+    },
+    {
+      "id": "PF-20-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 29800,
+          "end": 29810
+        },
+        {
+          "section": "P6-DN",
+          "start": 29820,
+          "end": 29830
+        },
+        {
+          "section": "P5-DN",
+          "start": 29840,
+          "end": 29850
+        },
+        {
+          "section": "P4-DN",
+          "start": 29860,
+          "end": 29870
+        },
+        {
+          "section": "P3-DN",
+          "start": 29880,
+          "end": 29890
+        },
+        {
+          "section": "P2-DN",
+          "start": 29900,
+          "end": 29910
+        },
+        {
+          "section": "P1-DN",
+          "start": 29920,
+          "end": 29930
+        }
+      ]
+    },
+    {
+      "id": "PF-21-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 31240,
+          "end": 31250
+        },
+        {
+          "section": "P2-UP",
+          "start": 31260,
+          "end": 31270
+        },
+        {
+          "section": "P3-UP",
+          "start": 31280,
+          "end": 31290
+        },
+        {
+          "section": "P4-UP",
+          "start": 31300,
+          "end": 31310
+        },
+        {
+          "section": "P5-UP",
+          "start": 31320,
+          "end": 31330
+        },
+        {
+          "section": "P6-UP",
+          "start": 31340,
+          "end": 31350
+        },
+        {
+          "section": "P7-UP",
+          "start": 31360,
+          "end": 31370
+        }
+      ]
+    },
+    {
+      "id": "PF-21-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 31240,
+          "end": 31250
+        },
+        {
+          "section": "P6-DN",
+          "start": 31260,
+          "end": 31270
+        },
+        {
+          "section": "P5-DN",
+          "start": 31280,
+          "end": 31290
+        },
+        {
+          "section": "P4-DN",
+          "start": 31300,
+          "end": 31310
+        },
+        {
+          "section": "P3-DN",
+          "start": 31320,
+          "end": 31330
+        },
+        {
+          "section": "P2-DN",
+          "start": 31340,
+          "end": 31350
+        },
+        {
+          "section": "P1-DN",
+          "start": 31360,
+          "end": 31370
+        }
+      ]
+    },
+    {
+      "id": "PF-22-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 32680,
+          "end": 32690
+        },
+        {
+          "section": "P2-UP",
+          "start": 32700,
+          "end": 32710
+        },
+        {
+          "section": "P3-UP",
+          "start": 32720,
+          "end": 32730
+        },
+        {
+          "section": "P4-UP",
+          "start": 32740,
+          "end": 32750
+        },
+        {
+          "section": "P5-UP",
+          "start": 32760,
+          "end": 32770
+        },
+        {
+          "section": "P6-UP",
+          "start": 32780,
+          "end": 32790
+        },
+        {
+          "section": "P7-UP",
+          "start": 32800,
+          "end": 32810
+        }
+      ]
+    },
+    {
+      "id": "PF-22-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 32680,
+          "end": 32690
+        },
+        {
+          "section": "P6-DN",
+          "start": 32700,
+          "end": 32710
+        },
+        {
+          "section": "P5-DN",
+          "start": 32720,
+          "end": 32730
+        },
+        {
+          "section": "P4-DN",
+          "start": 32740,
+          "end": 32750
+        },
+        {
+          "section": "P3-DN",
+          "start": 32760,
+          "end": 32770
+        },
+        {
+          "section": "P2-DN",
+          "start": 32780,
+          "end": 32790
+        },
+        {
+          "section": "P1-DN",
+          "start": 32800,
+          "end": 32810
+        }
+      ]
+    },
+    {
+      "id": "PF-23-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 34120,
+          "end": 34130
+        },
+        {
+          "section": "P2-UP",
+          "start": 34140,
+          "end": 34150
+        },
+        {
+          "section": "P3-UP",
+          "start": 34160,
+          "end": 34170
+        },
+        {
+          "section": "P4-UP",
+          "start": 34180,
+          "end": 34190
+        },
+        {
+          "section": "P5-UP",
+          "start": 34200,
+          "end": 34210
+        },
+        {
+          "section": "P6-UP",
+          "start": 34220,
+          "end": 34230
+        },
+        {
+          "section": "P7-UP",
+          "start": 34240,
+          "end": 34250
+        }
+      ]
+    },
+    {
+      "id": "PF-23-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 34120,
+          "end": 34130
+        },
+        {
+          "section": "P6-DN",
+          "start": 34140,
+          "end": 34150
+        },
+        {
+          "section": "P5-DN",
+          "start": 34160,
+          "end": 34170
+        },
+        {
+          "section": "P4-DN",
+          "start": 34180,
+          "end": 34190
+        },
+        {
+          "section": "P3-DN",
+          "start": 34200,
+          "end": 34210
+        },
+        {
+          "section": "P2-DN",
+          "start": 34220,
+          "end": 34230
+        },
+        {
+          "section": "P1-DN",
+          "start": 34240,
+          "end": 34250
+        }
+      ]
+    },
+    {
+      "id": "PF-24-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 35560,
+          "end": 35570
+        },
+        {
+          "section": "P2-UP",
+          "start": 35580,
+          "end": 35590
+        },
+        {
+          "section": "P3-UP",
+          "start": 35600,
+          "end": 35610
+        },
+        {
+          "section": "P4-UP",
+          "start": 35620,
+          "end": 35630
+        },
+        {
+          "section": "P5-UP",
+          "start": 35640,
+          "end": 35650
+        },
+        {
+          "section": "P6-UP",
+          "start": 35660,
+          "end": 35670
+        },
+        {
+          "section": "P7-UP",
+          "start": 35680,
+          "end": 35690
+        }
+      ]
+    },
+    {
+      "id": "PF-24-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 35560,
+          "end": 35570
+        },
+        {
+          "section": "P6-DN",
+          "start": 35580,
+          "end": 35590
+        },
+        {
+          "section": "P5-DN",
+          "start": 35600,
+          "end": 35610
+        },
+        {
+          "section": "P4-DN",
+          "start": 35620,
+          "end": 35630
+        },
+        {
+          "section": "P3-DN",
+          "start": 35640,
+          "end": 35650
+        },
+        {
+          "section": "P2-DN",
+          "start": 35660,
+          "end": 35670
+        },
+        {
+          "section": "P1-DN",
+          "start": 35680,
+          "end": 35690
+        }
+      ]
+    },
+    {
+      "id": "PF-25-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 37000,
+          "end": 37010
+        },
+        {
+          "section": "P2-UP",
+          "start": 37020,
+          "end": 37030
+        },
+        {
+          "section": "P3-UP",
+          "start": 37040,
+          "end": 37050
+        },
+        {
+          "section": "P4-UP",
+          "start": 37060,
+          "end": 37070
+        },
+        {
+          "section": "P5-UP",
+          "start": 37080,
+          "end": 37090
+        },
+        {
+          "section": "P6-UP",
+          "start": 37100,
+          "end": 37110
+        },
+        {
+          "section": "P7-UP",
+          "start": 37120,
+          "end": 37130
+        }
+      ]
+    },
+    {
+      "id": "PF-25-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 37000,
+          "end": 37010
+        },
+        {
+          "section": "P6-DN",
+          "start": 37020,
+          "end": 37030
+        },
+        {
+          "section": "P5-DN",
+          "start": 37040,
+          "end": 37050
+        },
+        {
+          "section": "P4-DN",
+          "start": 37060,
+          "end": 37070
+        },
+        {
+          "section": "P3-DN",
+          "start": 37080,
+          "end": 37090
+        },
+        {
+          "section": "P2-DN",
+          "start": 37100,
+          "end": 37110
+        },
+        {
+          "section": "P1-DN",
+          "start": 37120,
+          "end": 37130
+        }
+      ]
+    },
+    {
+      "id": "PF-26-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 38440,
+          "end": 38450
+        },
+        {
+          "section": "P2-UP",
+          "start": 38460,
+          "end": 38470
+        },
+        {
+          "section": "P3-UP",
+          "start": 38480,
+          "end": 38490
+        },
+        {
+          "section": "P4-UP",
+          "start": 38500,
+          "end": 38510
+        },
+        {
+          "section": "P5-UP",
+          "start": 38520,
+          "end": 38530
+        },
+        {
+          "section": "P6-UP",
+          "start": 38540,
+          "end": 38550
+        },
+        {
+          "section": "P7-UP",
+          "start": 38560,
+          "end": 38570
+        }
+      ]
+    },
+    {
+      "id": "PF-26-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 38440,
+          "end": 38450
+        },
+        {
+          "section": "P6-DN",
+          "start": 38460,
+          "end": 38470
+        },
+        {
+          "section": "P5-DN",
+          "start": 38480,
+          "end": 38490
+        },
+        {
+          "section": "P4-DN",
+          "start": 38500,
+          "end": 38510
+        },
+        {
+          "section": "P3-DN",
+          "start": 38520,
+          "end": 38530
+        },
+        {
+          "section": "P2-DN",
+          "start": 38540,
+          "end": 38550
+        },
+        {
+          "section": "P1-DN",
+          "start": 38560,
+          "end": 38570
+        }
+      ]
+    },
+    {
+      "id": "PF-27-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 39880,
+          "end": 39890
+        },
+        {
+          "section": "P2-UP",
+          "start": 39900,
+          "end": 39910
+        },
+        {
+          "section": "P3-UP",
+          "start": 39920,
+          "end": 39930
+        },
+        {
+          "section": "P4-UP",
+          "start": 39940,
+          "end": 39950
+        },
+        {
+          "section": "P5-UP",
+          "start": 39960,
+          "end": 39970
+        },
+        {
+          "section": "P6-UP",
+          "start": 39980,
+          "end": 39990
+        },
+        {
+          "section": "P7-UP",
+          "start": 40000,
+          "end": 40010
+        }
+      ]
+    },
+    {
+      "id": "PF-27-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 39880,
+          "end": 39890
+        },
+        {
+          "section": "P6-DN",
+          "start": 39900,
+          "end": 39910
+        },
+        {
+          "section": "P5-DN",
+          "start": 39920,
+          "end": 39930
+        },
+        {
+          "section": "P4-DN",
+          "start": 39940,
+          "end": 39950
+        },
+        {
+          "section": "P3-DN",
+          "start": 39960,
+          "end": 39970
+        },
+        {
+          "section": "P2-DN",
+          "start": 39980,
+          "end": 39990
+        },
+        {
+          "section": "P1-DN",
+          "start": 40000,
+          "end": 40010
+        }
+      ]
+    },
+    {
+      "id": "PF-28-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 41320,
+          "end": 41330
+        },
+        {
+          "section": "P2-UP",
+          "start": 41340,
+          "end": 41350
+        },
+        {
+          "section": "P3-UP",
+          "start": 41360,
+          "end": 41370
+        },
+        {
+          "section": "P4-UP",
+          "start": 41380,
+          "end": 41390
+        },
+        {
+          "section": "P5-UP",
+          "start": 41400,
+          "end": 41410
+        },
+        {
+          "section": "P6-UP",
+          "start": 41420,
+          "end": 41430
+        },
+        {
+          "section": "P7-UP",
+          "start": 41440,
+          "end": 41450
+        }
+      ]
+    },
+    {
+      "id": "PF-28-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 41320,
+          "end": 41330
+        },
+        {
+          "section": "P6-DN",
+          "start": 41340,
+          "end": 41350
+        },
+        {
+          "section": "P5-DN",
+          "start": 41360,
+          "end": 41370
+        },
+        {
+          "section": "P4-DN",
+          "start": 41380,
+          "end": 41390
+        },
+        {
+          "section": "P3-DN",
+          "start": 41400,
+          "end": 41410
+        },
+        {
+          "section": "P2-DN",
+          "start": 41420,
+          "end": 41430
+        },
+        {
+          "section": "P1-DN",
+          "start": 41440,
+          "end": 41450
+        }
+      ]
+    },
+    {
+      "id": "PF-29-UP",
+      "kind": "Freight",
+      "direction": "UP",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P1-UP",
+          "start": 42760,
+          "end": 42770
+        },
+        {
+          "section": "P2-UP",
+          "start": 42780,
+          "end": 42790
+        },
+        {
+          "section": "P3-UP",
+          "start": 42800,
+          "end": 42810
+        },
+        {
+          "section": "P4-UP",
+          "start": 42820,
+          "end": 42830
+        },
+        {
+          "section": "P5-UP",
+          "start": 42840,
+          "end": 42850
+        },
+        {
+          "section": "P6-UP",
+          "start": 42860,
+          "end": 42870
+        },
+        {
+          "section": "P7-UP",
+          "start": 42880,
+          "end": 42890
+        }
+      ]
+    },
+    {
+      "id": "PF-29-DN",
+      "kind": "Freight",
+      "direction": "DN",
+      "margin": 5,
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "occupancies": [
+        {
+          "section": "P7-DN",
+          "start": 42760,
+          "end": 42770
+        },
+        {
+          "section": "P6-DN",
+          "start": 42780,
+          "end": 42790
+        },
+        {
+          "section": "P5-DN",
+          "start": 42800,
+          "end": 42810
+        },
+        {
+          "section": "P4-DN",
+          "start": 42820,
+          "end": 42830
+        },
+        {
+          "section": "P3-DN",
+          "start": 42840,
+          "end": 42850
+        },
+        {
+          "section": "P2-DN",
+          "start": 42860,
+          "end": 42870
+        },
+        {
+          "section": "P1-DN",
+          "start": 42880,
+          "end": 42890
+        }
+      ]
+    }
+  ],
+  "parent_id": null,
+  "scenario": null
+}

@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: railblox
+      POSTGRES_PASSWORD: local_demo_only
+      POSTGRES_DB: railblox
+    volumes:
+      - railblox-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U railblox"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://railblox:local_demo_only@postgres:5432/railblox
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      SOLVE_SECONDS: 10
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    environment:
+      VITE_API_URL: http://127.0.0.1:8000
+    ports: ["127.0.0.1:5173:5173"]
+    depends_on: [backend]
+volumes:
+  railblox-postgres:

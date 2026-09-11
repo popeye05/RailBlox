@@ -1,0 +1,21 @@
+[
+  {
+    "source_record_id": "ROAMS-001",
+    "asset_id": "AS-S2-UP",
+    "section": "S2-UP",
+    "line": "UP",
+    "chainage": "12.5",
+    "chainage_unit": "km",
+    "department": "ENG",
+    "title": "ROAMS illustrative inspection",
+    "duration": 20,
+    "earliest": "2026-09-10T07:30:00+05:30",
+    "due": "2026-09-10T09:30:00+05:30",
+    "source_timestamp": "2026-09-09T12:00:00Z",
+    "resources": "ENG-1",
+    "mandatory": "false",
+    "isolation": "ISO-2",
+    "access": "traffic",
+    "remarks": "Illustrative synthetic schema; not a production system interface."
+  }
+]

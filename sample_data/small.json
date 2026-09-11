@@ -1,0 +1,657 @@
+{
+  "id": "small-v1",
+  "corridor": "small",
+  "name": "Aravalli demonstration corridor",
+  "anchor": "2026-09-09T18:30:00+00:00",
+  "created_at": "2026-09-10T08:15:16.338592+00:00",
+  "rule_version": "SYNTHETIC-1",
+  "seed": 42,
+  "tasks": [
+    {
+      "id": "A",
+      "department": "ENG",
+      "asset_id": "AS-S1-UP",
+      "section": "S1-UP",
+      "line": "UP",
+      "chainage_m": 2500,
+      "title": "Track geometry correction",
+      "duration": 40,
+      "mandatory": true,
+      "earliest": 0,
+      "due": 210,
+      "weight": 100,
+      "priority": "Critical",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-1"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "track",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "A",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "B",
+      "department": "TRD",
+      "asset_id": "AS-S1-UP",
+      "section": "S1-UP",
+      "line": "UP",
+      "chainage_m": 2500,
+      "title": "Overhead equipment inspection",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 0,
+      "due": 210,
+      "weight": 30,
+      "priority": "Normal",
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "ISO-1"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "B",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "C",
+      "department": "S&T",
+      "asset_id": "AS-S1-UP",
+      "section": "S1-UP",
+      "line": "UP",
+      "chainage_m": 2500,
+      "title": "Detection testing after track work",
+      "duration": 15,
+      "mandatory": false,
+      "earliest": 0,
+      "due": 210,
+      "weight": 20,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-1"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [
+        "A"
+      ],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "C",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "D",
+      "department": "ENG",
+      "asset_id": "AS-S3-UP",
+      "section": "S3-UP",
+      "line": "UP",
+      "chainage_m": 22500,
+      "title": "Independent turnout inspection",
+      "duration": 30,
+      "mandatory": true,
+      "earliest": 300,
+      "due": 390,
+      "weight": 10,
+      "priority": "High",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-3"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "D",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "E",
+      "department": "S&T",
+      "asset_id": "AS-S1-UP",
+      "section": "S1-UP",
+      "line": "UP",
+      "chainage_m": 2500,
+      "title": "Conflicting track circuit intervention",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 0,
+      "due": 210,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-1"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "circuit",
+      "incompatible": [
+        "track"
+      ],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "E",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "F",
+      "department": "ENG",
+      "asset_id": "AS-S1-UP",
+      "section": "S1-UP",
+      "line": "UP",
+      "chainage_m": 2500,
+      "title": "Shared engineering crew renewal",
+      "duration": 50,
+      "mandatory": false,
+      "earliest": 0,
+      "due": 210,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-1"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "F",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "G",
+      "department": "TRD",
+      "asset_id": "AS-S1-UP",
+      "section": "S1-UP",
+      "line": "UP",
+      "chainage_m": 2500,
+      "title": "Unverified mast location",
+      "duration": 20,
+      "mandatory": false,
+      "earliest": 0,
+      "due": 210,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-1"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": false,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "G",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "Between Bel / Bell east; asset alias needs confirmation.",
+      "deferrals": 0
+    },
+    {
+      "id": "H",
+      "department": "S&T",
+      "asset_id": "AS-S2-UP",
+      "section": "S2-UP",
+      "line": "UP",
+      "chainage_m": 12500,
+      "title": "Signal equipment verification",
+      "duration": 25,
+      "mandatory": false,
+      "earliest": 0,
+      "due": 600,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-2"
+      ],
+      "resources": [
+        "S&T-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "H",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "I",
+      "department": "TRD",
+      "asset_id": "AS-S2-UP",
+      "section": "S2-UP",
+      "line": "UP",
+      "chainage_m": 12500,
+      "title": "Materials pending: bonding inspection",
+      "duration": 30,
+      "mandatory": false,
+      "earliest": 0,
+      "due": 600,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-2"
+      ],
+      "resources": [
+        "TRD-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": false,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "I",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    },
+    {
+      "id": "J",
+      "department": "ENG",
+      "asset_id": "AS-S2-UP",
+      "section": "S2-UP",
+      "line": "UP",
+      "chainage_m": 12500,
+      "title": "Upcoming rail inspection",
+      "duration": 20,
+      "mandatory": false,
+      "earliest": 1440,
+      "due": 1800,
+      "weight": 10,
+      "priority": "Normal",
+      "access": [
+        "traffic"
+      ],
+      "isolation": [
+        "ISO-2"
+      ],
+      "resources": [
+        "ENG-1"
+      ],
+      "predecessors": [],
+      "work_class": "inspection",
+      "incompatible": [],
+      "verified": true,
+      "ready": true,
+      "interruptible": false,
+      "started": false,
+      "source": "TMS",
+      "source_record_id": "J",
+      "source_timestamp": "2026-09-09T12:00:00+00:00",
+      "remarks": "",
+      "deferrals": 0
+    }
+  ],
+  "windows": [
+    {
+      "id": "W1",
+      "start": 120,
+      "end": 210,
+      "sections": [
+        "S1-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "ISO-1"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "W2",
+      "start": 300,
+      "end": 390,
+      "sections": [
+        "S3-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "ISO-3"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "W3",
+      "start": 480,
+      "end": 570,
+      "sections": [
+        "S2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "ISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    },
+    {
+      "id": "W4",
+      "start": 1560,
+      "end": 1650,
+      "sections": [
+        "S2-UP"
+      ],
+      "access": [
+        "traffic",
+        "electrical"
+      ],
+      "isolation": [
+        "ISO-2"
+      ],
+      "preparation": 10,
+      "restoration": 10
+    }
+  ],
+  "resources": [
+    {
+      "id": "ENG-1",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "TRD-1",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    },
+    {
+      "id": "S&T-1",
+      "type": "crew",
+      "capacity": 1,
+      "availability": [
+        [
+          0,
+          43200
+        ]
+      ],
+      "setup": 5,
+      "location": "Depot"
+    }
+  ],
+  "sections": [
+    {
+      "id": "S1-UP",
+      "origin": "ARV",
+      "destination": "BEL",
+      "line": "UP",
+      "chainage_start": 0,
+      "chainage_end": 10000,
+      "isolation": "ISO-1"
+    },
+    {
+      "id": "S1-DN",
+      "origin": "ARV",
+      "destination": "BEL",
+      "line": "DN",
+      "chainage_start": 0,
+      "chainage_end": 10000,
+      "isolation": "ISO-1"
+    },
+    {
+      "id": "S2-UP",
+      "origin": "BEL",
+      "destination": "CHN",
+      "line": "UP",
+      "chainage_start": 10000,
+      "chainage_end": 20000,
+      "isolation": "ISO-2"
+    },
+    {
+      "id": "S2-DN",
+      "origin": "BEL",
+      "destination": "CHN",
+      "line": "DN",
+      "chainage_start": 10000,
+      "chainage_end": 20000,
+      "isolation": "ISO-2"
+    },
+    {
+      "id": "S3-UP",
+      "origin": "CHN",
+      "destination": "DVR",
+      "line": "UP",
+      "chainage_start": 20000,
+      "chainage_end": 30000,
+      "isolation": "ISO-3"
+    },
+    {
+      "id": "S3-DN",
+      "origin": "CHN",
+      "destination": "DVR",
+      "line": "DN",
+      "chainage_start": 20000,
+      "chainage_end": 30000,
+      "isolation": "ISO-3"
+    }
+  ],
+  "assets": [
+    {
+      "id": "AS-S1-UP",
+      "section": "S1-UP",
+      "line": "UP",
+      "chainage_m": 2500,
+      "isolation": [
+        "ISO-1"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-S1-DN",
+      "section": "S1-DN",
+      "line": "DN",
+      "chainage_m": 2500,
+      "isolation": [
+        "ISO-1"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-S2-UP",
+      "section": "S2-UP",
+      "line": "UP",
+      "chainage_m": 12500,
+      "isolation": [
+        "ISO-2"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-S2-DN",
+      "section": "S2-DN",
+      "line": "DN",
+      "chainage_m": 12500,
+      "isolation": [
+        "ISO-2"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-S3-UP",
+      "section": "S3-UP",
+      "line": "UP",
+      "chainage_m": 22500,
+      "isolation": [
+        "ISO-3"
+      ],
+      "verified": true
+    },
+    {
+      "id": "AS-S3-DN",
+      "section": "S3-DN",
+      "line": "DN",
+      "chainage_m": 22500,
+      "isolation": [
+        "ISO-3"
+      ],
+      "verified": true
+    }
+  ],
+  "movements": [
+    {
+      "id": "FRT-01",
+      "kind": "Freight",
+      "direction": "UP",
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "margin": 5,
+      "occupancies": [
+        {
+          "section": "S1-UP",
+          "start": 90,
+          "end": 105
+        },
+        {
+          "section": "S2-UP",
+          "start": 110,
+          "end": 125
+        },
+        {
+          "section": "S3-UP",
+          "start": 130,
+          "end": 145
+        }
+      ]
+    },
+    {
+      "id": "PAX-01",
+      "kind": "Passenger",
+      "direction": "DN",
+      "forecast": "2026-09-09T12:00:00+00:00",
+      "margin": 5,
+      "occupancies": [
+        {
+          "section": "S3-DN",
+          "start": 130,
+          "end": 145
+        },
+        {
+          "section": "S2-DN",
+          "start": 150,
+          "end": 165
+        },
+        {
+          "section": "S1-DN",
+          "start": 170,
+          "end": 185
+        }
+      ]
+    }
+  ],
+  "parent_id": null,
+  "scenario": null
+}
