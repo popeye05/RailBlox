@@ -30,6 +30,7 @@ This is an advisory prototype using explicitly synthetic fixtures or user-import
 | MIS/PAM drafts | Immutable populated draft, missing actuals, exceptions, editable reviewed summary, JSON export; scheduled drafting and optional separate LLM summary | Illustrative fields, no official submission |
 | NLP | Local cause vocabulary, exact character spans, directed section matches, mentioned durations, basic negation and historical references | Severity and causality are not inferred; limited vocabulary requires review |
 | Anomalies | Source freshness, recorded extensions, repeated incident mentions and actual duration above saved prediction | Explicit baseline thresholds, not learned accident or failure probabilities |
+| Intelligence brief | Insights opens with a live local evidence brief: plain-language narrative, review signals and counts tied to the current snapshot | Deterministic advisory summary; no external LLM or safety authority is implied |
 
 Actual execution observations are separately stored and tied to the approved recommendation. Engineering estimates, planning allowances, and actual durations remain separate fields. Feedback is eligible as history only after its completion time falls at or before the supplied evidence cutoff; outcomes from the future cannot leak into an earlier recommendation.
 
@@ -71,6 +72,8 @@ Interactive contracts: `http://127.0.0.1:8000/docs`, under Decision support.
 - `GET /api/intelligence/reports/{id}/export`
 
 Recommendations use the existing bounded single-worker job queue and `/api/runs/{id}` polling. Evidence, recommendations, outcomes and report documents use the existing SQLAlchemy document store. Protected intervals are persisted in snapshot metadata; old snapshots load with an empty restriction list, so existing databases require no destructive reset. Decisions and report reviews use append-only audit events. The generic Planner approval endpoint cannot bypass evidence review for an intelligence-derived plan.
+
+The workspace response also includes an intelligence brief built from the current feeds, priority assessments, duration history and alerts. It requires no API key and is the primary AI-like experience for the prototype; optional external LLM actions remain separate and explicitly triggered.
 
 ## Reference interpretation
 

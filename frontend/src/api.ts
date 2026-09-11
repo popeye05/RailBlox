@@ -10,11 +10,12 @@ export async function authenticatedFetch(path:string,options?:RequestInit){
 export async function api<T>(path:string,options?:RequestInit):Promise<T>{
   let response:Response;
   try{response=await authenticatedFetch(path,options)}catch{throw new Error('Planning service unavailable. Check your connection and backend configuration, then retry.');}
-  const data=await response.json();
+  const data=await response.json().catch(()=>{throw new Error(`Planning service returned an unreadable response (${response.status}). Retry or ask the administrator to check the server.`)});
   if(!response.ok)throw new Error(`${data.message||'Request failed'}${data.details?' · '+JSON.stringify(data.details):''} [${data.request_id||response.status}]`);
   return data as T;
 }
 export function post<T>(path:string,body:unknown={}){return api<T>(path,{method:'POST',body:JSON.stringify(body)})}
+export function patch<T>(path:string,body:unknown={}){return api<T>(path,{method:'PATCH',body:JSON.stringify(body)})}
 export async function job(path:string,body:unknown={}){
   const run=await post<{id:string}>(path,body);
   for(let attempt=0;attempt<240;attempt++){

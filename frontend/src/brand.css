@@ -41,6 +41,11 @@
 .site-footer p { margin: 0; font-size: 13px; font-weight: 600; color: #334b5b; }
 .site-footer p span { display: block; margin-top: 5px; color: #637580; font-size: 11px; font-weight: 450; }
 .site-footer > a:last-child { margin-left: auto; display: flex; align-items: center; gap: 9px; font-size: 12px; color: #a8322d; text-decoration: none; }
+.account-context { font-weight: 650; letter-spacing: .01em; }
+.account-strip .account-profile { display: inline-flex; align-items: center; gap: 6px; color: #203d4f; background: #fff; border: 1px solid #bfcdd4; border-radius: 5px; text-decoration: none; padding: 5px 11px; font-size: 12px; font-weight: 700; }
+.account-strip .account-profile:hover, .account-strip .account-profile.active { color: #9e342e; border-color: #d28b85; background: #fffafa; }
+.account-strip .account-admin { color: #334c59; text-decoration: none; padding: 5px 4px; font-size: 12px; font-weight: 700; }
+.account-strip .account-admin:hover { color: #9e342e; text-decoration: underline; }
 @media (max-width: 1200px) {
   .masthead, .navigation-inner { padding-inline: 28px; }
   .masthead { gap: 26px; }

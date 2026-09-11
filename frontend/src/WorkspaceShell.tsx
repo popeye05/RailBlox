@@ -25,7 +25,7 @@ export function WorkspaceShell({children, context, corridorId, onCorridor, snaps
   const [params] = useSearchParams();
   const [menuOpen, setMenuOpen] = useState(false);
   const supportLinks=[{path:'/queue',label:'Block queue'},{path:'/operations',label:'Operations'},{path:'/insights',label:'Insights'},{path:'/reports',label:'Reporting'}];
-  const page = [...links,...supportLinks].find(link => link.path === location.pathname);
+  const page = [...links,...supportLinks,{path:'/profile',label:'Your profile'},{path:'/admin/users',label:'User access'}].find(link => link.path === location.pathname);
   const stations = snapshot?.sections.filter(section => section.line === 'UP') || [];
   const plannerUrl = {pathname: '/queue', search: params.toString()};
 

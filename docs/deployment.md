@@ -13,28 +13,25 @@ Your project URL is already in the example configuration:
 1. Copy `.env.example` to `.env` in the project root **only if `.env` does not already exist**. Otherwise update the existing file. It is ignored by Git and excluded from Docker builds.
 2. In Supabase Project Settings → API Keys, copy the **publishable** key beginning `sb_publishable_`. Put it in `SUPABASE_PUBLISHABLE_KEY`. The app deliberately rejects secret/service-role keys in this field because this key is sent to the browser. [Supabase key guidance](https://supabase.com/docs/guides/getting-started/api-keys).
 3. Set `AUTH_MODE=supabase`, `SUPABASE_URL` to the URL above, and `DEPLOYMENT_DIVISION=prototype`. Leave `APP_ENV=development` and the SQLite database URL while testing locally.
-4. Configure Supabase Auth's Site URL and allowed redirects for `http://127.0.0.1:5173/queue` and the eventual HTTPS app URL. Enable email/password authentication, disable public signups for this officer workspace, and configure your email delivery settings for invitations/password resets.
-5. Create or invite your first user through Supabase Authentication → Users. Copy that user's UUID. In the Supabase SQL editor, grant that account the initial application role:
+4. Configure Supabase Auth's Site URL and allowed redirects for `http://127.0.0.1:5173/queue` and the eventual HTTPS app URL. Enable email/password authentication and configure your email delivery settings for invitations/password resets. The login page includes **New user? Create an account**. If public signups are enabled, new accounts still have no RailBLOX role and cannot access data until an administrator grants one. For a controlled officer workspace, leave public signups disabled and use Supabase invitations instead.
+5. Create or invite your first user through Supabase Authentication ? Users and have them confirm the email. For a fresh deployment with no administrator, stop the API process, then use the operator bootstrap procedure in [SPEC 3 implementation](spec3-implementation.md). It checks the user ID against the expected email, scans all account pages for existing division administrators, and records the bootstrap in the application audit history. No SQL role edit is needed.
 
-```sql
-update auth.users
-set raw_app_meta_data = coalesce(raw_app_meta_data, '{}'::jsonb) ||
-  '{"railblox_role":"admin","railblox_division":"prototype"}'::jsonb
-where id = 'REPLACE_WITH_USER_UUID'::uuid;
-```
+For Admin ? User access, configure `SUPABASE_SERVICE_ROLE_KEY` in the backend environment only. The page supports paginated account review, invitations, confirmation status, role assignment/removal with a reason, and audit history. It explicitly clears access metadata on removal, rejects stale assignments and cross-division changes, and protects the acting administrator from self-demotion. Configure a second administrator for recovery. Invitations send email only when an administrator clicks **Send invitation email** and require a separate reviewed access grant.
 
-Use `viewer`, `planner`, `officer`, or `admin` for subsequent users. The division must exactly equal the backend's `DEPLOYMENT_DIVISION`. Access without these administrator-controlled fields is denied. Users cannot grant themselves access through their editable profile metadata. Identity and current application metadata are checked with Supabase Auth on every API request. [Verified user retrieval](https://supabase.com/docs/reference/python/auth-getuser).
+`PUBLIC_SIGNUP_ENABLED=false` hides self-registration. Also disable public signup in Supabase Auth; this frontend setting does not change the provider's policy. Production defaults to invitation-only. `COLLECT_DATE_OF_BIRTH=false` hides birth-date collection and omits it from the profile API; this is the production default pending a documented owner decision. Existing users can remove a previously stored birth date in Profile ? Profile privacy. DOB never appears in admin listings or new audit records. [Supabase Admin invitations](https://supabase.com/docs/reference/javascript/auth-admin-inviteuserbyemail).
 
-Restart the backend after changing `.env`; it now loads the root file automatically. Existing shell environment values take precedence. Run the same two local terminal commands from README. The login page appears when authentication is enabled. Password reset and password changes are included. Invited users can set a password through the reset flow after membership is granted.
+Restart the backend after changing `.env`; it now loads the root file automatically. Existing shell environment values take precedence. Run the same two local terminal commands from README. The login page appears when authentication is enabled. Password reset, password changes and self-registration are included. A self-registered user must confirm the email and receive role metadata before access is granted.
 
 | Role | Access |
 |---|---|
 | Viewer | Read this deployment's records and download exports |
-| Planner | Viewer access plus maintenance/evidence edits, recommendations, draft creation, AI requests and model evaluation |
+| Planner | Viewer access plus maintenance/evidence edits, recommendations, draft creation and AI requests |
 | Officer | Planner access plus approvals/rejections, commitment revisions, finalization, report review and actual outcome recording |
 | Admin | Officer access plus automation configuration and audit history |
 
-Role checks are on the server, including legacy planner endpoints and downloads. Some legacy controls remain visible to readers; attempting a forbidden operation returns a clear access error. Sign-out clears the app query cache and local session. Supabase controls token expiration; local sign-out is not a promise of instantaneous revocation of an already-issued token.
+Plan validation and benchmark comparisons are Officer-level actions in the API and interface. Planners can prepare and revise proposed work; Officers execute the formal checks and approval steps.
+
+Role checks are on the server, including legacy planner endpoints and downloads. Restricted controls are disabled with role guidance; inspection and exports remain available to readers. Sign-out clears the app query cache and local session. Supabase controls token expiration; local sign-out is not a promise of instantaneous revocation of an already-issued token.
 
 ## 2. Add an LLM key when you want external AI
 
@@ -61,7 +58,7 @@ Policies:
 
 Requests use `store=false`, a 45-second timeout, bounded input/output, exact evidence-reference checks, and a persisted per-UTC-day call limit. Failed attempts consume the call budget. Missing keys, provider refusal/incomplete output, bad references, timeouts and quota errors leave the local planner usable. `store=false` is not equivalent to Zero Data Retention or a complete privacy agreement; review your account's applicable data controls. [OpenAI data controls](https://developers.openai.com/api/docs/guides/your-data).
 
-Do not put the LLM key, database password or Supabase service-role key into chat, frontend code, a `VITE_` variable, or a committed file. A Supabase service-role key is not needed by this implementation.
+Do not put the LLM key, database password or Supabase service-role key into chat, frontend code, a `VITE_` variable, or a committed file. The service-role/secret key is required only by the optional Admin user-access API and must remain backend-only.
 
 ## 3. Try learning and automation
 
@@ -112,7 +109,7 @@ The app listens on host loopback port **8080**. Put an HTTPS ingress/reverse pro
 
 Update Supabase Site URL/redirect allowlist for the public domain. Test a real invited account, password recovery, each role, denied cross-division access and authenticated downloads before opening the prototype to users. Check `/health` and `/ready`, startup migration logs, the single-process lock, restart recovery and the browser's production CSP behavior. Docker, PostgreSQL/Supabase connectivity and HTTPS deployment could not be executed on the current development machine, which has no Docker executable.
 
-Configure database backup retention in your hosting/Supabase plan, take a backup before updates, and perform a restore drill into a separate project/schema. Verify saved snapshots, approvals, audit events and outcome records after restoring. Database-owner access can alter audit rows; application audit logging is not tamper-proof archival storage. Central log retention, alert routing, provider budget controls, secret rotation, vulnerability scanning and load/security testing remain deployment-owner responsibilities. MFA enrollment/assurance enforcement is a further requirement for an operational pilot; the current UI implements password-based Supabase sessions.
+Configure database backup retention in your hosting/Supabase plan, take a backup before updates, and perform a restore drill into a separate project/schema. Verify saved snapshots, approvals, audit events and outcome records after restoring. Database-owner access can alter audit rows; application audit logging is not tamper-proof archival storage. Central log retention, alert routing, provider budget controls, secret rotation, vulnerability scanning and load/security testing remain deployment-owner responsibilities. Production enforces MFA for Planner, Officer and Admin. The app supports TOTP enrollment and verification and checks the authenticated bearer token assurance at the API boundary. Real provider enrollment, recovery, HTTPS and CSP still require the pre-deployment drill described in SPEC 3 implementation.
 
 ## Implementation entry points
 
@@ -127,3 +124,7 @@ Configure database backup retention in your hosting/Supabase plan, take a backup
 | Security/provider/automation tests | `backend/tests/test_platform.py`, `frontend/tests/auth.spec.ts` |
 
 The supplied specification and manual remain reference material; they do not grant access to any railway API. Obtain authorized endpoints, schemas, credentials, refresh requirements, official planning constraints and anonymized outcome data from the system owners before enabling real integrations or claiming operational readiness.
+
+## SPEC 3 delivery
+
+See [SPEC 3 implementation and verification](spec3-implementation.md) for the account journey, bootstrap commands, MFA policy, authenticated polling, validation results and remaining deployment-owner setup. Planning records remain behind FastAPI. No Supabase Realtime subscription or live railway connector is configured; the status panel reports that explicitly. Opening a work page checks for record changes every 30 seconds; changes invalidate active planning queries. Identity is rechecked on tab focus and every 30 seconds while the account is active. The backend continues to verify current role metadata on each request.

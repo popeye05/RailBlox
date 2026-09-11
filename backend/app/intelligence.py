@@ -236,6 +236,70 @@ def alerts(evidence, outcomes=()):
     return result
 
 
+def intelligence_brief(snapshot, evidence, rows, outcomes=()):
+    """Create a concise, explainable local intelligence brief for the workspace.
+
+    This is deliberately deterministic: it gives the prototype an assistant-like
+    experience without pretending that a remote model has assessed safety or
+    operational authority. Every signal is derived from the supplied evidence.
+    """
+    open_issues = sum(bool(r['risks']) for r in rows)
+    high_priority = sum(r['priority']['level'] == 'High' for r in rows)
+    mandatory = sum(r['mandatory'] for r in rows)
+    history = {h.id: h for h in evidence.history}
+    for outcome in outcomes:
+        h = History.model_validate(outcome['history'])
+        if h.completed_at <= evidence.as_of:
+            history[h.id] = h
+    extensions = sum(h.actual_minutes > h.planned_minutes for h in history.values())
+    fresh = freshness(evidence)
+    stale = [f['source'] for f in fresh if f['state'] != 'available']
+    current_alerts = alerts(evidence, outcomes)
+
+    section_counts = Counter()
+    for alert in current_alerts:
+        if alert['kind'] == 'Repeated incidents':
+            section_counts[alert['record']] += 1
+    top_section = section_counts.most_common(1)[0][0] if section_counts else None
+
+    signals = []
+    if stale:
+        signals.append(dict(kind='Data quality', tone='warning', title='Evidence needs refresh',
+                            detail=f"{', '.join(stale)} require review before a new recommendation can be generated."))
+    else:
+        signals.append(dict(kind='Data quality', tone='positive', title='Evidence is current',
+                            detail=f'{len(fresh)} source feeds are within their configured freshness windows.'))
+    if high_priority:
+        signals.append(dict(kind='Priority', tone='attention', title=f'{high_priority} high-priority work items',
+                            detail=f'{mandatory} mandatory requirement(s) remain protected by the planning policy.'))
+    if extensions:
+        detail = f'{extensions} historical outcome(s) exceeded their planned duration.'
+        if top_section:
+            detail += f' Review the repeated signal around {top_section}.'
+        signals.append(dict(kind='Pattern', tone='attention', title='Duration pattern detected', detail=detail))
+    if not signals:
+        signals.append(dict(kind='Status', tone='positive', title='No review signals detected',
+                            detail='The current evidence has no configured baseline alerts.'))
+
+    if stale:
+        narrative = 'New recommendations require refreshed source evidence.'
+    elif open_issues:
+        narrative = f'{open_issues} of {len(rows)} work items have review signals; inspect the evidence before approval.'
+    else:
+        narrative = f'The evidence supports a planning pass across {len(rows)} work items.'
+    return dict(
+        narrative=narrative,
+        signals=signals[:4],
+        metrics=dict(work_items=len(rows), high_priority=high_priority,
+                     mandatory=mandatory, review_items=open_issues,
+                     alerts=len(current_alerts), historical_outcomes=len(history)),
+        basis=dict(method='Deterministic local rules and historical evidence',
+                   source_feeds=len(fresh), source_records=len(history),
+                   generated_at=utcnow()),
+        limitation='Advisory pattern detection; it is not a safety case, risk probability or operational instruction.'
+    )
+
+
 def planning_snapshot(snapshot, evidence, rows):
     result=snapshot.model_copy(deep=True)
     result.id=str(uuid4()); result.parent_id=snapshot.id

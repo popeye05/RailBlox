@@ -1,0 +1,14 @@
+import {useEffect,useState,type FormEvent} from 'react';
+import type {SupabaseClient} from '@supabase/supabase-js';
+
+export function MfaGate({auth,onVerified,onSignOut}:{auth:SupabaseClient;onVerified:()=>Promise<void>;onSignOut:()=>Promise<void>}){
+ const [factor,setFactor]=useState(''),[qr,setQr]=useState(''),[secret,setSecret]=useState('');
+ const [code,setCode]=useState(''),[busy,setBusy]=useState(false),[loading,setLoading]=useState(true),[error,setError]=useState('');
+ const load=async()=>{setLoading(true);setError('');try{const {data,error}=await auth.auth.mfa.listFactors();if(error)throw error;setFactor(data.totp.find(f=>f.status==='verified')?.id||'')}catch(e){setError(e instanceof Error?e.message:String(e))}finally{setLoading(false)}};
+ useEffect(()=>{void load()},[auth]);
+ const enroll=async()=>{setBusy(true);setError('');try{const {data,error}=await auth.auth.mfa.enroll({factorType:'totp',friendlyName:'RailBLOX '+new Date().toISOString()});if(error)throw error;setFactor(data.id);setQr(data.totp.qr_code);setSecret(data.totp.secret)}catch(e){setError(e instanceof Error?e.message:String(e))}finally{setBusy(false)}};
+ const verify=async(e:FormEvent)=>{e.preventDefault();setBusy(true);setError('');try{const {error}=await auth.auth.mfa.challengeAndVerify({factorId:factor,code});if(error)throw error;setSecret('');setQr('');setCode('');await onVerified()}catch(e){setError(e instanceof Error?e.message:String(e))}finally{setBusy(false)}};
+ return <main className="access-gate"><section className="access-card"><span className="section-overline">ACCOUNT SECURITY</span><h1>Verify your authenticator</h1><p>Your division requires a second verification step before you can use operational tools.</p>
+ {loading?<p role="status">Checking enrolled factors…</p>:factor?<form onSubmit={verify}>{qr&&<><p>Scan this code with your authenticator app, then enter its six-digit code.</p><img className="mfa-qr" src={qr} alt="Authenticator enrollment QR code"/><details><summary>Enter setup key manually</summary><code>{secret}</code></details></>}<label>Authentication code<input autoComplete="one-time-code" inputMode="numeric" pattern="[0-9]{6}" maxLength={6} value={code} onChange={e=>setCode(e.target.value.replace(/\D/g,''))} required/></label><button className="primary" disabled={busy||code.length!==6}>{busy?'Verifying…':'Verify and continue'}</button></form>:<button className="primary" disabled={busy||!!error} onClick={enroll}>Set up authenticator</button>}
+ {error&&<><p className="error" role="alert">{error}</p>{!factor&&<button disabled={busy||loading} onClick={load}>Retry factor check</button>}</>}<p className="muted">If you have lost access to your authenticator, contact your deployment administrator for account recovery.</p><button disabled={busy} onClick={onSignOut}>Sign out</button></section></main>
+}

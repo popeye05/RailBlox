@@ -89,7 +89,10 @@ def create_app(database_url=None):
     async def invalid(request,exc): return error(request,'STALE_SNAPSHOT' if str(exc)=='STALE_SNAPSHOT' else 'INVALID_INPUT',str(exc),409 if str(exc)=='STALE_SNAPSHOT' else 422)
 
     @app.exception_handler(RequestValidationError)
-    async def schema_error(request,exc): return error(request,'INVALID_INPUT','Check the supplied fields',422,json.loads(json.dumps(exc.errors(),default=str)))
+    async def schema_error(request,exc):
+        # Validation errors must not echo submitted profile data or secrets.
+        details=[{'loc': item['loc'], 'msg': item['msg'], 'type': item['type']} for item in exc.errors()]
+        return error(request,'INVALID_INPUT','Check the supplied fields',422,details)
 
     @app.exception_handler(HTTPException)
     async def http_error(request,exc): return error(request,'CONFLICT' if exc.status_code==409 else 'REQUEST_REJECTED',str(exc.detail),exc.status_code)

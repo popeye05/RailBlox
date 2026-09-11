@@ -8,7 +8,8 @@ from .domain import utcnow
 from .intelligence_models import (Evidence, EvidenceImport, RecommendRequest, DecisionRequest,
                                   OutcomeRequest, TextRequest, ReportRequest, ReportReview)
 from .intelligence import (seed_evidence, validate_references, freshness, intelligence_rows,
-                           planning_snapshot, alerts, extract_text, duration_diagnostics)
+                           planning_snapshot, alerts, extract_text, duration_diagnostics,
+                           intelligence_brief)
 from .solver import solve
 from .footprints import eligible
 from .validator import validate
@@ -63,10 +64,14 @@ def router(store, enqueue, mutation_lock, require_current, locks_for, source_hea
         snapshot=store.snapshot(snapshot_id); evidence=evidence_for(snapshot)
         outcomes=outcomes_for(snapshot,evidence.as_of)
         recommendations=[recommendation_view(r) for r in store.all('recommendation') if r['source_snapshot_id']==snapshot.id]
+        outcome_rows=outcomes_for(snapshot)
+        rows=intelligence_rows(snapshot,evidence,outcomes)
+        current_alerts=alerts(evidence,outcome_rows)
         return dict(snapshot_id=snapshot.id,corridor=snapshot.corridor,anchor=snapshot.anchor,movements=snapshot.movements,evidence=evidence.model_dump(mode='json'),
-                    feeds=freshness(evidence),rows=intelligence_rows(snapshot,evidence,outcomes),
-                    alerts=alerts(evidence,outcomes_for(snapshot)),
-                    outcomes=outcomes_for(snapshot),recommendations=sorted(recommendations,key=lambda r:r['created_at'],reverse=True),
+                    feeds=freshness(evidence),rows=rows,
+                    alerts=current_alerts,
+                    intelligence=intelligence_brief(snapshot,evidence,rows,outcome_rows),
+                    outcomes=outcome_rows,recommendations=sorted(recommendations,key=lambda r:r['created_at'],reverse=True),
                     diagnostics=duration_diagnostics(evidence.history),
                     mode='Synthetic advisory' if evidence.synthetic else 'Imported data · shadow review',
                     methods=dict(priority='Explicit weighted policy',duration='Matched empirical duration ratios',

@@ -133,8 +133,10 @@ class Store:
             with self.session() as s: s.add(row); s.commit()
         return row.id
 
-    def events(self,id=None):
+    def events(self,id=None,limit=None):
         with self.session() as s:
-            query=select(Audit).order_by(Audit.at)
+            query=select(Audit).order_by(Audit.at.desc(), Audit.id.desc()) if limit else select(Audit).order_by(Audit.at, Audit.id)
             if id: query=query.where(Audit.record_id==id)
-            return [dict(id=r.id,at=r.at,kind=r.kind,record_id=r.record_id,data=r.data) for r in s.scalars(query)]
+            if limit: query=query.limit(limit)
+            rows=[dict(id=r.id,at=r.at,kind=r.kind,record_id=r.record_id,data=r.data) for r in s.scalars(query)]
+            return list(reversed(rows)) if limit else rows

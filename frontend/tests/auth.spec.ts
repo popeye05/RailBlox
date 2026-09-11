@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 
 test('Supabase sign-in gate, authenticated download and sign-out',async({page})=>{
  const supabase='https://testproject.supabase.co';
- await page.route('**/api/auth/config',route=>route.fulfill({json:{mode:'supabase',supabase_url:supabase,publishable_key:'sb_publishable_browser_test',division:'prototype'}}));
+ await page.route('**/api/auth/config',route=>route.fulfill({json:{mode:'supabase',supabase_url:supabase,publishable_key:'sb_publishable_browser_test',division:'prototype',public_signup_enabled:true,collect_date_of_birth:true}}));
  const user={id:'00000000-0000-0000-0000-000000000001',email:'officer@example.test',aud:'authenticated',app_metadata:{railblox_role:'officer',railblox_division:'prototype'},user_metadata:{},created_at:new Date().toISOString()};
  const token=[{alg:'HS256',typ:'JWT'},{sub:user.id,aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600},'test'].map(v=>Buffer.from(typeof v==='string'?v:JSON.stringify(v)).toString('base64url')).join('.');
  await page.route(supabase+'/auth/v1/**',async route=>{
@@ -17,6 +17,11 @@ test('Supabase sign-in gate, authenticated download and sign-out',async({page})=
  await page.setViewportSize({width:1440,height:1000});
  await page.goto('/queue?corridor=presentation');
  await expect(page.getByRole('heading',{name:'Sign in',exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:'New user? Create an account'})).toBeVisible();
+ await page.getByRole('button',{name:'New user? Create an account'}).click();
+ await expect(page.getByRole('heading',{name:'Create an account',exact:true})).toBeVisible();
+ await expect(page.getByText(/administrator must approve/)).toBeVisible();
+ await page.getByRole('button',{name:'Back to sign in',exact:true}).click();
  await page.screenshot({path:'qa-screenshots/login-1440.png',fullPage:true});
  await page.setViewportSize({width:390,height:844});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

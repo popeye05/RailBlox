@@ -16,14 +16,23 @@ log = logging.getLogger('railblox.access')
 ROLES = {'viewer': 0, 'planner': 1, 'officer': 2, 'admin': 3}
 
 
+def profile_text(value, maximum=120):
+    return value[:maximum] if isinstance(value, str) else ''
+
+
 @dataclass(frozen=True)
 class Settings:
     environment: str
     auth_mode: str
     supabase_url: str
     supabase_key: str
+    supabase_service_role_key: str
     division: str
     origins: tuple
+    public_signup: bool = False
+    collect_dob: bool = False
+    require_mfa: bool = False
+    request_limit: int = 240
 
     @classmethod
     def load(cls):
@@ -32,8 +41,15 @@ class Settings:
         load_dotenv(Path(__file__).resolve().parents[2] / '.env', override=False)
         settings = cls(os.getenv('APP_ENV', 'development'), os.getenv('AUTH_MODE', 'demo'),
                        os.getenv('SUPABASE_URL', '').rstrip('/'), os.getenv('SUPABASE_PUBLISHABLE_KEY', ''),
+                       os.getenv('SUPABASE_SERVICE_ROLE_KEY', ''),
                        os.getenv('DEPLOYMENT_DIVISION', 'demo'),
-                       tuple(x.strip() for x in os.getenv('CORS_ORIGINS', 'http://127.0.0.1:5173,http://localhost:5173').split(',') if x.strip()))
+                       tuple(x.strip() for x in os.getenv('CORS_ORIGINS', 'http://127.0.0.1:5173,http://localhost:5173').split(',') if x.strip()),
+                       os.getenv('PUBLIC_SIGNUP_ENABLED', 'false' if os.getenv('APP_ENV') == 'production' else 'true').lower() == 'true',
+                       os.getenv('COLLECT_DATE_OF_BIRTH', 'false' if os.getenv('APP_ENV') == 'production' else 'true').lower() == 'true',
+                       os.getenv('REQUIRE_MFA', 'false').lower() == 'true' or os.getenv('APP_ENV') == 'production',
+                       int(os.getenv('API_RATE_LIMIT_PER_MINUTE', '240')))
+        if not 1 <= settings.request_limit <= 10000:
+            raise RuntimeError('API_RATE_LIMIT_PER_MINUTE must be between 1 and 10000')
         if settings.auth_mode not in {'demo', 'supabase'} or settings.environment not in {'development', 'production'}:
             raise RuntimeError('Invalid APP_ENV or AUTH_MODE')
         auth_url = urlparse(settings.supabase_url)
@@ -52,7 +68,9 @@ class Settings:
         if settings.environment == 'production':
             if settings.auth_mode != 'supabase' or settings.division == 'demo' or not settings.division:
                 raise RuntimeError('Production requires Supabase authentication and an explicit DEPLOYMENT_DIVISION')
-            if not settings.origins or any(urlparse(x).scheme != 'https' or '*' in x for x in settings.origins):
+            if not settings.origins or any(urlparse(x).scheme != 'https' or not urlparse(x).hostname or
+                    urlparse(x).username or urlparse(x).password or urlparse(x).path or urlparse(x).query or
+                    urlparse(x).fragment or '*' in x for x in settings.origins):
                 raise RuntimeError('Production requires explicit HTTPS CORS_ORIGINS')
             database = os.getenv('DATABASE_URL', '')
             from sqlalchemy.engine import make_url
@@ -67,7 +85,7 @@ class Settings:
         return settings
 
 
-async def verify_user(token, settings):
+async def verify_user(token, settings, allow_pending=False):
     # Auth validates the token and returns current administrator-controlled metadata.
     # No unverified JWT decoding, no user_metadata roles, no service-role key required.
     try:
@@ -81,11 +99,38 @@ async def verify_user(token, settings):
         user = response.json()
     except (httpx.HTTPError, ValueError):
         raise HTTPException(503, 'Identity service unavailable. Access is temporarily closed.')
-    metadata = user.get('app_metadata', {})
+    if not isinstance(user, dict):
+        raise HTTPException(503, 'Identity service returned an invalid response.')
+    metadata = user.get('app_metadata') or {}
+    if not isinstance(metadata, dict):
+        raise HTTPException(503, 'Identity service returned invalid access metadata.')
     role = metadata.get('railblox_role')
-    if not user.get('id') or role not in ROLES or metadata.get('railblox_division') != settings.division:
+    if not user.get('id'):
+        raise HTTPException(401, 'Invalid identity response.')
+    granted = role in ROLES and metadata.get('railblox_division') == settings.division
+    if not granted and not allow_pending:
         raise HTTPException(403, 'An administrator must grant access to this division.')
-    return {'id': user['id'], 'role': role, 'division': settings.division}
+    # This exact bearer token has already been authenticated by /auth/v1/user.
+    # Read its assurance claim only AFTER that verification, never to grant a role.
+    import base64
+    import json
+    aal = 'aal1'
+    try:
+        encoded = token.split('.')[1]
+        claims = json.loads(base64.urlsafe_b64decode(encoded + '=' * (-len(encoded) % 4)))
+        if claims.get('sub') == user['id'] and claims.get('aal') == 'aal2':
+            aal = 'aal2'
+    except (ValueError, IndexError, TypeError, AttributeError):
+        pass
+    profile = user.get('user_metadata') or {}
+    if not isinstance(profile, dict):
+        profile = {}
+    return {'id': user['id'], 'email': user.get('email', ''),
+            'name': profile_text(profile.get('full_name')),
+            **({'date_of_birth': profile_text(profile.get('date_of_birth'), 10)} if settings.collect_dob else {}),
+            'role': role if granted else None, 'division': settings.division,
+            'access_pending': not granted, 'aal': aal,
+            'mfa_required': settings.require_mfa and granted and role != 'viewer'}
 
 
 def required_role(method, path):
@@ -94,6 +139,8 @@ def required_role(method, path):
         return 'admin'
     if method in {'GET', 'HEAD', 'OPTIONS'}:
         return 'viewer'
+    if path.endswith('/validate') or path == '/api/benchmarks':
+        return 'officer'
     if path.endswith(('/approve', '/decision', '/review', '/outcomes', '/revise', '/finalize')):
         return 'officer'
     return 'planner'
@@ -118,12 +165,16 @@ def install_security(app, settings, store):
                     header = request.headers.get('authorization', '')
                     if not header.startswith('Bearer ') or len(header) > 16384:
                         raise HTTPException(401, 'Sign in to access this workspace.')
-                    who = await verify_user(header[7:], settings)
+                    who = await verify_user(header[7:], settings, allow_pending=path == '/api/auth/me')
                 else:
                     who = {'id': 'local-demo', 'role': 'admin', 'division': settings.division}
                 who_token = principal.set(who)
-                if ROLES[who['role']] < ROLES[required_role(request.method, path)]:
-                    raise HTTPException(403, 'Your role does not permit this action.')
+                if path != '/api/auth/me':
+                    if who.get('mfa_required') and who.get('aal') != 'aal2':
+                        raise HTTPException(403, 'Multi-factor verification is required. Verify your authenticator to continue.')
+                    needed = required_role(request.method, path)
+                    if ROLES.get(who['role'], -1) < ROLES[needed]:
+                        raise HTTPException(403, f'{needed.title()} access or higher is required for this action.')
                 key = who['id']
                 now = time.monotonic()
                 window, count = buckets.pop(key, (now, 0))
@@ -132,7 +183,7 @@ def install_security(app, settings, store):
                 buckets[key] = (window, count + 1)
                 if len(buckets) > 10000:
                     buckets.popitem(last=False)
-                if count >= 240:
+                if count >= settings.request_limit:
                     raise HTTPException(429, 'Request limit reached. Retry in one minute.')
                 length = request.headers.get('content-length')
                 if length and (not length.isdigit() or int(length) > 6 * 1024 * 1024):
@@ -158,12 +209,31 @@ def install_security(app, settings, store):
     def auth_config():
         return {'mode': settings.auth_mode, 'supabase_url': settings.supabase_url,
                 'publishable_key': settings.supabase_key if settings.auth_mode == 'supabase' else '',
-                'division': settings.division}
+                'division': settings.division, 'public_signup_enabled': settings.public_signup,
+                'collect_date_of_birth': settings.collect_dob, 'require_mfa': settings.require_mfa}
 
     @app.get('/api/auth/me')
     def me():
         return principal.get()
 
-    @app.get('/api/admin/audit')
-    def audit(limit: int = 100):
-        return store.events()[-min(max(limit, 1), 500):]
+    @app.get('/api/status')
+    def status():
+        import hashlib
+        import json
+        from sqlalchemy import select, func
+        from .persistence import Document
+        latest = store.events(limit=1)
+        with store.session() as session:
+            documents = session.scalar(select(func.count()).select_from(Document))
+        revision = hashlib.sha256(json.dumps([store.heads(), latest[0]['id'] if latest else None, documents], sort_keys=True).encode()).hexdigest()[:20]
+        return {'revision': revision, 'updates': 'Authenticated polling every 30 seconds',
+                'realtime': 'SSE and Supabase Realtime not configured',
+                'source_connections': 'Live railway and weather connectors not configured; imported or synthetic snapshots only',
+                'external_ai': 'Enabled' if os.getenv('AI_DATA_POLICY') in {'synthetic', 'authorized'} and os.getenv('OPENAI_API_KEY') and os.getenv('OPENAI_MODEL') else 'Disabled',
+                'user_administration': bool(settings.supabase_service_role_key),
+                'mfa_enforced': settings.require_mfa,
+                'public_signup': settings.public_signup,
+                'database': 'PostgreSQL' if store.engine.dialect.name == 'postgresql' else 'SQLite'}
+
+    from .administration import install_administration
+    install_administration(app, settings, store)

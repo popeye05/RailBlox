@@ -6,6 +6,10 @@ Supabase login and roles, optional OpenAI assistance, duration-model evaluation,
 
 The SPEC 2 advisory MVP adds **Block queue, Operations, Insights and Reporting**, with evidence-based recommendations, local officer review, recorded outcomes and MIS/PAM drafts. Start at `http://127.0.0.1:5173/queue`. See [SPEC 2 implementation and integration handoff](docs/spec2-implementation.md) for methods, source contracts and production gaps. No external API key is required.
 
+The [SPEC 3 requirements](docs/SPEC%203.md) are implemented in the [SPEC 3 delivery and deployment handoff](docs/spec3-implementation.md): reviewed user access, invitations, profile editing, production MFA, role controls, authenticated refresh and SQL-free first-admin bootstrap. Live provider and host validation remain pre-deployment gates.
+
+The next product phase is specified in [Phase 2 — Asset Availability and Downtime Optimization](docs/phase-2-asset-availability.md). It defines the asset-health data contract, authorized source adapters, uptime/downtime objective, availability dashboard, and pilot acceptance tests.
+
 ## Run locally (Windows / PowerShell)
 
 Prerequisites: Python 3.13 and Node 22. The native database uses SQLite and is created once at `backend/railblox.db`. No external AI key is needed.
