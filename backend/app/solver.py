@@ -14,6 +14,22 @@ from .metrics import metrics
 from .protection import fixed_intervals
 
 
+def uptime_coefficient(snapshot, task):
+    """Translate normalized health into a deterministic objective coefficient.
+
+    This is a prioritization aid only. Mandatory work is still hard-constrained
+    and all protection/timetable/resource rules remain outside this score.
+    """
+    asset = next((item for item in snapshot.assets if item.get('id') == task.asset_id), None)
+    health = asset.get('health') if asset else None
+    if not health:
+        return 0
+    criticality = {'critical': 100, 'high': 60, 'normal': 30}.get(health.get('criticality'), 0)
+    reduction = {'corrective': .70, 'statutory': .65, 'renewal': .75, 'preventive': .50}.get(task.work_class, .20)
+    risk_hours = health.get('failure_count_12m', 0) / max(health.get('exposure_hours_12m', 1), 1) * health.get('estimated_repair_hours', 0)
+    return int(round(criticality * (1 + health.get('service_impact', 0)) * risk_hours * reduction * 100000))
+
+
 def solve(snapshot, horizon=7, day=0, baseline=None, locks=None, forced=None, core_only=False, allowed=None, seconds=None):
     begun=time.perf_counter(); limit=float(seconds if seconds is not None else os.getenv('SOLVE_SECONDS','10'))
     model=cp_model.CpModel(); lo=day*1440; hi=(day+horizon)*1440
@@ -76,7 +92,8 @@ def solve(snapshot, horizon=7, day=0, baseline=None, locks=None, forced=None, co
     for ivs in section_intervals.values():
         if ivs: model.add_no_overlap(ivs)
     service=sum(t.weight*selected[t.id] for t in tasks)
-    objectives=[('service','max',service)]
+    uptime_gain=sum(uptime_coefficient(snapshot,t)*selected[t.id] for t in tasks)
+    objectives=[('uptime_gain','max',uptime_gain),('service','max',service)]
     if baseline:
         changes=[]; shifts=[]
         for a in baseline['assignments']:
@@ -111,7 +128,7 @@ def solve(snapshot, horizon=7, day=0, baseline=None, locks=None, forced=None, co
         if status==cp_model.FEASIBLE: break
     if candidate:
         outcome='OPTIMAL' if len(stages)==len(objectives) and all(s['status']=='OPTIMAL' for s in stages) else 'FEASIBLE'
-    plan=dict(id=str(uuid4()),snapshot_id=snapshot.id,parent_id=(baseline or {}).get('id'),horizon=horizon,day=day,created_at=utcnow(),rule_version=snapshot.rule_version,solver_status=outcome,objective_stages=stages,runtime_seconds=round(time.perf_counter()-begun,4),instance=dict(tasks=len(tasks),windows=len(windows),assignment_candidates=len(choices)),assignments=candidate[0] if candidate else [],packages=candidate[1] if candidate else [],approval='proposed',core_only=core_only)
+    plan=dict(id=str(uuid4()),snapshot_id=snapshot.id,parent_id=(baseline or {}).get('id'),horizon=horizon,day=day,created_at=utcnow(),rule_version=snapshot.rule_version,solver_status=outcome,objective_stages=stages,objective_policy=dict(version='availability-policy-1.0',priority='uptime gain, then service value, then plan stability and closure footprint',mandatory_work_hard_constraint=True),runtime_seconds=round(time.perf_counter()-begun,4),instance=dict(tasks=len(tasks),windows=len(windows),assignment_candidates=len(choices)),assignments=candidate[0] if candidate else [],packages=candidate[1] if candidate else [],approval='proposed',core_only=core_only)
     assigned={a['task_id'] for a in plan['assignments']}
     plan['unscheduled']=[dict(task_id=t.id,mandatory=t.mandatory,due=t.due,deferrals=t.deferrals,reason=('Core-only proposal; optional work available for opportunity review' if core_only and not t.mandatory else 'Unverified asset: confirm mapping' if not t.verified else 'Materials not ready' if not t.ready else 'Overdue modeled deadline' if t.due<lo else 'No compatible window, resources, or retained service fit')) for t in tasks if t.id not in assigned]
     plan['validation']=validate(snapshot,plan,locks)

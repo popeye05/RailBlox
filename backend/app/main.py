@@ -23,6 +23,7 @@ from .repair import scenario_snapshot
 from .candidates import discover
 from .adapters import preview, safe_csv, SOURCES, LIMIT
 from .benchmarks import benchmark
+from .availability import health_records, summary as availability_summary, estimate as availability_estimate
 
 
 class EditTask(BaseModel):
@@ -128,7 +129,7 @@ def create_app(database_url=None):
         released=any(e['kind']=='release' and e['data']['plan_id']==plan['id'] for e in store.events())
         current=store.heads()[snapshot.corridor]==source_head(snapshot)
         checked=validate(snapshot,plan,locks_for(snapshot,plan['day'],plan['horizon']))
-        return {**plan,'validation':checked,'approval':'released' if released else 'approved' if approved else 'proposed','current':current,'events':events}
+        return {**plan,'validation':checked,'approval':'released' if released else 'approved' if approved else 'proposed','current':current,'events':events,'availability':availability_summary(snapshot,plan['horizon'],plan['day'],plan)}
 
     def enqueue(kind,operation):
         with mutation_lock:
@@ -159,6 +160,29 @@ def create_app(database_url=None):
 
     @app.get('/api/snapshots/{id}',response_model=Snapshot)
     def snapshot_get(id:str): return store.snapshot(id)
+
+    @app.get('/api/assets/health')
+    def asset_health(snapshot_id: str):
+        snapshot = store.snapshot(snapshot_id)
+        return dict(snapshot_id=snapshot.id, model_version='availability-baseline-1.0', synthetic=True,
+                    records=[record.model_dump() for record in health_records(snapshot)],
+                    disclaimer='Synthetic advisory planning data; verify source records before approval.')
+
+    @app.get('/api/assets/{asset_id}/availability')
+    def asset_availability(asset_id: str, snapshot_id: str, horizon: int = 7, day: int = 0, plan_id: str | None = None):
+        if horizon not in (7, 30): raise ValueError('Horizon must be 7 or 30 days')
+        snapshot = store.snapshot(snapshot_id)
+        plan = store.get(plan_id, 'plan') if plan_id else None
+        estimates = [row.model_dump() for row in availability_estimate(snapshot, horizon, day, plan) if row.asset_id == asset_id]
+        if not estimates: raise KeyError(asset_id)
+        return estimates[0]
+
+    @app.get('/api/availability/summary')
+    def availability(snapshot_id: str, horizon: int = 7, day: int = 0, plan_id: str | None = None):
+        if horizon not in (7, 30): raise ValueError('Horizon must be 7 or 30 days')
+        snapshot = store.snapshot(snapshot_id)
+        plan = store.get(plan_id, 'plan') if plan_id else None
+        return availability_summary(snapshot, horizon, day, plan)
 
     @app.get('/api/tasks',response_model=TaskPage)
     def tasks(snapshot_id:str,search:str='',page:int=1,page_size:int=100):

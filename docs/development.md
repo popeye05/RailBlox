@@ -6,6 +6,8 @@ The authenticated prototype adds `security.py` (Supabase verification/roles), `a
 
 SPEC 2 implementation lives in `intelligence_models.py`, `intelligence.py`, `intelligence_api.py`, and the shared `protection.py` constraint union. Frontend views are in `DecisionWorkspace.tsx` with explicit API types in `intelligenceTypes.ts`. Read [the SPEC 2 handoff](spec2-implementation.md) before modifying policy, evidence, or review behavior. Do not label the local policy/statistical baselines as trained production AI.
 
+Asset uptime decision support lives in `availability.py`, with snapshot health fixtures in `fixtures.py`, API endpoints in `main.py`, and the officer-facing view in `AvailabilityWorkspace.tsx`. The availability model is deterministic and explainable; it must remain separate from hard safety validation and must continue to display its synthetic/advisory boundary.
+
 Useful independent contributions:
 
 - Review the synthetic task names and explanatory text in `fixtures.py` and the five-minute demo script. Keep the documented A/B/C durations and constraints unchanged.

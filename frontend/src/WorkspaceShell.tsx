@@ -8,6 +8,7 @@ const logoWithTagline = new URL('../assets0/Logowtag.png', import.meta.url).href
 const links = [
   {path: '/planner', label: 'Planner'},
   {path: '/tasks', label: 'Maintenance'},
+  {path: '/availability', label: 'Availability'},
   {path: '/data', label: 'Data review'},
   {path: '/opportunities', label: 'Opportunities'},
   {path: '/disruptions', label: 'Disruption lab'},

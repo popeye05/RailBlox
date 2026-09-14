@@ -4,7 +4,7 @@ from .domain import Task, Window, Resource, Snapshot
 
 def acceptance():
     sections = [dict(id=f'S{i}-{line}', origin=['ARV','BEL','CHN'][i-1], destination=['BEL','CHN','DVR'][i-1], line=line, chainage_start=(i-1)*10000, chainage_end=i*10000, isolation=f'ISO-{i}') for i in range(1,4) for line in ['UP','DN']]
-    assets = [dict(id=f'AS-{s["id"]}', section=s['id'], line=s['line'], chainage_m=s['chainage_start']+2500, isolation=[s['isolation']], verified=True) for s in sections]
+    assets = [_asset(s, i) for i, s in enumerate(sections)]
     def task(id, dept, duration, section='S1-UP', **kw):
         asset=next(a for a in assets if a['section']==section)
         return Task(id=id, department=dept, asset_id=asset['id'], section=section, chainage_m=asset['chainage_m'], title=kw.pop('title',f'{dept} inspection {id}'), duration=duration, earliest=0, due=210, resources=[f'{dept}-1'], source_record_id=id, isolation=['ISO-'+section[1]], **kw)
@@ -30,7 +30,7 @@ def presentation():
     rng=random.Random(42)
     stations=['NVA','KDR','MLR','PNR','SVR','TLP','UDR','VNA']
     sections=[dict(id=f'P{i}-{line}',origin=stations[i-1],destination=stations[i],line=line,chainage_start=(i-1)*12000,chainage_end=i*12000,isolation=f'PISO-{i}') for i in range(1,8) for line in ['UP','DN']]
-    assets=[dict(id='AS-'+s['id'],section=s['id'],line=s['line'],chainage_m=s['chainage_start']+4000,isolation=[s['isolation']],verified=True) for s in sections]
+    assets=[_asset(s, i, chainage_offset=4000) for i, s in enumerate(sections)]
     resources=[Resource(id=f'{d}-{i}',setup=5) for d in ['ENG','TRD','S&T'] for i in range(1,4)]
     windows=[]; tasks=[]; movements=[]
     for day in range(30):
@@ -48,3 +48,29 @@ def presentation():
         if t.mandatory: t.verified=True
     tasks[-1].due=-1; tasks[-1].earliest=0; tasks[-1].mandatory=False
     return Snapshot(id='presentation-v1',corridor='presentation',name='Navira–Vayana synthetic corridor',tasks=tasks,windows=windows,resources=resources,sections=sections,assets=assets,movements=movements)
+
+
+def _asset(section, index, chainage_offset=2500):
+    """Synthetic asset-health fixture; values are deliberately reviewable."""
+    critical = index % 7 in (0, 1)
+    degraded = index % 4 in (0, 3)
+    return dict(
+        id=f'AS-{section["id"]}', section=section['id'], line=section['line'],
+        chainage_m=section['chainage_start'] + chainage_offset,
+        isolation=[section['isolation']], verified=True,
+        health=dict(
+            asset_type='track' if index % 3 == 0 else 'ohe' if index % 3 == 1 else 'signal',
+            section=section['id'], chainage_m=section['chainage_start'] + chainage_offset,
+            criticality='critical' if critical else 'high' if index % 2 else 'normal',
+            service_impact=5 if critical else 3 if degraded else 2,
+            operational_state='degraded' if degraded else 'healthy',
+            last_inspection_at='2026-09-10T08:00:00+05:30',
+            maintenance_due_at='2026-09-12T00:00:00+05:30' if critical else '2026-10-01T00:00:00+05:30',
+            failure_count_12m=3 if degraded else 1,
+            exposure_hours_12m=8760,
+            estimated_repair_hours=4 if critical else 3,
+            source='SMMS', source_record_id=f'SMMS-{index+1:03}',
+            source_timestamp='2026-09-10T08:05:00+05:30',
+            confidence='review_required' if critical else 'medium',
+        ),
+    )

@@ -6,6 +6,10 @@ Phase 2 moves RailBLOX from a maintenance block planning prototype to an asset a
 
 The phase is complete only when the system can explain how each scheduled activity changes expected downtime and critical asset availability.
 
+## Implemented prototype slice
+
+The current prototype now includes the first decision-support slice: synthetic `AssetHealth` records are validated and attached to canonical assets, a deterministic availability baseline compares expected and planned downtime, the solver prioritizes uptime gain before service value, and the officer workspace exposes the comparison with source IDs, timestamps, model version, confidence, and uncertainty. This remains advisory synthetic planning until authorized live source contracts and operational sign-off are complete.
+
 ## Current baseline
 
 The existing prototype already provides:
@@ -213,4 +217,3 @@ Acceptance scenario:
 ## Deployment gate
 
 Phase 2 is ready for a pilot only after the operational owner signs off the normalized data contracts, criticality policy, safety constraints, source freshness rules, and availability calculation. The current synthetic prototype may continue to be deployed as a demonstration, but it must continue to label all results as synthetic advisory planning.
-
