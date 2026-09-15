@@ -2,6 +2,8 @@
 
 Working React + FastAPI + OR-Tools planning prototype. The original implementation specification is preserved below.
 
+The [product quality review and COA comparison](docs/product-quality-review.md) documents the updated operational shell, professional profile, four-role access matrix, train enquiry, evidence registers and remaining pilot requirements. Open `/help` for the in-app workflow guide and `/traffic` for saved train movements. Run `python -m app.preflight` from `backend` with the host's production environment to check configuration without changing accounts or data.
+
 Supabase login and roles, optional OpenAI assistance, duration-model evaluation, and scheduled monitoring/report drafting are now implemented. Start with [authentication, API keys and deployment setup](docs/deployment.md). Local demo mode needs no keys; the external integrations require your configuration. Production container and live Supabase/LLM verification are still pending.
 
 The SPEC 2 advisory MVP adds **Block queue, Operations, Insights and Reporting**, with evidence-based recommendations, local officer review, recorded outcomes and MIS/PAM drafts. Start at `http://127.0.0.1:5173/queue`. See [SPEC 2 implementation and integration handoff](docs/spec2-implementation.md) for methods, source contracts and production gaps. No external API key is required.

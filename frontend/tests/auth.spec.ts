@@ -29,13 +29,15 @@ test('Supabase sign-in gate, authenticated download and sign-out',async({page})=
  await page.getByLabel('Work email').fill(user.email);
  await page.getByLabel('Password',{exact:true}).fill('test-password-not-real');
  await page.getByRole('button',{name:'Sign in to workspace'}).click();
- await expect(page.getByText('prototype · officer',{exact:true})).toBeVisible();
+ await expect(page.getByText('Officer access. Administrator access is required to manage users and automation.',{exact:true})).toBeVisible();
  await page.goto('/operations?corridor=presentation');
  const request=page.waitForRequest(r=>r.url().includes('/evidence/')&&r.url().endsWith('/sample'));
  const download=page.waitForEvent('download');
  await page.getByRole('link',{name:'Download evidence JSON'}).click();
  expect((await request).headers().authorization).toBe('Bearer '+token);
  expect((await download).suggestedFilename()).toBe('railblox-evidence.json');
+ await page.getByRole('link',{name:/Profile & security/}).click();
+ await page.getByRole('button',{name:'Security',exact:true}).click();
  await page.getByRole('button',{name:'Sign out',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Sign in',exact:true})).toBeVisible();
 });

@@ -1,11 +1,12 @@
-export const API=(import.meta as unknown as {env:{VITE_API_URL?:string}}).env.VITE_API_URL || 'http://127.0.0.1:8000';
+const environment=(import.meta as unknown as {env:{VITE_API_URL?:string;DEV:boolean}}).env;
+export const API=(environment.VITE_API_URL || (environment.DEV?'http://127.0.0.1:8000':'/service')).replace(/\/$/,'');
 let accessToken:()=>Promise<string|null>=async()=>null;
 export function setAccessTokenProvider(provider:()=>Promise<string|null>){accessToken=provider}
 export async function authenticatedFetch(path:string,options?:RequestInit){
   const token=await accessToken();const headers=new Headers(options?.headers);
   if(!(options?.body instanceof FormData))headers.set('Content-Type','application/json');
   if(token)headers.set('Authorization','Bearer '+token);
-  return fetch(API+path,{...options,headers});
+  return fetch(API+path,{...options,headers,signal:options?.signal??AbortSignal.timeout(30000)});
 }
 export async function api<T>(path:string,options?:RequestInit):Promise<T>{
   let response:Response;

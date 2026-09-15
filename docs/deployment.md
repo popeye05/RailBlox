@@ -6,6 +6,8 @@ This is an authenticated **single-division prototype**. It is not yet a validate
 
 ## 1. Enable your Supabase login locally
 
+For the current product changes and reference comparison, see [Product quality review](product-quality-review.md). Before starting a hosted pilot, supply the production environment through your host or container and run `python -m app.preflight` from `backend`. This check reads configuration only, prints no credential values and does not send invitations, change accounts or connect to a database. A passing result does not replace the live deployment checks below.
+
 Your project URL is already in the example configuration:
 
 `https://divgxlzpvmrphojxzxsb.supabase.co`

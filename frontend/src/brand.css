@@ -1,122 +1,14 @@
-/* Full-width railway masthead. The supplied PNGs include transparent right padding. */
-.railway-site { display: flex; flex-direction: column; border-top: 4px solid #e2463d; }
-.railway-site .main-column { margin-left: 0; width: 100%; }
-.railway-site main { max-width: 1512px; padding: 28px 40px; }
-.site-header { background: #fff; }
-.masthead { max-width: 1512px; margin: auto; padding: 22px 40px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 36px; }
-.masthead-brand { display: flex; flex-direction: column; text-decoration: none; flex-shrink: 0; }
-.masthead-logo { display: block; width: 228px; height: 74px; overflow: hidden; }
-.masthead-logo img { display: block; width: 382px; max-width: none; height: auto; }
-.brand-purpose { margin-top: 3px; font-size: 12px; font-weight: 650; letter-spacing: .025em; color: #52606b; }
-.masthead-title { border-left: 1px solid #dde2e7; padding-left: 34px; display: flex; flex-direction: column; gap: 8px; }
-.masthead-title > span { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: #b53830; }
-.masthead-title strong { font-size: 18px; font-weight: 600; letter-spacing: -.4px; color: #273d4a; }
-.network-picker { margin-left: auto; gap: 8px; min-width: 0; }
-.network-picker > span { display: flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: .11em; color: #556774; }
-.network-picker select { width: 285px; max-width: 100%; font-size: 13px; color: #253d4d; background: #f7f9fa; }
-.mobile-menu-toggle { display: none; }
-.navigation-band { background: #182e3d; }
-.navigation-inner { max-width: 1512px; padding: 0 40px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 24px; }
-.primary-navigation { display: flex; flex-wrap: wrap; min-width: 0; align-items: stretch; gap: 3px; }
-.primary-navigation a { min-height: 60px; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; color: #d4dee5; font-size: 14px; font-weight: 550; text-decoration: none; border-bottom: 3px solid transparent; border-top: 3px solid transparent; transition: background .15s; }
-.primary-navigation a:hover { color: #fff; background: #243f50; }
-.primary-navigation a.active { background: #294352; color: #fff; border-bottom-color: #f2675d; font-weight: 700; }
-.primary-navigation a.active svg { color: #ff9a90; }
-.navigation-environment { display: inline-flex; align-items: center; gap: 8px; color: #c5d1d9; font-size: 11px; white-space: nowrap; }
-.navigation-environment > span { width: 6px; height: 6px; border-radius: 50%; background: #e6b975; }
-.network-strip { min-height: 46px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px 35px; padding: 10px max(40px, calc((100% - 1432px) / 2)); border-bottom: 1px solid #dde4e9; background: #f0f4f6; }
-.network-strip .breadcrumb { font-size: 12px; }
-.network-strip .breadcrumb strong { color: #233d50; font-weight: 650; }
-.network-route { display: flex; align-items: center; gap: 10px; color: #405d70; font-family: var(--mono); font-size: 11px; margin-left: auto; }
-.network-route strong { font-weight: 500; }
-.network-route-line { width: 65px; height: 1px; background: #9aadb9; position: relative; }
-.network-route-line:before, .network-route-line:after { content: ''; position: absolute; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #6e889a; }
-.network-route-line:before { left: 0; }
-.network-route-line:after { right: 0; }
-.network-section-count { font-family: var(--sans); border-left: 1px solid #c7d1d8; padding-left: 12px; margin-left: 3px; }
-.network-time { display: flex; align-items: center; gap: 6px; color: #526675; font-size: 11px; }
-.site-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; padding: 25px max(40px, calc((100% - 1432px) / 2)); background: white; border-top: 1px solid #dce3e8; }
-.footer-brand { display: block; width: 180px; height: 93px; overflow: hidden; flex-shrink: 0; }
-.footer-brand img { width: 300px; max-width: none; height: auto; }
-.site-footer p { margin: 0; font-size: 13px; font-weight: 600; color: #334b5b; }
-.site-footer p span { display: block; margin-top: 5px; color: #637580; font-size: 11px; font-weight: 450; }
-.site-footer > a:last-child { margin-left: auto; display: flex; align-items: center; gap: 9px; font-size: 12px; color: #a8322d; text-decoration: none; }
-.account-context { font-weight: 650; letter-spacing: .01em; }
-.account-strip .account-profile { display: inline-flex; align-items: center; gap: 6px; color: #203d4f; background: #fff; border: 1px solid #bfcdd4; border-radius: 5px; text-decoration: none; padding: 5px 11px; font-size: 12px; font-weight: 700; }
-.account-strip .account-profile:hover, .account-strip .account-profile.active { color: #9e342e; border-color: #d28b85; background: #fffafa; }
-.account-strip .account-admin { color: #334c59; text-decoration: none; padding: 5px 4px; font-size: 12px; font-weight: 700; }
-.account-strip .account-admin:hover { color: #9e342e; text-decoration: underline; }
-@media (max-width: 1200px) {
-  .masthead, .navigation-inner { padding-inline: 28px; }
-  .masthead { gap: 26px; }
-  .masthead-title { padding-left: 26px; }
-  .masthead-title strong { font-size: 16px; }
-  .network-picker select { width: 240px; }
-  .primary-navigation a { padding-inline: 16px; }
-  .navigation-environment { display: none; }
-  .network-strip, .site-footer { padding-inline: 28px; }
-  .railway-site main { padding-inline: 28px; }
-}
-@media (max-width: 900px) {
-  .masthead-title { display: none; }
-  .primary-navigation { width: 100%; justify-content: space-between; }
-  .primary-navigation a { padding-inline: 10px; gap: 6px; font-size: 12px; }
-  .network-section-count { display: none; }
-}
-@media (max-width: 700px) {
-  .masthead { padding: 15px 20px 18px; gap: 16px; flex-wrap: wrap; }
-  .masthead-logo { width: 187px; height: 61px; }
-  .masthead-logo img { width: 312px; }
-  .brand-purpose { font-size: 10px; }
-  .mobile-menu-toggle { display: flex; margin-left: auto; padding: 9px; gap: 5px; font-size: 12px; border-color: #c8d2d9; color: #233d50; }
-  .network-picker { order: 3; width: 100%; margin-left: 0; flex-direction: row; align-items: center; gap: 12px; }
-  .network-picker > span { max-width: 85px; font-size: 9px; gap: 5px; }
-  .network-picker select { min-width: 0; width: auto; flex: 1; font-size: 12px; }
-  .navigation-inner { padding-inline: 20px; }
-  .primary-navigation { display: none; }
-  .primary-navigation.is-open { display: grid; grid-template-columns: 1fr 1fr; padding-block: 10px; gap: 4px; }
-  .primary-navigation a { min-height: 48px; justify-content: flex-start; padding-inline: 12px; font-size: 13px; }
-  .navigation-band { min-height: 5px; }
-  .network-strip { padding: 10px 20px; gap: 10px; }
-  .network-route { gap: 7px; font-size: 10px; }
-  .network-route > svg { display: none; }
-  .network-route-line { width: 25px; }
-  .network-time { display: none; }
-  .railway-site main { padding: 24px 20px; }
-  .site-footer { flex-wrap: wrap; padding: 23px 20px; gap: 14px 25px; }
-  .site-footer > a:last-child { margin-left: 0; }
-}
-
-/* Restrained typography: conventional text, tabular figures, technical IDs in mono. */
-h1 { font-size: 1.875rem; letter-spacing: -.45px; }
-h2, h3 { letter-spacing: 0; }
-button, .button { font-weight: 600; box-shadow: none; }
-.primary { background: #ce3b33; border-color: #ce3b33; }
-.primary:hover { background: #b73029; border-color: #b73029; }
-.page-heading p { font-size: .875rem; line-height: 1.6; color: #52616b; }
-.eyebrow, .section-overline { letter-spacing: .055em; font-weight: 600; }
-.masthead-title > span, .plan-state-label, .timeline-group-label { font-family: var(--sans); letter-spacing: .065em; }
-.masthead-title strong { font-weight: 400; letter-spacing: 0; }
-.primary-navigation a { font-size: 14px; font-weight: 400; padding-inline: 24px; }
-.primary-navigation a.active { font-weight: 600; }
-.metric > strong { font-size: 2rem; font-weight: 400; letter-spacing: -.5px; font-variant-numeric: tabular-nums; }
-.metric strong > span { letter-spacing: 0; }
-.metric-label { font-size: 13px; color: #52616b; }
-.metric small { color: #52616b; line-height: 1.5; }
-.station-code { font-family: var(--sans); font-weight: 600; letter-spacing: .04em; }
-.axis-label, .timeline-label-secondary, .timeline-work-duration, .timeline-margin, .schedule-range { font-family: var(--sans); font-variant-numeric: tabular-nums; }
-.overview-summary { padding-top: 19px; }
-.overview-summary strong { font-size: 18px; font-weight: 600; letter-spacing: 0; }
-.overview-check { font-size: 12px; }
-.preset-grid button { gap: 6px; min-height: 110px; justify-content: center; }
-.source-tile h3 { margin-top: 0; }
-.source-tile { padding-top: 20px; }
-.opportunity > button { margin-left: 0; }
-table th { font-weight: 600; }
-table td { line-height: 1.55; }
-@media (max-width: 900px) { .primary-navigation a { padding-inline: 15px; font-size: 13px; } }
-@media (max-width: 700px) {
-  h1 { font-size: 1.75rem; }
-  .primary-navigation a { padding-inline: 12px; }
-  .page-heading p { font-size: .875rem; }
-}
+/* One compact context bar, persistent navigation, and shared operational tokens. */
+:root{--sans:"Segoe UI",Arial,Helvetica,sans-serif;--ink:#172b3c;--muted:#526579;--line:#dce4eb;--red:#2458b8;--red-dark:#19438f;color:var(--ink);background:#f4f6f9}
+.railway-site{display:flex;min-height:100vh}.railway-site .main-column{margin-left:224px;width:calc(100% - 224px);min-width:0}.railway-site main{max-width:1600px;margin:0 auto;padding:28px 32px 40px}
+.workspace-rail{position:fixed;inset:0 auto 0 0;width:224px;background:#102333;color:#d5e0e9;padding:24px 14px 16px;display:flex;flex-direction:column;z-index:40;overflow-y:auto}
+.workspace-brand{display:block;text-decoration:none;padding:0 12px 24px}.workspace-brand>span{display:block;width:152px;height:46px;overflow:hidden;background:#fff;border-radius:5px}.workspace-brand img{width:249px;max-width:none;margin:0 3px}.workspace-brand small{display:block;font-size:9px;letter-spacing:.13em;color:#9aafc0;margin-top:10px;font-weight:600}
+.workspace-nav-group{margin-bottom:18px}.workspace-nav-group>span{display:block;padding:0 12px 7px;font-size:10px;letter-spacing:.12em;font-weight:650;color:#96aabd}.workspace-nav-group a,.workspace-rail-bottom>a{display:flex;align-items:center;gap:10px;padding:9px 12px;min-height:39px;font-size:13px;border-radius:6px;text-decoration:none;color:#d1dce5}.workspace-nav-group a:hover,.workspace-rail-bottom>a:hover{background:#1d3547;color:#fff}.workspace-nav-group a.active,.workspace-rail-bottom>a.active{background:#294860;color:#fff;box-shadow:inset 3px 0 #8bbaff}.nav-indicator{margin-left:auto;visibility:hidden}.active .nav-indicator{visibility:visible}.workspace-rail-bottom{margin-top:auto;border-top:1px solid #2a4053;padding-top:12px}.environment-label{padding:16px 12px 0;color:#d5e0e9;font-size:11px}.environment-label i{display:inline-block;width:6px;height:6px;background:#f1bf71;border-radius:50%;margin-right:8px}.environment-label small{display:block;margin:5px 0 0 14px;color:#a4b4c2;font-size:10px}
+.workspace-topbar{min-height:82px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:24px;padding:16px 32px}.workspace-topbar .breadcrumb{font-size:12px;color:#657789}.workspace-topbar .breadcrumb strong{color:#233b50}.network-picker{display:grid;gap:3px;margin-left:auto;min-width:0}.network-picker>span{font-size:9px;letter-spacing:.11em;font-weight:600;color:#647789}.network-picker select{font-size:12px;width:255px;max-width:100%;min-height:34px;padding:6px 28px 6px 10px;background:#f7f9fb;border-color:#dce4eb}.account-profile{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#243d51;max-width:230px;min-width:0;padding:4px 0}.account-profile>span:last-child{min-width:0}.account-profile strong{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.account-profile small{display:block;font-size:11px;color:#617588}.account-initials{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:#eaf0f7;color:#264d71;font-size:12px;font-weight:700}.account-profile.active .account-initials{background:#dceaff}.mobile-menu-toggle{display:none}.workspace-bottom{display:flex;justify-content:space-between;gap:16px;padding:18px 32px;border-top:1px solid var(--line);font-size:11px;color:#607488}.workspace-bottom span>span{margin:0 5px}.workspace-sync{font-size:11px!important}.role-notice{font-size:12px!important;margin:0 0 8px!important;background:transparent!important;border:0!important;padding:0!important;color:#526579!important}
+.railway-site .page-heading h1{font-size:28px;letter-spacing:-.6px;line-height:1.25}.railway-site .page-heading{margin-bottom:24px}.railway-site .page-heading p{font-size:13px;max-width:720px;color:#596c7d}.railway-site .eyebrow{font-size:10px;color:#526d86}.railway-site .eyebrow>span{background:#2458b8}.railway-site .panel{box-shadow:0 1px 2px #19354a04;border-color:#dce4eb;border-radius:9px}.railway-site .panel-head{padding:17px 22px}.railway-site .panel-head h2{font-size:14px;color:#243c51}.railway-site th{font-size:11px;color:#536b7e;background:#f6f8fb}.railway-site td{font-size:12px}.railway-site input,.railway-site select,.railway-site textarea{border-color:#cfdae5}.railway-site button:focus-visible,.railway-site a:focus-visible,.railway-site input:focus-visible,.railway-site select:focus-visible{outline:3px solid #7aa8e4;outline-offset:3px}.railway-site .primary{box-shadow:none}.railway-site .metric strong{color:#173c5b}.railway-site .badge{font-size:11px}.railway-site .padded{padding:20px 22px}.railway-site .section-overline{color:#5a7287}.railway-site .context-row{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 16px}.table-scroll{overscroll-behavior-x:contain}
+.railway-site main{width:100%;min-width:0}.workspace-topbar .account-profile.active{box-shadow:none}.workspace-topbar .account-profile .account-initials{background:#e7eff8;color:#245076}.workspace-topbar .account-profile.active .account-initials{background:#dceaff;color:#245076}.workspace-brand>span{height:50px}.mobile-brand{display:none}@media(max-width:800px){.mobile-brand{display:block;width:78px;height:26px;overflow:hidden}.mobile-brand img{width:128px;max-width:none}.workspace-topbar .network-picker{flex-direction:row}}
+@media(min-width:1600px){.railway-site main{padding-inline:40px}}
+@media(max-width:1100px){.workspace-topbar{gap:16px;padding-inline:24px}.workspace-topbar .breadcrumb>span,.workspace-topbar .breadcrumb>svg{display:none}.network-picker select{width:220px}.railway-site main{padding-inline:24px}.account-profile strong{max-width:130px}}
+@media(max-width:800px){.workspace-rail{position:relative;inset:auto;width:100%;max-height:none;display:none;padding:20px}.workspace-rail.is-open{display:flex}.railway-site{display:flex;flex-direction:column}.railway-site .main-column{margin-left:0;width:100%}.workspace-brand{display:none}.workspace-nav-group{margin-bottom:12px;display:grid;grid-template-columns:1fr 1fr}.workspace-nav-group>span{grid-column:1/-1}.workspace-rail-bottom{margin-top:4px}.environment-label{padding-bottom:4px}.workspace-topbar{flex-wrap:wrap;padding:12px 20px;gap:12px}.mobile-menu-toggle{display:inline-flex;min-height:36px;padding:7px 10px;font-size:12px}.workspace-topbar .breadcrumb{display:none}.workspace-topbar .account-profile{margin-left:auto}.network-picker{order:3;width:100%;display:flex;align-items:center;gap:12px}.network-picker>span{max-width:76px}.network-picker select{width:auto;min-width:0;flex:1}.railway-site main{padding:22px 20px 32px}.workspace-bottom{padding:16px 20px;flex-wrap:wrap}.skip-link{left:20px}.railway-site .page-heading h1{font-size:25px}.railway-site .page-heading{gap:16px}.railway-site .context-row{gap:10px}.railway-site .role-notice{line-height:1.6}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media print{.workspace-rail,.workspace-topbar,.workspace-bottom,.role-notice,.workspace-sync,.toolbar,.context-row,.workspace-footer,.no-print{display:none!important}.railway-site .main-column{margin:0;width:100%}.railway-site main{padding:0;max-width:none}.panel{break-inside:avoid;box-shadow:none}.table-scroll{overflow:visible}body{background:white}}

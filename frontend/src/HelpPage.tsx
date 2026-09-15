@@ -1,0 +1,15 @@
+import {NavLink} from 'react-router-dom';
+import {BookOpen,ChevronRight,FileCheck2,LifeBuoy} from 'lucide-react';
+import {Panel} from './components';
+import {PermissionsMatrix} from './PermissionsMatrix';
+import './profile.css';
+import './traffic.css';
+
+const workflow=[
+  {title:'Review source evidence',description:'Check timestamps, resolve locations and review restrictions before changing a plan.',path:'/operations',link:'Open operations'},
+  {title:'Prepare a coordinated proposal',description:'Prioritize work in the queue, generate a plan and inspect each work package.',path:'/queue',link:'Open block queue'},
+  {title:'Check train movements',description:'Inspect the saved occupancy chart and station-to-station train records alongside the proposal.',path:'/traffic',link:'Open train enquiry'},
+  {title:'Review and record a decision',description:'An Officer validates the current plan, records a review reason and approves or rejects the recommendation.',path:'/planner',link:'Open planner'},
+  {title:'Capture outcomes and reporting',description:'Record actual execution against approved work and export a reviewed report draft.',path:'/reports',link:'Open reporting'},
+];
+export function HelpPage(){return <div className="profile-page"><div className="page-heading"><div><div className="eyebrow"><span/>WORKSPACE GUIDE</div><h1>From evidence to a reviewed plan</h1><p>A practical guide to the division workflow and the access each role needs.</p></div><BookOpen size={30}/></div><Panel title="Planning workflow"><div className="help-workflow">{workflow.map((step,i)=><article key={step.path}><span>{String(i+1).padStart(2,'0')}</span><div><h3>{step.title}</h3><p>{step.description}</p><NavLink to={step.path}>{step.link}<ChevronRight size={14}/></NavLink></div></article>)}</div></Panel><Panel title="Access responsibilities"><PermissionsMatrix/></Panel><div className="profile-grid"><Panel title="COA reference & prototype scope"><div className="profile-card"><FileCheck2 size={22}/><p className="profile-intro">RailBLOX supports maintenance planning alongside operational systems. Its train enquiry, registers and exports use saved synthetic or imported snapshots. It has no live COA, RTIS, REMLOT or data-logger connection.</p><a href="https://coamis.indianrail.gov.in/Contents/CCMIS_USERMANUAL.pdf" target="_blank" rel="noreferrer" className="button">Read the official CCMIS manual</a><p className="profile-hint">Reference: CCMIS beta manual, April 2021. This prototype does not issue operational movement authority or submit official railway returns.</p></div></Panel><Panel title="Access & support"><div className="profile-card"><LifeBuoy size={22}/><h3>Contact your division administrator</h3><p className="profile-intro">Include the affected page, time in IST, and request ID shown with an error. Your account ID is available under Profile → Security.</p><NavLink className="button" to="/profile">Open account settings</NavLink><p className="profile-hint">For access or authenticator recovery, use your organization’s account recovery process. Do not include passwords or access tokens in support requests.</p></div></Panel></div></div>}

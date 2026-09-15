@@ -8,6 +8,7 @@ services:
     environment:
       APP_ENV: production
       AUTH_MODE: supabase
+      PORT: '8000'
     restart: unless-stopped
     init: true
     read_only: true

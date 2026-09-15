@@ -9,11 +9,11 @@ from urllib.parse import urlparse
 import httpx
 from fastapi import HTTPException
 from starlette.responses import JSONResponse
+from .permissions import ROLES, CAPABILITIES, capabilities, required_role
 
 principal = ContextVar('principal', default={'id': 'local-demo', 'role': 'admin', 'division': 'demo'})
 request_context = ContextVar('request_context', default='background')
 log = logging.getLogger('railblox.access')
-ROLES = {'viewer': 0, 'planner': 1, 'officer': 2, 'admin': 3}
 
 
 def profile_text(value, maximum=120):
@@ -127,23 +127,16 @@ async def verify_user(token, settings, allow_pending=False):
         profile = {}
     return {'id': user['id'], 'email': user.get('email', ''),
             'name': profile_text(profile.get('full_name')),
+            'designation': profile_text(profile.get('designation'), 80),
+            'department': profile_text(profile.get('department'), 80),
+            'location': profile_text(profile.get('location'), 100),
+            'created_at': profile_text(user.get('created_at'), 40),
+            'last_sign_in_at': profile_text(user.get('last_sign_in_at'), 40),
+            'email_confirmed': bool(user.get('email_confirmed_at') or user.get('confirmed_at')),
             **({'date_of_birth': profile_text(profile.get('date_of_birth'), 10)} if settings.collect_dob else {}),
             'role': role if granted else None, 'division': settings.division,
             'access_pending': not granted, 'aal': aal,
             'mfa_required': settings.require_mfa and granted and role != 'viewer'}
-
-
-def required_role(method, path):
-    path = path.rstrip('/')
-    if path.startswith('/api/admin/'):
-        return 'admin'
-    if method in {'GET', 'HEAD', 'OPTIONS'}:
-        return 'viewer'
-    if path.endswith('/validate') or path == '/api/benchmarks':
-        return 'officer'
-    if path.endswith(('/approve', '/decision', '/review', '/outcomes', '/revise', '/finalize')):
-        return 'officer'
-    return 'planner'
 
 
 def install_security(app, settings, store):
@@ -173,6 +166,8 @@ def install_security(app, settings, store):
                     if who.get('mfa_required') and who.get('aal') != 'aal2':
                         raise HTTPException(403, 'Multi-factor verification is required. Verify your authenticator to continue.')
                     needed = required_role(request.method, path)
+                    if needed is None:
+                        raise HTTPException(403, 'This action has no assigned access policy.')
                     if ROLES.get(who['role'], -1) < ROLES[needed]:
                         raise HTTPException(403, f'{needed.title()} access or higher is required for this action.')
                 key = who['id']
@@ -215,6 +210,24 @@ def install_security(app, settings, store):
     @app.get('/api/auth/me')
     def me():
         return principal.get()
+
+    @app.get('/api/auth/permissions')
+    def permissions():
+        return {'roles': list(ROLES), 'capabilities': CAPABILITIES,
+                'granted': capabilities(principal.get()['role'])}
+
+    @app.get('/api/auth/activity')
+    def activity():
+        from sqlalchemy import select
+        from .persistence import Audit
+        who = principal.get()
+        with store.session() as session:
+            rows = session.scalars(select(Audit).where(
+                Audit.data['actor'].as_string() == who['id'],
+                Audit.data['division'].as_string() == who['division']
+            ).order_by(Audit.at.desc(), Audit.id.desc()).limit(20))
+            return [{'id': row.id, 'at': row.at, 'action': row.kind,
+                     'record_id': row.record_id} for row in rows]
 
     @app.get('/api/status')
     def status():

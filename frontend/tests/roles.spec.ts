@@ -4,7 +4,7 @@ const supabase='https://role-tests.supabase.co';
 const id='00000000-0000-0000-0000-000000000001';
 
 async function account(page:Page,role:Role|null,mfa=false){
- const user={id,email:'staff@example.test',aud:'authenticated',app_metadata:{railblox_role:role,railblox_division:'prototype'},user_metadata:{full_name:'Railway Colleague'},created_at:new Date().toISOString()};
+ const user={id,email:'staff@example.test',aud:'authenticated',app_metadata:{railblox_role:role,railblox_division:'prototype'},user_metadata:{full_name:'Railway Colleague',designation:'',department:'',location:''},created_at:new Date().toISOString()};
  const token=[{alg:'HS256',typ:'JWT'},{sub:id,aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600},'test'].map(v=>Buffer.from(typeof v==='string'?v:JSON.stringify(v)).toString('base64url')).join('.');
  let current=role;let verified=!mfa;
  await page.route('**/api/auth/config',route=>route.fulfill({json:{mode:'supabase',supabase_url:supabase,publishable_key:'sb_publishable_test',division:'prototype',public_signup_enabled:true,collect_date_of_birth:false}}));
@@ -15,7 +15,7 @@ async function account(page:Page,role:Role|null,mfa=false){
   if(route.request().method()==='PUT'&&path.endsWith('/user'))Object.assign(user.user_metadata,route.request().postDataJSON().data);
   return route.fulfill({json:user});
  });
- await page.route('**/api/auth/me',route=>route.fulfill({json:{id,email:user.email,name:user.user_metadata.full_name,role:current,division:'prototype',access_pending:!current,mfa_required:mfa,aal:verified?'aal2':'aal1'}}));
+ await page.route('**/api/auth/me',route=>route.fulfill({json:{id,email:user.email,name:user.user_metadata.full_name,designation:user.user_metadata.designation,department:user.user_metadata.department,location:user.user_metadata.location,role:current,division:'prototype',access_pending:!current,mfa_required:mfa,aal:verified?'aal2':'aal1'}}));
  await page.goto('/queue');
  await page.getByLabel('Work email').fill(user.email);
  await page.getByLabel('Password',{exact:true}).fill('not-a-real-password');
@@ -45,6 +45,7 @@ for(const role of ['viewer','planner','officer','admin'] as Role[])test(`${role}
  await page.setViewportSize({width:390,height:844});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.screenshot({path:`qa-screenshots/spec3-${role}-profile-mobile.png`,fullPage:true});
+ await page.getByRole('button',{name:'Access permissions',exact:true}).click();await expect(page.getByRole('table')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.goto('/admin/users');
  if(role!=='admin')await expect(page.getByText('Administrator access is required to manage users.')).toBeVisible();
  else await expect(page.getByRole('heading',{name:'User access',exact:true})).toBeVisible();
@@ -61,9 +62,10 @@ test('pending account gains only the role assigned by administrator',async({page
 test('profile edits persist and role changes refresh on focus',async({page})=>{
  const control=await account(page,'planner');
  await page.getByRole('link',{name:/Profile & security/}).click();
- await page.getByLabel('Full name').fill('Updated Colleague');await page.getByRole('button',{name:'Save profile'}).click();
+ await page.getByLabel('Full name').fill('Updated Colleague');await page.getByLabel('Designation').fill('Section Engineer');await page.getByRole('combobox',{name:'Department',exact:true}).selectOption('Engineering');await page.getByLabel('Office / station').fill('Aravalli');await page.getByRole('button',{name:'Save profile'}).click();
  await expect(page.getByRole('status').filter({hasText:'Profile saved.'})).toBeVisible();
  await expect(page.getByRole('link',{name:/Updated Colleague Profile/})).toBeVisible();
+ await page.reload();await expect(page.getByLabel('Designation')).toHaveValue('Section Engineer');await expect(page.getByLabel('Office / station')).toHaveValue('Aravalli');
  await page.goto('/planner');await expect(page.getByRole('button',{name:'Validate',exact:true})).toBeDisabled();
  control.assign('officer');await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
  await expect(page.getByRole('button',{name:'Validate',exact:true})).toBeEnabled();

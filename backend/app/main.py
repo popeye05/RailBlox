@@ -76,6 +76,8 @@ def create_app(database_url=None):
                 docs_url=None if settings.environment=='production' else '/docs',
                 openapi_url=None if settings.environment=='production' else '/openapi.json',redoc_url=None)
     app.state.store=store
+    from .traffic import traffic_router
+    app.include_router(traffic_router(store))
     import os
     install_security(app,settings,store)
     app.add_middleware(CORSMiddleware,allow_origins=list(settings.origins),allow_methods=['GET','POST','PATCH'],allow_headers=['Content-Type','Authorization'],expose_headers=['Content-Disposition','X-Request-ID'])

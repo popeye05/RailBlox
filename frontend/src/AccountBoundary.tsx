@@ -1,16 +1,16 @@
 import {createContext,useContext,useEffect,useRef,useState,type FormEvent,type ReactNode} from 'react';
-import {NavLink} from 'react-router-dom';
 import {createClient,type SupabaseClient} from '@supabase/supabase-js';
 import {useQueryClient} from '@tanstack/react-query';
 import {api,setAccessTokenProvider} from './api';
 import {MfaGate} from './MfaGate';
 import './auth.css';
 export type Role='viewer'|'planner'|'officer'|'admin';
-export type Identity={id:string;email:string;name?:string;date_of_birth?:string;role:Role;division:string;aal?:string;mfa_required?:boolean;access_pending?:boolean};
+export type ProfileDetails={designation:string;department:string;location:string};
+export type Identity={id:string;email:string;name?:string;date_of_birth?:string;designation?:string;department?:string;location?:string;created_at?:string;last_sign_in_at?:string;email_confirmed?:boolean;role:Role;division:string;aal?:string;mfa_required?:boolean;access_pending?:boolean};
 type Config={mode:'demo'|'supabase';supabase_url:string;publishable_key:string;division:string;public_signup_enabled?:boolean;collect_date_of_birth?:boolean};
 const IdentityContext=createContext<Identity>({id:'',email:'',role:'viewer',division:''});
 export const useIdentity=()=>useContext(IdentityContext);
-type Actions={changePassword:()=>void;signOut:()=>Promise<void>;updateProfile:(name:string,removeDob?:boolean)=>Promise<void>;demo:boolean};
+type Actions={changePassword:()=>void;signOut:()=>Promise<void>;updateProfile:(name:string,removeDob?:boolean,details?:ProfileDetails)=>Promise<void>;demo:boolean};
 const ActionsContext=createContext<Actions>({changePassword:()=>{},signOut:async()=>{},updateProfile:async()=>{},demo:true});
 export const useAuthActions=()=>useContext(ActionsContext);
 export function usePermission(role:Role){return ['viewer','planner','officer','admin'].indexOf(useIdentity().role)>=['viewer','planner','officer','admin'].indexOf(role)}
@@ -57,7 +57,7 @@ export function AuthBoundary({children}:{children:ReactNode}){
  const reset=async()=>{if(!auth||!email)return;setBusy(true);setError('');try{const {error}=await auth.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/queue'});if(error)throw error;setNotice('If the account is eligible, a password reset email will arrive shortly.')}catch(e){setError(String(e))}finally{setBusy(false)}};
  const changePassword=()=>{clear();setRecovery(true)};
  const signOut=async()=>{++epoch.current;await applyIdentity(null);setRecovery(false);setRegister(false);setLoading(true);try{const result=await auth?.auth.signOut({scope:'local'});if(result?.error)setError(result.error.message)}finally{setLoading(false)}};
- const updateProfile=async(fullName:string,removeDob=false)=>{if(!auth)throw Error('Profile editing is unavailable in demo mode.');const {error}=await auth.auth.updateUser({data:{full_name:fullName.trim(),...(removeDob?{date_of_birth:null}:{})}});if(error)throw error;await refresh()};
+ const updateProfile=async(fullName:string,removeDob=false,details?:ProfileDetails)=>{if(!auth)throw Error('Profile editing is unavailable in demo mode.');const {error}=await auth.auth.updateUser({data:{full_name:fullName.trim(),...(details?{designation:details.designation.trim(),department:details.department.trim(),location:details.location.trim()}:{}),...(removeDob?{date_of_birth:null}:{})}});if(error)throw error;await refresh()};
  if(loading)return <div className="auth-loading" role="status">Connecting to your planning workspace…</div>;
  if(identity?.access_pending&&!recovery)return <main className="access-gate"><section className="access-card"><span className="section-overline">ACCOUNT REGISTERED</span><h1>Awaiting access approval</h1><p>{identity.email}</p><p>Your account is signed in. A division administrator must assign your RailBLOX access before you can open planning records.</p><button className="primary" onClick={refresh}>Check access again</button><button onClick={changePassword}>Set or change password</button><button onClick={signOut}>Sign out</button></section></main>;
  if(identity?.mfa_required&&identity.aal!=='aal2'&&auth&&!recovery)return <MfaGate auth={auth} onVerified={refresh} onSignOut={signOut}/>;
@@ -70,6 +70,5 @@ export function AuthBoundary({children}:{children:ReactNode}){
    {!recovery&&!register&&<><button type="button" className="text-button" disabled={busy||!email||!auth} onClick={reset}>Forgot password?</button>{config?.public_signup_enabled&&<button type="button" className="text-button" disabled={busy||!auth} onClick={()=>{clear();setRegister(true)}}>New user? Create an account</button>}</>}
    {(register||recovery)&&<button type="button" className="text-button" disabled={busy} onClick={()=>{clear();setRegister(false);setRecovery(false)}}>Back to sign in</button>}{auth&&<button type="button" className="text-button" onClick={signOut}>Clear existing session</button>}
   </form></main>;
- const initials=(identity.name||identity.email||'Demo').split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
- return <IdentityContext.Provider value={identity}><ActionsContext.Provider value={{changePassword,signOut,updateProfile,demo:config?.mode==='demo'}}><div className="account-strip"><span className="account-context">{identity.division} · {identity.role}</span><div><NavLink className="account-profile" to="/profile"><span className="account-initials" aria-hidden="true">{initials}</span><span><strong>{identity.name||'Your account'}</strong><small>Profile & security</small></span></NavLink>{identity.role==='admin'&&<NavLink className="account-admin" to="/admin/users">Admin</NavLink>}{auth&&<button onClick={signOut}>Sign out</button>}</div></div>{children}</ActionsContext.Provider></IdentityContext.Provider>;
+ return <IdentityContext.Provider value={identity}><ActionsContext.Provider value={{changePassword,signOut,updateProfile,demo:config?.mode==='demo'}}>{children}</ActionsContext.Provider></IdentityContext.Provider>;
 }
