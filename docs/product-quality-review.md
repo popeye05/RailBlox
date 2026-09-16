@@ -4,6 +4,8 @@ Review date: 14 September 2026. Scope: repository application, four existing rol
 
 Implementation and verification continued on 15 September 2026.
 
+Layout revision, 16 September 2026: restored the original RailBLOX logo to a full-width top masthead following user feedback. Block queue, Planner, Train movements and Operations use the top navigation; maintenance, evidence, reports and workspace tools use a separate supporting sidebar. Removed decorative navigation icons and the diagram's background grid, reduced rounded-card styling, and retained functional charts and status cues. Mobile supporting navigation remains keyboard accessible; both navigation surfaces preserve the selected network and query context.
+
 ## Reference and comparison
 
 The supplied [CRIS CCMIS user manual](https://coamis.indianrail.gov.in/Contents/CCMIS_USERMANUAL.pdf) identifies itself as a beta manual with an April 2021 preface. It describes centralized COA MIS rather than a maintenance optimizer. Its workflows include current/archived charts, train enquiry, movement/source summaries, running hours, light-engine and interchange reports, caution/block/unusual registers, login summaries, TSR/data-logger reporting, station-pair enquiries, exports, password changes and support contacts. This is a reference baseline, not proof of the live product's 2026 feature set.
@@ -19,8 +21,8 @@ The supplied [CRIS CCMIS user manual](https://coamis.indianrail.gov.in/Contents/
 
 ## What made the existing interface feel unfinished
 
-1. **Excessive header space.** The old account strip, large branded masthead, primary menu, second menu and context strip pushed useful work far down the page. Replaced with a 224 px operational navigation rail, one compact context bar and grouped destinations. Mobile navigation exposes the same workflows with keyboard focus and Escape handling.
-2. **Weak visual hierarchy.** Large branding and repeated red actions competed with planning information. Shared navy/blue tokens, quieter metadata, consistent panel headings and a smaller footer now prioritize the task. Existing diagrams and critical workflows are preserved.
+1. **Competing navigation layers.** Removed the duplicate account strip and second top menu. The revised masthead restores the preferred brand placement, with four operational tabs and a 218 px supporting sidebar. Mobile navigation exposes the same workflows with keyboard focus and Escape handling.
+2. **Weak visual hierarchy.** Repeated decorative icons and red actions competed with planning information. Shared navy/blue tokens, quieter metadata, restrained borders, consistent panel headings and a smaller footer now prioritize the task. Existing diagrams and critical workflows are preserved.
 3. **Basic profile presentation.** Identity and security shared two loosely organized cards, while role descriptions concealed the full inherited access. Replaced with an identity summary and Details, Security, Access permissions and Activity sections. Designation, department and office are editable descriptive metadata, never authorization inputs.
 4. **Direct navigation failure.** Availability dereferenced an unloaded snapshot. It now uses the same loading/error boundary as the other operational routes and has an explicit retry path for availability-service failures.
 5. **Hard-to-inspect operational data.** Train rows existed only as flat source inputs. The new enquiry screen provides a time/station picture, filters, provenance, a details drawer and a matching export. Caution/block information is now searchable through dedicated registers.

@@ -1,11 +1,10 @@
-import {useId, useState, type KeyboardEvent} from 'react';
+import {useState, type KeyboardEvent} from 'react';
 import {ArrowRight, CircleDot, X} from 'lucide-react';
 import type {Snapshot, Plan} from './types';
 
 export function Corridor({snapshot, plan, selected, onSection}: {snapshot: Snapshot; plan: Plan; selected?: string; onSection: (s: string) => void}) {
   const [isolation, setIsolation] = useState(false);
   const [table, setTable] = useState(false);
-  const patternId = useId().replaceAll(':', '');
   const sections = snapshot.sections.filter(s => s.line === 'UP');
   const stations = [sections[0]?.origin, ...sections.map(s => s.destination)];
   const width = Math.max(680, stations.length * 125);
@@ -21,8 +20,6 @@ export function Corridor({snapshot, plan, selected, onSection}: {snapshot: Snaps
     <div className="corridor-controls"><span><span className="map-key"/>Directed network</span><label className="switch-label"><input type="checkbox" checked={isolation} onChange={e => setIsolation(e.target.checked)}/><span className="switch-track"/>Isolation overlays</label></div>
     {table ? <div className="table-scroll dark-table"><table><thead><tr><th>Section</th><th>Stations</th><th>Chainage (m)</th><th>Isolation</th></tr></thead><tbody>{snapshot.sections.map(s => <tr key={s.id}><td><button className="text-button" onClick={() => onSection(s.id)}>{s.id}</button></td><td>{s.line === 'UP' ? `${s.origin} → ${s.destination}` : `${s.destination} → ${s.origin}`}</td><td>{s.chainage_start}–{s.chainage_end}</td><td>{s.isolation}</td></tr>)}</tbody></table></div> : <div className="diagram-scroll" tabIndex={0} aria-label="Directed corridor diagram">
       <svg viewBox={`0 0 ${width} 204`} width={width} aria-label="Synthetic stations and directed adjacent sections" role="group">
-        <defs><pattern id={patternId} width="24" height="24" patternUnits="userSpaceOnUse"><path d="M 24 0 L 0 0 0 24" fill="none" stroke="#ffffff" strokeOpacity="0.035"/></pattern></defs>
-        <rect width={width} height="204" fill={`url(#${patternId})`}/>
         {sections.map((s, i) => {
           const a = left + i * step;
           const b = a + step;
