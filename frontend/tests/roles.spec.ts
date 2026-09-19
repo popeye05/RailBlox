@@ -38,6 +38,12 @@ for(const role of ['viewer','planner','officer','admin'] as Role[])test(`${role}
  await expect(page.getByRole('button',{name:'Analyze narrative'}))[plan?'toBeEnabled':'toBeDisabled']();
  if(role==='admin')await expect(page.getByRole('button',{name:'Save automation settings'})).toBeVisible();
  else await expect(page.getByRole('button',{name:'Save automation settings'})).toHaveCount(0);
+ await page.goto('/help');
+ await expect(page.getByRole('heading',{name:'Workspace guide',exact:true})).toBeVisible();
+ await page.getByRole('searchbox').fill('User access');
+ await expect(page.getByRole('link',{name:'Open User access',exact:true})).toHaveCount(role==='admin'?1:0);
+ await page.getByRole('link',{name:'Read Model & planning basis',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Model & planning basis',exact:true})).toBeVisible();
  await page.getByRole('link',{name:/Profile & security/}).click();
  await expect(page.getByRole('heading',{name:'Your profile',exact:true})).toBeVisible();
  await expect(page.getByRole('link',{name:/Profile & security/})).toHaveAttribute('aria-current','page');

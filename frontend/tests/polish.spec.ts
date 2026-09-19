@@ -60,7 +60,7 @@ test('operational registers filter real evidence and export matching rows',async
 for(const width of [1440,1024,390])test(`polished pages fit ${width}px without console failures`,async({page})=>{
   const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
   await page.setViewportSize({width,height:1000});
-  for(const [path,heading] of [['profile','Your profile'],['traffic','Train movements'],['availability','Availability'],['help','From evidence to a reviewed plan']]){
+  for(const [path,heading] of [['profile','Your profile'],['traffic','Train movements'],['availability','Availability'],['help','Workspace guide']]){
     await page.goto(`/${path}?corridor=small`);await expect(page.getByRole('heading',{name:heading,exact:true})).toBeVisible();
     if(path==='traffic')await expect(page.getByRole('heading',{name:'Section occupancy chart'})).toBeVisible();
     if(path==='availability')await expect(page.getByRole('heading',{name:'Know what the plan protects'})).toBeVisible();

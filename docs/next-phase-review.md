@@ -59,7 +59,7 @@ The staged objective freezes proven-optimal earlier values. A time-limited feasi
 | Duration experiment | Ridge regression with chronological holdout; at least 30 outcomes, at least 20 training and 10 holdout records | Evaluation only; observed weather is not forecast weather; does not replace scheduler durations |
 | Approval | Officer decision and audit history | Records a prototype decision, not official track-access authority |
 
-The interface now groups Availability, Insights and Model & planning basis under **Predictive decision support**. Task preparation, opportunities and disruption repair stay under **Maintenance planning**. Context guidance identifies the role of each screen and links to the model explanation while retaining the selected corridor and query context.
+The interface groups Availability and Insights under **Predictive decision support**. Model & planning basis is a technical chapter under **Workspace guide** (`/help/methods`); the old `/methods` address redirects there. Task preparation, opportunities and disruption repair stay under **Maintenance planning**. Context guidance identifies the role of each screen and links to the model explanation while retaining the selected corridor and query context.
 
 ## Network Rail strategy comparison
 
@@ -68,6 +68,18 @@ The supplied [Scribd document](https://www.scribd.com/document/529251952/NETWORK
 RailBLOX already supports evidence provenance, work coordination, reviewed decisions and recorded outcomes. Missing strategic capabilities include lifecycle intervention costs, renewal-versus-maintenance options, budget constraints, deterioration models, asset-policy versioning and independently calibrated forecasts. These need verified data and owner-approved assumptions before meaningful optimization; no placeholder cost savings or compliance claims were added.
 
 ## Deployment and verification boundary
+
+### Workspace manual follow-up — 20 September 2026
+
+The paper's three layers are **train / block-and-car / container flows**, not strategic, tactical and operational asset-management tiers. Keep the existing maintenance CP-SAT model rather than transplanting freight constraints. A future lifecycle optimizer might use MILP, but requires verified intervention costs, deterioration/renewal options, budget limits, service targets and owner-approved policies first. No placeholder optimizer or fabricated savings were added.
+
+Workspace guide now serves as the in-app help manual. It includes a five-step workflow, instructions for all 14 operational/support/account pages, role requirements, email/username/MFA guidance, seven troubleshooting topics, and a planning-status glossary. Search filters the page directory and troubleshooting, opens matching instructions, and reports empty results. Other guide sections remain accessible while searching.
+
+Model & planning basis moved out of the predictive-support sidebar and into `/help/methods`, with a back link and the parent guide highlighted. Legacy `/methods` links redirect and retain query context. Guide links preserve the selected network, day, plan and other query parameters. The guide is available to all four approved roles, without granting public access or bypassing account approval/MFA. Non-administrators can read what User access does but are directed to their Administrator rather than its restricted screen.
+
+The manual and model chapter do not require a planning snapshot. If the permissions API fails, the manual remains readable and the permissions section offers retry. No backend model, authentication policy, database or deployment configuration was changed in this follow-up.
+
+Follow-up verification: all **39 browser tests passed** on 20 September, including manual search and empty results, keyboard disclosures, preserved query context, legacy redirects, planning-service failure, all four roles and desktop/mobile layouts. The full existing planning/repair/approval/reporting flows passed. Desktop and mobile screenshots were visually reviewed. Backend tests were not rerun because no backend code changed.
 
 Deploy both backend and frontend from the same revision. Migration 0002 runs via existing Alembic startup under the single-process owner lock. Back up the deployment database first. Set `SUPABASE_SERVICE_ROLE_KEY` on the backend only for username support; email login remains available without it. Never use a `VITE_` prefix for this key.
 

@@ -64,3 +64,4 @@
 @media(max-width:380px){.workspace-masthead{gap:12px}.workspace-masthead .account-profile{max-width:120px;gap:6px}.workspace-masthead .account-initials{display:none!important}.operations-navigation a{padding-inline:10px}.workspace-timezone{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.site-header,.workspace-location,.workspace-rail,.workspace-bottom,.role-notice,.workspace-sync,.toolbar,.context-row,.workspace-footer,.no-print{display:none!important}.railway-site{border:0}.railway-site .main-column{margin:0;width:100%}.railway-site main{padding:0;max-width:none}.panel{break-inside:avoid;box-shadow:none}.table-scroll{overflow:visible}body{background:white}}
+.guide-back{display:inline-block;margin-bottom:18px;color:#205886;text-underline-offset:3px}

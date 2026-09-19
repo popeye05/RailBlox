@@ -1,0 +1,52 @@
+import {test,expect} from '@playwright/test';
+
+for(const width of [1440,390])test(`manual search, keyboard and context links at ${width}px`,async({page})=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.setViewportSize({width,height:1000});
+  await page.goto('/help?corridor=small&day=2&horizon=7');
+  await expect(page.getByRole('heading',{name:'Workspace guide',exact:true})).toBeVisible();
+  await page.screenshot({path:`qa-screenshots/help-overview-${width}.png`});
+  await expect(page.locator('.help-directory details')).toHaveCount(14);
+  await expect(page.locator('.help-faq details')).toHaveCount(7);
+  const planner=page.locator('.help-directory details').filter({has:page.locator('summary strong').getByText('Planner',{exact:true})});
+  await planner.locator('summary').focus();await page.keyboard.press('Enter');
+  await expect(planner.getByRole('link',{name:'Open Planner',exact:true})).toBeVisible();
+  await expect(planner.getByRole('link')).toHaveAttribute('href','/planner?corridor=small&day=2&horizon=7');
+  const search=page.getByRole('searchbox',{name:'Search pages and troubleshooting'});
+  await search.fill('username');
+  await expect(page.locator('.help-directory details')).toHaveCount(1);
+  await expect(page.getByRole('link',{name:'Open Profile & security',exact:true})).toBeVisible();
+  await expect(page.getByText('Try your work email.',{exact:false})).toBeVisible();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  await page.screenshot({path:`qa-screenshots/help-search-${width}.png`,fullPage:true});
+  await search.fill('nothing-matches-932');
+  await expect(page.getByText('No pages match.',{exact:false})).toBeVisible();
+  await expect(page.getByText('No troubleshooting topics match.',{exact:false})).toBeVisible();
+  await page.getByRole('button',{name:'Clear search'}).click();
+  await expect(search).toBeFocused();
+  await expect(page.locator('.help-directory details')).toHaveCount(14);
+  await page.getByRole('link',{name:'Read Model & planning basis',exact:true}).click();
+  await expect(page).toHaveURL(/\/help\/methods\?corridor=small&day=2&horizon=7$/);
+  await expect(page.getByRole('heading',{name:'Model & planning basis',exact:true})).toBeVisible();
+  if(width<768)await page.getByRole('button',{name:'Menu',exact:true}).click();
+  const support=page.getByRole('navigation',{name:'Supporting navigation'});
+  await expect(support.getByRole('link',{name:'Model & planning basis'})).toHaveCount(0);
+  await expect(support.getByRole('link',{name:'Workspace guide'})).toHaveAttribute('aria-current','page');
+  if(width<768)await page.getByRole('button',{name:'Close',exact:true}).click();
+  await page.locator('main').getByRole('link',{name:'← Workspace guide'}).click();
+  await expect(page).toHaveURL(/\/help\?corridor=small&day=2&horizon=7$/);
+  expect(errors).toEqual([]);
+});
+
+test('legacy model link redirects and manual works without planning services',async({page})=>{
+  await page.route('**/api/context',route=>route.fulfill({status:503,json:{message:'Planning service unavailable'}}));
+  await page.route('**/api/auth/permissions',route=>route.fulfill({status:503,json:{message:'Permissions temporarily unavailable'}}));
+  await page.goto('/methods?corridor=small&day=3&plan=saved-version');
+  await expect(page).toHaveURL(/\/help\/methods\?corridor=small&day=3&plan=saved-version$/);
+  await expect(page.getByRole('heading',{name:'Model & planning basis',exact:true})).toBeVisible();
+  await page.locator('main').getByRole('link',{name:'← Workspace guide'}).click();
+  await expect(page.getByRole('heading',{name:'Workspace guide',exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Retry permissions'})).toBeVisible();
+  await page.getByRole('searchbox').fill('loading networks');
+  await expect(page.getByText('The API or its configuration may be unavailable.',{exact:false})).toBeVisible();
+});

@@ -1,0 +1,38 @@
+.help-page{width:100%;min-width:0;max-width:1200px;margin:0 auto;color:var(--ink,#172d40)}
+.help-page .table-scroll{width:100%;min-width:0;position:relative}
+.help-page .page-heading p{max-width:78ch}
+.help-contents{display:flex;flex-wrap:wrap;gap:10px 22px;padding:16px 0 22px;border-bottom:1px solid #d8e1e9;margin-bottom:24px}
+.help-page a{color:#205886;text-underline-offset:3px}
+.help-section{scroll-margin-top:24px;margin-bottom:24px}
+.help-body{padding:20px 24px;line-height:1.7}
+.help-body>p:first-child{margin-top:0}
+.help-body>p:last-child{margin-bottom:0}
+.help-body h3{font-size:15px;margin:24px 0 8px}
+.help-steps{list-style:decimal;padding-left:22px;margin:18px 0}
+.help-steps li{padding:5px 0 5px 6px}
+.help-caution{padding:14px 18px;border-left:3px solid #71899d;background:#f3f6f8;font-size:13px}
+.help-search{padding:20px 24px;background:#fff;border:1px solid #d8e1e9;margin:24px 0}
+.help-search label{display:block;font-weight:600;margin-bottom:8px}
+.help-search>div{display:flex;gap:12px}
+.help-search input{width:100%;min-width:0;padding:11px 12px;border:1px solid #9bafbe;border-radius:4px;font:inherit}
+.help-search button{flex-shrink:0}
+.help-search p,.help-muted{font-size:13px;color:#506577}
+.help-search p{margin:10px 0 0}
+.help-directory details,.help-faq details{border-bottom:1px solid #d8e1e9}
+.help-directory details:last-child{border-bottom:0}
+.help-page summary{cursor:pointer;padding:16px 0;font-weight:600}
+.help-page summary::marker{color:#506577}
+.help-page summary:focus-visible,.help-page a:focus-visible{outline:2px solid #205886;outline-offset:4px}
+.help-category{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#506577;display:block;margin-left:20px}
+.help-directory summary strong{font-size:16px;margin-left:20px;display:block}
+.help-summary{display:block;font-weight:400;margin:5px 0 0 20px;font-size:14px}
+.help-detail{padding:0 0 20px 20px}
+.help-detail ol{list-style:decimal;padding-left:20px;margin-top:0}
+.help-detail li{padding:4px 0}
+.help-faq details p{margin:0 0 18px 20px}
+.help-glossary{margin:0}
+.help-glossary>div{display:block;font-size:14px;padding:12px 0;border-bottom:1px solid #d8e1e9}
+.help-glossary>div:last-child{border-bottom:0}
+.help-glossary dt{font-weight:600}
+.help-glossary dd{margin:5px 0 0;color:#506577}
+@media(max-width:600px){.help-body,.help-search{padding:16px}.help-search>div{flex-wrap:wrap}.help-contents{gap:12px 18px}.help-detail{padding-left:0}.help-category,.help-directory summary strong,.help-summary{margin-left:12px}}
