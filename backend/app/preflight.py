@@ -14,7 +14,7 @@ def check():
         checks.append({'name': name, 'ok': bool(ok), 'message': message})
     add('Production mode', settings.environment == 'production', 'APP_ENV must be production for a hosted pilot.')
     add('Authenticated access', settings.auth_mode == 'supabase', 'Supabase must verify all workspace access.')
-    add('MFA', settings.require_mfa, 'Operational roles require authenticator verification.')
+    add('MFA', settings.require_mfa, 'Testing may set REQUIRE_MFA=false; restore true before operational use. MFA-off is not production-ready.')
     add('User administration', settings.supabase_service_role_key, 'Configure the server-only administration credential.')
     fields = [settings.supabase_url, settings.supabase_key, os.getenv('DATABASE_URL', ''), *settings.origins]
     add('Configuration placeholders', not any(marker in value.upper() for value in fields

@@ -98,7 +98,10 @@ def create_app(database_url=None):
         return error(request,'INVALID_INPUT','Check the supplied fields',422,details)
 
     @app.exception_handler(HTTPException)
-    async def http_error(request,exc): return error(request,'CONFLICT' if exc.status_code==409 else 'REQUEST_REJECTED',str(exc.detail),exc.status_code)
+    async def http_error(request,exc):
+        response = error(request,'CONFLICT' if exc.status_code==409 else 'REQUEST_REJECTED',str(exc.detail),exc.status_code)
+        response.headers.update(exc.headers or {})
+        return response
 
     def source_head(snapshot):
         current=snapshot

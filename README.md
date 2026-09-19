@@ -2,6 +2,8 @@
 
 Working React + FastAPI + OR-Tools planning prototype. The original implementation specification is preserved below.
 
+The [19 September next-phase review](docs/next-phase-review.md) covers unique username-or-email login, email-only signup, the temporary `REQUIRE_MFA=false` testing policy, and the supplied research comparison. Open `/methods` for the distinction between maintenance planning and predictive decision support. The attached intermodal freight-block MILP is a different problem from RailBLOX's CP-SAT maintenance-possession planner.
+
 The [product quality review and COA comparison](docs/product-quality-review.md) documents the updated operational shell, professional profile, four-role access matrix, train enquiry, evidence registers and remaining pilot requirements. Open `/help` for the in-app workflow guide and `/traffic` for saved train movements. Run `python -m app.preflight` from `backend` with the host's production environment to check configuration without changing accounts or data.
 
 Supabase login and roles, optional OpenAI assistance, duration-model evaluation, and scheduled monitoring/report drafting are now implemented. Start with [authentication, API keys and deployment setup](docs/deployment.md). Local demo mode needs no keys; the external integrations require your configuration. Production container and live Supabase/LLM verification are still pending.

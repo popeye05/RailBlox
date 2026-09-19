@@ -26,7 +26,7 @@ test('Supabase sign-in gate, authenticated download and sign-out',async({page})=
  await page.setViewportSize({width:390,height:844});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.screenshot({path:'qa-screenshots/login-390.png',fullPage:true});
- await page.getByLabel('Work email').fill(user.email);
+ await page.getByLabel('Username or work email').fill(user.email);
  await page.getByLabel('Password',{exact:true}).fill('test-password-not-real');
  await page.getByRole('button',{name:'Sign in to workspace'}).click();
  await expect(page.getByText('Officer access. Administrator access is required to manage users and automation.',{exact:true})).toBeVisible();

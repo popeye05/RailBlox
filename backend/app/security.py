@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 import httpx
 from fastapi import HTTPException
 from starlette.responses import JSONResponse
-from .permissions import ROLES, CAPABILITIES, capabilities, required_role
+from .permissions import ROLES, CAPABILITIES, PUBLIC_AUTH_ROUTES, capabilities, required_role
 
 principal = ContextVar('principal', default={'id': 'local-demo', 'role': 'admin', 'division': 'demo'})
 request_context = ContextVar('request_context', default='background')
@@ -46,8 +46,12 @@ class Settings:
                        tuple(x.strip() for x in os.getenv('CORS_ORIGINS', 'http://127.0.0.1:5173,http://localhost:5173').split(',') if x.strip()),
                        os.getenv('PUBLIC_SIGNUP_ENABLED', 'false' if os.getenv('APP_ENV') == 'production' else 'true').lower() == 'true',
                        os.getenv('COLLECT_DATE_OF_BIRTH', 'false' if os.getenv('APP_ENV') == 'production' else 'true').lower() == 'true',
-                       os.getenv('REQUIRE_MFA', 'false').lower() == 'true' or os.getenv('APP_ENV') == 'production',
+                       os.getenv('REQUIRE_MFA', 'true' if os.getenv('APP_ENV') == 'production' else 'false').lower() == 'true',
                        int(os.getenv('API_RATE_LIMIT_PER_MINUTE', '240')))
+        if os.getenv('REQUIRE_MFA', 'true').lower() not in {'true', 'false'}:
+            raise RuntimeError('REQUIRE_MFA must be true or false')
+        if settings.environment == 'production' and not settings.require_mfa:
+            log.warning('MFA enforcement is disabled for testing. Restore REQUIRE_MFA=true before operational use.')
         if not 1 <= settings.request_limit <= 10000:
             raise RuntimeError('API_RATE_LIMIT_PER_MINUTE must be between 1 and 10000')
         if settings.auth_mode not in {'demo', 'supabase'} or settings.environment not in {'development', 'production'}:
@@ -136,6 +140,7 @@ async def verify_user(token, settings, allow_pending=False):
             **({'date_of_birth': profile_text(profile.get('date_of_birth'), 10)} if settings.collect_dob else {}),
             'role': role if granted else None, 'division': settings.division,
             'access_pending': not granted, 'aal': aal,
+            'mfa_policy_enabled': settings.require_mfa,
             'mfa_required': settings.require_mfa and granted and role != 'viewer'}
 
 
@@ -153,7 +158,8 @@ def install_security(app, settings, store):
         started = time.monotonic()
         try:
             path = request.url.path
-            if path.startswith('/api/') and path != '/api/auth/config' and request.method != 'OPTIONS':
+            public_login = (request.method, path.rstrip('/')) in PUBLIC_AUTH_ROUTES
+            if path.startswith('/api/') and path != '/api/auth/config' and not public_login and request.method != 'OPTIONS':
                 if settings.auth_mode == 'supabase':
                     header = request.headers.get('authorization', '')
                     if not header.startswith('Bearer ') or len(header) > 16384:
@@ -250,3 +256,5 @@ def install_security(app, settings, store):
 
     from .administration import install_administration
     install_administration(app, settings, store)
+    from .usernames import install_usernames
+    install_usernames(app, settings, store)

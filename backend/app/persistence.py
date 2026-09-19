@@ -1,6 +1,6 @@
 import os
 from uuid import uuid4
-from sqlalchemy import create_engine, String, JSON, ForeignKey, select, update, event
+from sqlalchemy import create_engine, String, JSON, ForeignKey, select, update, event, CheckConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session
 from .domain import Snapshot, utcnow
 
@@ -43,6 +43,14 @@ class Audit(Base):
     kind: Mapped[str]=mapped_column(String)
     record_id: Mapped[str]=mapped_column(String,index=True)
     data: Mapped[dict]=mapped_column(JSON)
+
+
+class LoginName(Base):
+    __tablename__ = 'login_names'
+    __table_args__ = (CheckConstraint('username = lower(username)', name='ck_login_names_lowercase'),)
+    user_id: Mapped[str] = mapped_column(String, primary_key=True)
+    username: Mapped[str] = mapped_column(String(32), unique=True, nullable=False)
+    updated_at: Mapped[str] = mapped_column(String, nullable=False)
 
 
 class Store:

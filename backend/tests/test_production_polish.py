@@ -3,7 +3,7 @@ import io
 import pytest
 from fastapi import HTTPException
 from app.fixtures import acceptance
-from app.permissions import required_role, capabilities
+from app.permissions import required_role, capabilities, PUBLIC_AUTH_ROUTES
 from app.traffic import movement_enquiry
 from test_platform import secure, bearer
 
@@ -81,6 +81,9 @@ def test_every_write_route_declares_access_and_unknown_writes_fail_closed(secure
     for path, operations in secure.app.openapi()['paths'].items():
         for method in set(operations) & {'post', 'patch', 'put', 'delete'}:
             required = required_role(method.upper(), path)
+            if (method.upper(), path) in PUBLIC_AUTH_ROUTES:
+                assert path == '/api/auth/username-login'
+                continue
             assert required is not None, (method, path)
             for role in ['viewer', 'planner', 'officer', 'admin']:
                 response = secure.request(method, path, headers=bearer(role), json={})
@@ -103,10 +106,14 @@ def test_preflight_reports_configuration_without_credentials(monkeypatch):
         'DEPLOYMENT_DIVISION': 'division-a', 'CORS_ORIGINS': 'https://app.example.test',
         'DATABASE_URL': 'postgresql+psycopg://test:private-password@db.example.test/db?sslmode=verify-full',
         'PUBLIC_SIGNUP_ENABLED': 'false', 'COLLECT_DATE_OF_BIRTH': 'false',
+        'REQUIRE_MFA': 'true',
     }.items():
         monkeypatch.setenv(name, value)
     result = check()
     assert result['ready']
     assert 'server-secret' not in json.dumps(result) and 'private-password' not in json.dumps(result)
+    monkeypatch.setenv('REQUIRE_MFA', 'false')
+    assert not check()['ready']
+    monkeypatch.setenv('REQUIRE_MFA', 'true')
     monkeypatch.setenv('SUPABASE_PUBLISHABLE_KEY', 'sb_publishable_REPLACE_ME')
     assert not check()['ready']

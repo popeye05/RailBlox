@@ -2,6 +2,8 @@
 import re
 
 ROLES = {'viewer': 0, 'planner': 1, 'officer': 2, 'admin': 3}
+# Password verification endpoint only; does not read or mutate planning records.
+PUBLIC_AUTH_ROUTES = {('POST', '/api/auth/username-login')}
 CAPABILITIES = [
     {'id': 'read', 'label': 'View schedules, train movements and evidence', 'role': 'viewer'},
     {'id': 'export', 'label': 'Export records and reports', 'role': 'viewer'},
@@ -17,6 +19,7 @@ CAPABILITIES = [
 
 # A new write endpoint must be assigned a policy deliberately.
 WRITE_RULES = [
+    ('PATCH', r'/api/auth/username', 'viewer'),
     ('POST', r'/api/tasks', 'planner'),
     ('PATCH', r'/api/tasks/[^/]+', 'planner'),
     ('POST', r'/api/plans/generate', 'planner'),

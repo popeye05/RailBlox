@@ -17,7 +17,7 @@ async function account(page:Page,role:Role|null,mfa=false){
  });
  await page.route('**/api/auth/me',route=>route.fulfill({json:{id,email:user.email,name:user.user_metadata.full_name,designation:user.user_metadata.designation,department:user.user_metadata.department,location:user.user_metadata.location,role:current,division:'prototype',access_pending:!current,mfa_required:mfa,aal:verified?'aal2':'aal1'}}));
  await page.goto('/queue');
- await page.getByLabel('Work email').fill(user.email);
+ await page.getByLabel('Username or work email').fill(user.email);
  await page.getByLabel('Password',{exact:true}).fill('not-a-real-password');
  await page.getByRole('button',{name:'Sign in to workspace'}).click();
  return {assign:(value:Role)=>{current=value},verify:()=>{verified=true}};

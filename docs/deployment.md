@@ -6,6 +6,12 @@ This is an authenticated **single-division prototype**. It is not yet a validate
 
 ## 1. Enable your Supabase login locally
 
+### September 19 account update
+
+See [Next-phase review](next-phase-review.md) for username behavior, migration 0002 and model scope. Deploy the updated backend and frontend together. Configure `SUPABASE_SERVICE_ROLE_KEY` on the backend only to enable username sign-in; users claim their unique alias in Profile after confirming their email and receiving division access. Email signup and email password recovery are unchanged. No public alias-to-email lookup is exposed.
+
+For the requested testing period, set **`REQUIRE_MFA=false` in the backend host's environment**, then deploy this version. The example template is not read by Render automatically. This skips RailBLOX's authenticator requirement without deleting enrolled factors, weakening role checks, or turning off authentication. Production defaults to MFA on if the setting is absent. Restore `REQUIRE_MFA=true` before operational use; preflight deliberately reports MFA-off as not production-ready. The prior startup lock conflict requires a separate deployment fix.
+
 For the current product changes and reference comparison, see [Product quality review](product-quality-review.md). Before starting a hosted pilot, supply the production environment through your host or container and run `python -m app.preflight` from `backend`. This check reads configuration only, prints no credential values and does not send invitations, change accounts or connect to a database. A passing result does not replace the live deployment checks below.
 
 Your project URL is already in the example configuration:

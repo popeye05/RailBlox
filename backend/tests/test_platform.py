@@ -51,6 +51,8 @@ def test_readers_cannot_mutate_and_user_metadata_cannot_elevate(secure):
     for path, operations in secure.app.openapi()['paths'].items():
         if path.startswith('/api/'):
             for method in set(operations) & {'post', 'patch', 'delete', 'put'}:
+                if path in {'/api/auth/username', '/api/auth/username-login'}:
+                    continue  # Own-account alias and public password authentication; tested separately.
                 result = secure.request(method, path, headers=bearer('viewer'), json={})
                 assert result.status_code == 403, (method, path, result.text)
     assert secure.get('/api/auth/me', headers=bearer('viewer')).json()['role'] == 'viewer'

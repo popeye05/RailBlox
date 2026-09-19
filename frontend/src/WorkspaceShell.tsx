@@ -14,13 +14,16 @@ const operations = [
 const groups = [
   {label:'Maintenance planning',links:[
     {path:'/tasks',label:'Maintenance'},
-    {path:'/availability',label:'Availability'},
     {path:'/opportunities',label:'Opportunities'},
     {path:'/disruptions',label:'Disruption lab'},
   ]},
+  {label:'Predictive decision support',links:[
+    {path:'/availability',label:'Availability'},
+    {path:'/insights',label:'Insights'},
+    {path:'/methods',label:'Model & planning basis'},
+  ]},
   {label:'Evidence & reports',links:[
     {path:'/data',label:'Data review'},
-    {path:'/insights',label:'Insights'},
     {path:'/reports',label:'Reporting'},
     {path:'/benchmarks',label:'Results'},
   ]},
@@ -65,6 +68,7 @@ export function WorkspaceShell({children,context,corridorId,onCorridor,snapshot}
         <div className="environment-label">Planning prototype<small>Synthetic / imported snapshots</small></div>
       </aside>
       <div className="main-column">
+        {['/planner','/queue','/tasks','/opportunities','/disruptions','/availability','/insights'].includes(location.pathname)&&<section className="workflow-context" aria-label="Workflow purpose"><div><strong>{['/availability','/insights'].includes(location.pathname)?'Predictive decision support':'Maintenance block planning'}</strong><p>{['/availability','/insights'].includes(location.pathname)?'Assess modeled risk, expected availability and evidence confidence. Estimates inform a proposal; they do not authorize track access.':'Schedule work into protected track-closure windows, resolve resource conflicts and submit a proposal for officer review.'}</p></div><NavLink to={destination('/methods')}>How the models work</NavLink></section>}
         {children}
         <footer className="workspace-bottom"><span>RailBLOX · {identity.division} workspace</span><span>{snapshot?`${snapshot.sections.length} directed sections · `:''}Planning prototype</span></footer>
       </div>

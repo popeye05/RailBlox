@@ -1,5 +1,7 @@
 # SPEC 3 implementation and deployment handoff
 
+Historical handoff: the [19 September next-phase update](next-phase-review.md) adds usernames and supersedes the unconditional production-MFA behavior below with an explicit testing override. Production still defaults to MFA on when the setting is omitted.
+
 This delivery continues the existing React, FastAPI, Supabase Auth and OR-Tools application. The original SPEC 3 remains the requirements document. LLM keys are optional; local scheduling, statistics, NLP and monitoring remain available without them.
 
 ## Delivered behavior
