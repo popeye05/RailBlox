@@ -7,6 +7,9 @@ for(const width of [1440,390,320])test(`Figtree hierarchy, black surfaces and qu
   const heading=page.getByRole('heading',{name:'Maintenance planner',exact:true});
   await expect(heading).toBeVisible();
   await expect(page.locator('.operations-band')).toHaveCSS('background-color','rgb(17, 17, 17)');
+  await expect(page.locator('.operations-navigation a.active')).toHaveCSS('background-color','rgb(230, 184, 63)');
+  await expect(page.locator('.calendar button.selected')).toHaveCSS('background-color','rgb(255, 245, 214)');
+  await expect(page.locator('.role-notice,.workspace-sync')).toHaveCount(0);
   await expect(page.getByRole('region',{name:'Corridor and protection'})).toHaveCSS('background-color','rgb(17, 17, 17)');
   expect(await heading.evaluate(e=>getComputedStyle(e).fontFamily)).toContain('Figtree');
   await expect(heading).toHaveCSS('font-weight','800');

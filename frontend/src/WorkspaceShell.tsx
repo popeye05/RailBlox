@@ -68,7 +68,7 @@ export function WorkspaceShell({children,context,corridorId,onCorridor}:{childre
         <div className="environment-label">Data sources<small>Synthetic / imported snapshots</small></div>
       </aside>
       <div className="main-column">
-        {['/planner','/queue','/tasks','/opportunities','/disruptions','/availability','/insights'].includes(location.pathname)&&<section className="workflow-context" aria-label="Workflow purpose"><div><strong>{['/availability','/insights'].includes(location.pathname)?'Predictive decision support':'Maintenance block planning'}</strong><p>{['/availability','/insights'].includes(location.pathname)?'Assess modeled risk, expected availability and evidence confidence. Estimates inform a proposal; they do not authorize track access.':'Schedule work into protected track-closure windows, resolve resource conflicts and submit a proposal for officer review.'}</p></div><NavLink to={destination('/help/methods')}>How the models work</NavLink></section>}
+        {['/planner','/queue','/tasks','/opportunities','/disruptions','/availability','/insights'].includes(location.pathname)&&<section className="workflow-context" aria-label="Workflow purpose"><strong>{['/availability','/insights'].includes(location.pathname)?'Predictive decision support':'Maintenance block planning'}</strong><NavLink to={destination('/help/methods')}>How the models work</NavLink></section>}
         {children}
         <footer className="workspace-bottom"><span>RailBLOX</span><span>Maintenance coordination</span></footer>
       </div>

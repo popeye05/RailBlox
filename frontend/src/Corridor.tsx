@@ -30,8 +30,8 @@ export function Corridor({snapshot, plan, selected, onSection}: {snapshot: Snaps
             {isolation && <g><rect x={a+7} y="62" width={step-14} height="108" rx="8" fill="#2ead9a" fillOpacity=".10" stroke="#499388" strokeDasharray="3 4"/><text x={(a+b)/2} y="158" textAnchor="middle" className="map-isolation">{s.isolation}</text></g>}
             {[{id:s.id,y:91,tasks:upTasks,up:true},{id:downId,y:121,tasks:downTasks,up:false}].map(line => <g key={line.id} role="button" tabIndex={0} aria-label={`Select section ${line.id}`} onClick={() => onSection(line.id)} onKeyDown={e => activate(e,line.id)} className="map-section">
               <rect x={a+8} y={line.y-13} width={step-16} height="26" fill="transparent"/>
-              <line x1={a+6} x2={b-6} y1={line.y} y2={line.y} stroke={selected===line.id?'#ff554c':line.tasks.length?'#c2d0d7':'#56616a'} strokeWidth={selected===line.id?4:2.5}/>
-              <path d={line.up?`M ${b-25} ${line.y-4} l 5 4 -5 4`:`M ${a+25} ${line.y-4} l -5 4 5 4`} fill="none" stroke={selected===line.id?'#ff554c':'#b3c2c9'} strokeWidth="1.5"/>
+              <line x1={a+6} x2={b-6} y1={line.y} y2={line.y} stroke={selected===line.id?'var(--gold)':line.tasks.length?'#c2d0d7':'#56616a'} strokeWidth={selected===line.id?4:2.5}/>
+              <path d={line.up?`M ${b-25} ${line.y-4} l 5 4 -5 4`:`M ${a+25} ${line.y-4} l -5 4 5 4`} fill="none" stroke={selected===line.id?'var(--gold)':'#b3c2c9'} strokeWidth="1.5"/>
               <text x={(a+b)/2} y={line.up?77:143} textAnchor="middle" className="map-section-id">{line.id}</text>
             </g>)}
             {!!upTasks.length && <g><rect x={(a+b)/2-27} y="30" width="54" height="22" rx="5" fill="#ffffff" fillOpacity=".08" stroke="#ffffff" strokeOpacity=".12"/><text x={(a+b)/2} y="45" textAnchor="middle" className="map-task-count">{upTasks.length} {upTasks.length===1?'task':'tasks'}</text><path d={`M ${(a+b)/2} 53 V 64`} stroke="#727e86" strokeDasharray="2 2"/></g>}

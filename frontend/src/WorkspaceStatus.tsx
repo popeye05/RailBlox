@@ -6,5 +6,6 @@ export function WorkspaceStatus(){
  const cache=useQueryClient(),previous=useRef('');
  const status=useQuery({queryKey:['workspace-status'],queryFn:()=>api<DeploymentStatus>('/api/status'),refetchInterval:30000,refetchOnWindowFocus:true});
  useEffect(()=>{const revision=status.data?.revision;if(!revision)return;if(previous.current&&previous.current!==revision)void cache.invalidateQueries({predicate:q=>!['workspace-status','admin-users','admin-audit'].includes(String(q.queryKey[0]))});previous.current=revision},[status.data?.revision,cache]);
- return <div className="workspace-sync" role="status"><span>{status.error?'Workspace refresh interrupted':status.isPending?'Checking workspace updates…':'Workspace checks every 30s'}</span><span>{status.dataUpdatedAt?`Last checked ${new Date(status.dataUpdatedAt).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}`:''}</span>{status.error&&<button onClick={()=>status.refetch()}>Retry refresh</button>}</div>
+ if(!status.error)return null;
+ return <div className="workspace-sync" role="status"><span>Workspace updates unavailable.</span><button disabled={status.isFetching} onClick={()=>void status.refetch()}>{status.isFetching?'Retrying…':'Retry refresh'}</button></div>
 }

@@ -29,7 +29,7 @@ test('Supabase sign-in gate, authenticated download and sign-out',async({page})=
  await page.getByLabel('Username or work email').fill(user.email);
  await page.getByLabel('Password',{exact:true}).fill('test-password-not-real');
  await page.getByRole('button',{name:'Sign in to workspace'}).click();
- await expect(page.getByText('Officer access. Administrator access is required to manage users and automation.',{exact:true})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Block queue',exact:true,level:1})).toBeVisible();
  await page.goto('/operations?corridor=presentation');
  const request=page.waitForRequest(r=>r.url().includes('/evidence/')&&r.url().endsWith('/sample'));
  const download=page.waitForEvent('download');

@@ -31,6 +31,16 @@ Verified locally: **90 backend tests**, **45 browser tests**, and the production
 
 No live Supabase settings, deployed environment, accounts or database were changed by local implementation. The previously reported exclusive-database-lock deployment issue is separate and remains unresolved by this phase.
 
+## Visual cleanup and MFA opt-out — 20 September
+
+The later visual pass retains Figtree's weight hierarchy, the top logo, operational navigation and supporting sidebar. The sign-in panel is now black on the right and white on the left. Golden yellow replaces red for active navigation, profile/decision tabs, calendar dates, scenario presets and corridor selections; primary actions use dark text on gold. Error and operational status colors remain semantic, and the logo's red dot remains unchanged.
+
+Routine polling text, last-checked timestamps, repeated role-access banners, the duplicated optional-MFA notice and long workflow-strip explanations are removed. Background revision checks still run every 30 seconds and invalidate changed workspace data. Only failed refreshes show a retry notice. Planning versus predictive-support labels, help links and operational/source caveats remain.
+
+Profile > Security now offers **Disable MFA** for optional accounts. The user confirms removal with a fresh authenticator code, following Supabase's [verified-factor unenrollment requirement](https://supabase.com/docs/reference/javascript/auth-mfa-unenroll). Multiple verified TOTP factors are explicitly counted and removed only after confirmation, with the just-verified factor removed last. A changed factor set aborts removal; partial failures are reported and provider-backed identity is refreshed. Cancelling makes no changes. Division-required operational-role MFA cannot be disabled through this control. Lost-device recovery still requires the administrator/provider process. No live accounts, factors or provider configuration were changed during development.
+
+Validation: production build passed; 20 backend administration/access-control tests passed (two upstream deprecation warnings). The full browser run passed 56 of 57 checks; the remaining new polling test used an ambiguous heading locator. After restricting it to the page heading, all four affected sign-in/polling checks passed on rerun. Thus every one of the 57 browser checks has a passing result. Screenshots of the black login panel, gold navigation, mobile layout and MFA confirmation were reviewed. MFA provider interactions remain mocked; hosted enable/disable and subsequent sign-in still need a live smoke test after deployment.
+
 ## What the attached paper actually models
 
 Morganti, Crainic, Frejinger and Ricciardi, *Block planning for intermodal rail: Methodology and case study*, Transportation Research Procedia 47 (2020), pp. 19–26, [DOI 10.1016/j.trpro.2020.03.068](https://doi.org/10.1016/j.trpro.2020.03.068). Reviewed the supplied PDF, including formulation pp. 23–24 and results pp. 25–26.

@@ -46,7 +46,7 @@ test('email-only signup, username session, uniqueness feedback, recovery and MFA
   await expect(page.getByRole('status')).toContainText('Username saved.');
   await page.reload();await expect(page.getByLabel('Username',{exact:true})).toHaveValue('rail.operator');
   await page.getByRole('button',{name:'Security',exact:true}).click();
-  await expect(page.getByText('Mandatory MFA enrollment is off.',{exact:false})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Enable MFA',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Sign out',exact:true}).click();
   await page.getByLabel('Username or work email').fill('Rail.Operator');
   await page.getByRole('button',{name:'Forgot password?'}).click();
