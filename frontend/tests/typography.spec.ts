@@ -1,0 +1,33 @@
+import {test,expect} from '@playwright/test';
+
+for(const width of [1440,390,320])test(`Figtree hierarchy, black surfaces and quiet metadata at ${width}px`,async({page})=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.setViewportSize({width,height:1000});
+  await page.goto('/planner?corridor=small');
+  const heading=page.getByRole('heading',{name:'Maintenance planner',exact:true});
+  await expect(heading).toBeVisible();
+  await expect(page.locator('.operations-band')).toHaveCSS('background-color','rgb(17, 17, 17)');
+  await expect(page.getByRole('region',{name:'Corridor and protection'})).toHaveCSS('background-color','rgb(17, 17, 17)');
+  expect(await heading.evaluate(e=>getComputedStyle(e).fontFamily)).toContain('Figtree');
+  await expect(heading).toHaveCSS('font-weight','800');
+  await expect(page.locator('.page-heading p')).toHaveCSS('font-weight','350');
+  await expect(page.locator('.metric>strong').first()).toHaveCSS('font-weight','750');
+  await expect(page.locator('.workspace-timezone,.version-tag')).toHaveCount(0);
+  await expect(page.locator('.workspace-location,.context-row,.workspace-bottom').filter({hasText:/Asia\/Kolkata|IST/})).toHaveCount(0);
+  const saved=page.getByRole('combobox',{name:'Saved plan',exact:true});
+  await expect(saved).toBeHidden();
+  await expect(page.locator('.source-details p')).toBeHidden();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  await page.screenshot({path:`qa-screenshots/typography-planner-${width}.png`,fullPage:true});
+  await page.screenshot({path:`qa-screenshots/typography-viewport-${width}.png`});
+  await page.locator('.saved-plans summary').focus();await page.keyboard.press('Enter');
+  await expect(saved).toBeVisible();
+  const selected=await saved.inputValue();await saved.selectOption(selected);
+  await expect.poll(()=>new URL(page.url()).searchParams.get('plan')).toBe(selected);
+  expect(new URL(page.url()).searchParams.get('corridor')).toBe('small');
+  await page.locator('.source-details summary').click();
+  await expect(page.locator('.source-details p')).toContainText('Snapshot');
+  await expect(page.locator('.source-details p')).toContainText('IST');
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+  expect(errors).toEqual([]);
+});

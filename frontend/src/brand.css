@@ -1,5 +1,5 @@
 /* Full-width identity, operational tabs, and a separate supporting-tools rail. */
-:root{--sans:"Figtree","Segoe UI",Arial,sans-serif;--ink:#253541;--muted:#586773;--line:#e4dedf;--brand-red:#f12b32;--red:#c9232b;--red-dark:#a51b23;--red-soft:#fff0f1;color:var(--ink);background:#f7f6f6;font-optical-sizing:auto;font-style:normal}
+:root{--sans:"Figtree","Segoe UI",Arial,sans-serif;--ink:#171717;--muted:#616161;--line:#e5e3e3;--brand-black:#111111;--brand-red:#f12b32;--red:#c9232b;--red-dark:#a51b23;--red-soft:#fff0f1;color:var(--ink);background:#f7f7f7;font-optical-sizing:auto;font-style:normal}
 .railway-site{display:flex;flex-direction:column;min-height:100vh;border-top:3px solid var(--brand-red)}
 .site-header{background:#fff}
 .workspace-masthead{display:flex;align-items:center;gap:32px;padding:20px 32px;min-height:122px}
@@ -15,13 +15,12 @@
 .account-profile>span:last-child{min-width:0}.account-profile strong{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.account-profile small{display:block;font-size:11px;color:#617588}
 .workspace-masthead .account-profile .account-initials{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:3px;background:#edf1f4;color:#354e61;font-size:12px;font-weight:600}
 .workspace-masthead .account-profile.active{box-shadow:none;text-decoration:underline;text-underline-offset:4px}
-.operations-band{background:#1c303e;padding:0 32px}
+.operations-band{background:var(--brand-black);padding:0 32px}
 .operations-navigation{display:flex;flex-wrap:wrap;align-items:stretch;gap:0 8px}
 .operations-navigation a{display:flex;align-items:center;min-height:48px;padding:10px 20px;border-bottom:3px solid transparent;text-decoration:none;color:#dbe3e9;font-size:13px;font-weight:550}
-.operations-navigation a:hover{background:#29414f;color:#fff}.operations-navigation a.active{background:#a51b23;border-bottom-color:#ff858a;color:#fff}
+.operations-navigation a:hover{background:#292929;color:#fff}.operations-navigation a.active{background:#a51b23;border-bottom-color:#ff858a;color:#fff}
 .workspace-location{display:flex;align-items:center;gap:18px;min-height:43px;padding:8px 32px;border-bottom:1px solid var(--line);background:#fff}
 .workspace-location .breadcrumb{font-size:12px;white-space:normal}.workspace-location .breadcrumb strong{color:#314957}
-.workspace-timezone{margin-left:auto;font-size:11px;color:#60717d;white-space:nowrap}
 .mobile-menu-toggle{display:none}
 .workspace-body{display:flex;align-items:stretch;flex:1;min-width:0}
 .workspace-rail{position:sticky;top:0;align-self:flex-start;width:218px;flex:none;max-height:100vh;overflow-y:auto;padding:26px 14px 20px;background:#f0f3f5;border-right:1px solid var(--line)}
@@ -33,10 +32,10 @@
 .railway-site main{width:100%;min-width:0;max-width:1600px;margin:0 auto;padding:28px 32px 40px;flex:1}
 .workspace-bottom{display:flex;justify-content:space-between;gap:16px;padding:18px 32px;border-top:1px solid var(--line);font-size:11px;color:#607488}
 .skip-link{left:32px}.workspace-sync{font-size:11px!important}.role-notice{font-size:12px!important;margin:0 0 8px!important;background:transparent!important;border:0!important;padding:0!important;color:#526579!important}
-.railway-site .page-heading{margin-bottom:24px}.railway-site .page-heading h1{font-size:27px;letter-spacing:-.5px;line-height:1.25}.railway-site .page-heading p{font-size:13px;max-width:720px;color:#596c7d}
+.railway-site .page-heading{margin-bottom:28px}.railway-site .page-heading h1{font-size:clamp(30px,2.8vw,40px);font-weight:800;letter-spacing:-.035em;line-height:1.1;color:var(--ink)}.railway-site .page-heading p{font-size:16px;font-weight:350;line-height:1.65;max-width:720px;color:#525252;margin-top:12px}
 .railway-site .eyebrow{font-size:10px;color:#526779}.railway-site .eyebrow>span{display:none}.railway-site .section-overline{color:#5a6d7c}
-.railway-site .panel{box-shadow:none;border-color:var(--line);border-radius:4px}.railway-site .panel-head{padding:17px 22px}.railway-site .panel-head h2{font-size:14px;color:#2e4352}
-.railway-site th{font-size:11px;color:#536b7e;background:#f6f8fa}.railway-site td{font-size:12px}.railway-site input,.railway-site select,.railway-site textarea{border-color:#cfd8df;border-radius:3px}
+.railway-site .panel{box-shadow:none;border-color:var(--line);border-radius:4px}.railway-site .panel-head{padding:19px 22px}.railway-site .panel-head h2{font-size:16px;font-weight:700;letter-spacing:-.015em;color:var(--ink)}
+.railway-site th{font-size:12px;font-weight:600;color:#575757;background:#f7f7f7}.railway-site td{font-size:13px}.railway-site input,.railway-site select,.railway-site textarea{border-color:#d8d5d5;border-radius:3px}
 .railway-site button:focus-visible,.railway-site a:focus-visible,.railway-site input:focus-visible,.railway-site select:focus-visible{outline:3px solid #b82a32;outline-offset:3px}
 .railway-site button,.railway-site .button{border-radius:3px}.railway-site .primary{box-shadow:none}.railway-site .metric strong{color:#253f52}.railway-site .metric-label svg{display:none}.railway-site .metric{box-shadow:none;border-radius:4px}
 .railway-site .badge{font-size:11px;border-radius:3px}.railway-site .padded{padding:20px 22px}.railway-site .context-row{background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px 16px}
@@ -79,3 +78,54 @@
 .authenticator-settings{margin-top:22px}.authenticator-form{display:grid;gap:16px;max-width:540px}.authenticator-form label{display:grid;gap:8px}.authenticator-form input{max-width:220px;letter-spacing:.18em}.authenticator-form code{overflow-wrap:anywhere;display:block;margin-top:12px}.authenticator-form p{margin:0;line-height:1.6}
 @media(max-width:800px){.workspace-masthead{gap:12px}.workspace-masthead>.logout-control{margin-left:auto}.workspace-masthead .account-profile{margin-left:auto;max-width:150px}.network-picker{order:4}.workspace-masthead>.logout-control button{min-height:34px;padding:7px 10px}}
 @media(max-width:480px){.workspace-masthead .account-profile{order:2;max-width:calc(100% - 95px);margin-left:0}.workspace-masthead .masthead-brand{width:100%}.workspace-masthead>.logout-control{order:3}.workspace-masthead .account-profile strong{max-width:175px}}
+/* Figtree hierarchy: light introductions, readable controls, bold headings. */
+.railway-site .workspace-rail{background:#f3f3f3}
+.railway-site .brand-purpose,.railway-site .account-profile small,.railway-site .environment-label,.railway-site .workspace-bottom{color:#626262}
+.railway-site .network-picker>span{color:#585858;font-weight:600;letter-spacing:.015em}
+.railway-site .account-profile,.railway-site .workspace-location .breadcrumb strong{color:#242424}
+.railway-site .account-profile strong{font-weight:700;font-size:13px}
+.railway-site .account-initials,.railway-site .profile-avatar{background:#ededed!important;color:#202020!important}
+.railway-site .operations-navigation a{font-weight:650;letter-spacing:.005em}
+.railway-site .workspace-nav-group>span{font-size:10px;letter-spacing:.1em;font-weight:700;color:#686868}
+.railway-site .workspace-nav-group a{color:#3b3b3b;font-weight:500}
+.railway-site .workspace-nav-group a.active{color:var(--red-dark);font-weight:700}
+.railway-site .eyebrow{font-size:10px;font-weight:700;letter-spacing:.13em;margin-bottom:12px}
+.railway-site .section-overline{font-weight:650;letter-spacing:.09em}
+.railway-site button,.railway-site .button{font-weight:600}
+.railway-site .metric>strong{font-family:var(--sans);font-size:36px;font-weight:750;letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
+.railway-site .metric-label{font-size:12px;font-weight:600;color:#555}
+.railway-site .metric small,.railway-site .overview-summary p{color:#666;font-weight:400}
+.railway-site .overview-summary strong{font-family:var(--sans);font-size:22px;font-weight:750;color:#202020;letter-spacing:-.03em;line-height:1.2}
+.railway-site .schedule-heading h2,.railway-site .traffic-heading h2{font-size:24px;font-weight:750;letter-spacing:-.025em;color:var(--ink)}
+.railway-site .workflow-context strong{font-weight:700;color:#242424}
+.railway-site .workflow-context p{color:#606060;font-weight:400}
+.railway-site .role-notice{color:#616161!important}
+.railway-site .task-title,.railway-site .profile-detail strong,.railway-site .security-item h3{color:#262626;font-weight:650}
+.railway-site .profile-summary-name h2{color:var(--ink);font-size:26px;font-weight:750;letter-spacing:-.025em}
+.railway-site .profile-support,.railway-site .availability-hero{background:#f1f1f1;color:#444}
+.railway-site .profile-intro,.railway-site .profile-summary-name p,.railway-site .profile-detail p,.railway-site .security-item p{color:#5e5e5e}
+.railway-site .corridor-panel{background:var(--brand-black);border-color:#262626;color:#eee}
+.railway-site .corridor-heading h2{font-size:18px;font-weight:700;color:#fff}
+.railway-site .corridor-heading .section-overline,.railway-site .corridor-controls,.railway-site .switch-label,.railway-site .corridor-footer>span{color:#b7b7b7}
+.railway-site .dark-table th{background:#222;color:#ddd;border-color:#414141}
+.railway-site .dark-table td{color:#ddd;border-color:#393939}
+.railway-site .map-selection{background:#252525;border-color:#414141}
+.railway-site .corridor-footer{border-color:#383838}
+.railway-site .diagram-scroll{scrollbar-color:#777 #171717}
+.railway-site .station-code{font-family:var(--sans);font-weight:700;fill:#f5f5f5}
+.railway-site .map-section-id,.railway-site .map-chainage{fill:#bcbcbc}
+.railway-site .saved-plans{margin-left:auto;min-width:0;max-width:100%;font-size:13px}
+.saved-plans summary{cursor:pointer;font-weight:600;color:#363636;padding:7px 10px;border:1px solid #dedada;border-radius:4px;background:#fafafa}
+.saved-plans summary svg{display:inline;vertical-align:middle;margin-right:7px}
+.saved-plans label{font-size:12px;color:#616161;margin:14px 0 4px}
+.saved-plans select{width:100%;max-width:320px;min-width:0;font-size:13px}
+.source-details summary{cursor:pointer;font-weight:500;color:#626262}
+.source-details p{max-width:640px;overflow-wrap:anywhere;line-height:1.7;margin:10px 0 0}
+.saved-plans summary:focus-visible,.source-details summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.auth-intro h1{font-weight:800;font-size:clamp(40px,4.9vw,76px);letter-spacing:-.045em;line-height:1.03;color:#141414}
+.auth-intro>p:not(.section-overline){font-size:18px;font-weight:350;line-height:1.75;color:#595959}
+.auth-signin h2{font-size:40px;font-weight:750;letter-spacing:-.035em;line-height:1.1}
+.auth-signin .auth-card>p:not(.section-overline){font-weight:400;font-size:15px}
+.access-gate{background:#f4f4f4}.access-card h1{font-weight:750;letter-spacing:-.025em;color:var(--ink)}
+@media(max-width:800px){.railway-site .page-heading h1{font-size:30px}.railway-site .page-heading p{font-size:15px}.railway-site .metric>strong{font-size:30px}}
+@media(max-width:600px){.railway-site .saved-plans{margin-left:0;width:100%}.saved-plans select{max-width:none}.railway-site .workspace-footer{align-items:flex-start}.auth-intro h1{font-size:40px}.auth-intro>p:not(.section-overline){font-size:16px}.auth-signin h2{font-size:34px}}

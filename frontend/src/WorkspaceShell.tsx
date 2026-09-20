@@ -3,7 +3,7 @@ import {NavLink, useLocation, useSearchParams} from 'react-router-dom';
 import {ChevronRight, Menu, X} from 'lucide-react';
 import {LogoutButton} from './LogoutButton';
 import {useIdentity} from './Auth';
-import type {Context, Snapshot} from './types';
+import type {Context} from './types';
 
 const logo = new URL('../assets0/logo.png', import.meta.url).href;
 const operations = [
@@ -29,7 +29,7 @@ const groups = [
   ]},
 ];
 
-export function WorkspaceShell({children,context,corridorId,onCorridor,snapshot}:{children:ReactNode;context?:Context;corridorId:string;onCorridor:(id:string)=>void;snapshot?:Snapshot}) {
+export function WorkspaceShell({children,context,corridorId,onCorridor}:{children:ReactNode;context?:Context;corridorId:string;onCorridor:(id:string)=>void}) {
   const location=useLocation(),[params]=useSearchParams(),identity=useIdentity();
   const [menuOpen,setMenuOpen]=useState(false);
   const toggle=useRef<HTMLButtonElement>(null),navigation=useRef<HTMLElement>(null);
@@ -58,7 +58,6 @@ export function WorkspaceShell({children,context,corridorId,onCorridor,snapshot}
     <div className="workspace-location">
       <button ref={toggle} className="mobile-menu-toggle" aria-expanded={menuOpen} aria-controls="support-navigation" onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X size={17}/>:<Menu size={17}/>}<span>{menuOpen?'Close':'Menu'}</span></button>
       <div className="breadcrumb"><span>Workspace</span><ChevronRight size={14} aria-hidden="true"/><strong>{page?.label||'Planner'}</strong></div>
-      <span className="workspace-timezone">Asia/Kolkata · IST</span>
     </div>
     <div className="workspace-body">
       <aside className={`workspace-rail ${menuOpen?'is-open':''}`} onKeyDown={e=>{if(e.key==='Escape'){e.preventDefault();closeMenu()}}}>
@@ -71,7 +70,7 @@ export function WorkspaceShell({children,context,corridorId,onCorridor,snapshot}
       <div className="main-column">
         {['/planner','/queue','/tasks','/opportunities','/disruptions','/availability','/insights'].includes(location.pathname)&&<section className="workflow-context" aria-label="Workflow purpose"><div><strong>{['/availability','/insights'].includes(location.pathname)?'Predictive decision support':'Maintenance block planning'}</strong><p>{['/availability','/insights'].includes(location.pathname)?'Assess modeled risk, expected availability and evidence confidence. Estimates inform a proposal; they do not authorize track access.':'Schedule work into protected track-closure windows, resolve resource conflicts and submit a proposal for officer review.'}</p></div><NavLink to={destination('/help/methods')}>How the models work</NavLink></section>}
         {children}
-        <footer className="workspace-bottom"><span>RailBLOX · Maintenance coordination</span><span>{snapshot?`${snapshot.sections.length} directed sections`:'Asia/Kolkata · IST'}</span></footer>
+        <footer className="workspace-bottom"><span>RailBLOX</span><span>Maintenance coordination</span></footer>
       </div>
     </div>
   </div>;

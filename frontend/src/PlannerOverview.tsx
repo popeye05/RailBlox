@@ -7,7 +7,7 @@ export function PlannerOverview({plan, snapshot, onPackage}: {plan: Plan; snapsh
   const [params] = useSearchParams();
   return (
     <section className="plan-overview" aria-label="Proposal overview">
-      <div className="overview-heading"><span className="section-overline">SELECTED PROPOSAL</span><span className="version-tag">{plan.id.slice(0,8)}</span></div>
+      <div className="overview-heading"><span className="section-overline">SELECTED PROPOSAL</span></div>
       <div className="overview-summary"><div><strong>{plan.packages.length} work packages</strong><p>{plan.metrics.scheduled} tasks across {new Set(plan.packages.flatMap(p => p.sections)).size} directed sections</p></div></div>
       <div className="overview-check">{plan.validation.valid && <Check size={15}/>}<span>{plan.validation.valid ? 'Modeled constraints checked' : 'Review modeled conflicts'}</span></div>
       <div className="overview-packages">
