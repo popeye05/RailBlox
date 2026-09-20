@@ -1,6 +1,6 @@
 /* Full-width identity, operational tabs, and a separate supporting-tools rail. */
-:root{--sans:"Segoe UI",Arial,Helvetica,sans-serif;--ink:#253541;--muted:#586773;--line:#dce2e7;--red:#2458a0;--red-dark:#19447f;color:var(--ink);background:#f5f6f7}
-.railway-site{display:flex;flex-direction:column;min-height:100vh;border-top:3px solid #c84139}
+:root{--sans:"Figtree","Segoe UI",Arial,sans-serif;--ink:#253541;--muted:#586773;--line:#e4dedf;--brand-red:#f12b32;--red:#c9232b;--red-dark:#a51b23;--red-soft:#fff0f1;color:var(--ink);background:#f7f6f6;font-optical-sizing:auto;font-style:normal}
+.railway-site{display:flex;flex-direction:column;min-height:100vh;border-top:3px solid var(--brand-red)}
 .site-header{background:#fff}
 .workspace-masthead{display:flex;align-items:center;gap:32px;padding:20px 32px;min-height:122px}
 .masthead-brand{display:flex;flex-direction:column;text-decoration:none;flex:none}
@@ -18,7 +18,7 @@
 .operations-band{background:#1c303e;padding:0 32px}
 .operations-navigation{display:flex;flex-wrap:wrap;align-items:stretch;gap:0 8px}
 .operations-navigation a{display:flex;align-items:center;min-height:48px;padding:10px 20px;border-bottom:3px solid transparent;text-decoration:none;color:#dbe3e9;font-size:13px;font-weight:550}
-.operations-navigation a:hover{background:#29414f;color:#fff}.operations-navigation a.active{background:#29414f;border-bottom-color:#ef8379;color:#fff}
+.operations-navigation a:hover{background:#29414f;color:#fff}.operations-navigation a.active{background:#a51b23;border-bottom-color:#ff858a;color:#fff}
 .workspace-location{display:flex;align-items:center;gap:18px;min-height:43px;padding:8px 32px;border-bottom:1px solid var(--line);background:#fff}
 .workspace-location .breadcrumb{font-size:12px;white-space:normal}.workspace-location .breadcrumb strong{color:#314957}
 .workspace-timezone{margin-left:auto;font-size:11px;color:#60717d;white-space:nowrap}
@@ -27,7 +27,7 @@
 .workspace-rail{position:sticky;top:0;align-self:flex-start;width:218px;flex:none;max-height:100vh;overflow-y:auto;padding:26px 14px 20px;background:#f0f3f5;border-right:1px solid var(--line)}
 .workspace-nav-group{margin-bottom:24px}.workspace-nav-group>span{display:block;padding:0 12px 8px;font-size:10px;letter-spacing:.07em;text-transform:uppercase;font-weight:650;color:#61727f}
 .workspace-nav-group a{display:flex;align-items:center;min-height:39px;padding:8px 12px;border-left:2px solid transparent;font-size:13px;text-decoration:none;color:#3e5261}
-.workspace-nav-group a:hover{background:#e6ebef;color:#1c364a}.workspace-nav-group a.active{background:#e1e8ee;border-left-color:#305d83;color:#1c3f5b;font-weight:600}
+.workspace-nav-group a:hover{background:#fbe7e9;color:#8e1b23}.workspace-nav-group a.active{background:#fce8ea;border-left-color:var(--red);color:#981c24;font-weight:600}
 .environment-label{margin:10px 12px 0;padding-top:16px;border-top:1px solid #d6dfe5;color:#526572;font-size:11px}.environment-label small{display:block;margin-top:4px;color:#637783;font-size:10px}
 .railway-site .main-column{margin-left:0;width:calc(100% - 218px);min-width:0;display:flex;flex-direction:column}
 .railway-site main{width:100%;min-width:0;max-width:1600px;margin:0 auto;padding:28px 32px 40px;flex:1}
@@ -37,7 +37,7 @@
 .railway-site .eyebrow{font-size:10px;color:#526779}.railway-site .eyebrow>span{display:none}.railway-site .section-overline{color:#5a6d7c}
 .railway-site .panel{box-shadow:none;border-color:var(--line);border-radius:4px}.railway-site .panel-head{padding:17px 22px}.railway-site .panel-head h2{font-size:14px;color:#2e4352}
 .railway-site th{font-size:11px;color:#536b7e;background:#f6f8fa}.railway-site td{font-size:12px}.railway-site input,.railway-site select,.railway-site textarea{border-color:#cfd8df;border-radius:3px}
-.railway-site button:focus-visible,.railway-site a:focus-visible,.railway-site input:focus-visible,.railway-site select:focus-visible{outline:3px solid #7aa8e4;outline-offset:3px}
+.railway-site button:focus-visible,.railway-site a:focus-visible,.railway-site input:focus-visible,.railway-site select:focus-visible{outline:3px solid #b82a32;outline-offset:3px}
 .railway-site button,.railway-site .button{border-radius:3px}.railway-site .primary{box-shadow:none}.railway-site .metric strong{color:#253f52}.railway-site .metric-label svg{display:none}.railway-site .metric{box-shadow:none;border-radius:4px}
 .railway-site .badge{font-size:11px;border-radius:3px}.railway-site .padded{padding:20px 22px}.railway-site .context-row{background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px 16px}
 .railway-site .plan-overview,.railway-site .corridor-panel,.railway-site .source-tile,.railway-site .traffic-filters,.railway-site .availability-hero,.railway-site .profile-summary,.railway-site .profile-support{border-radius:4px;box-shadow:none}
@@ -65,3 +65,17 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.site-header,.workspace-location,.workspace-rail,.workspace-bottom,.role-notice,.workspace-sync,.toolbar,.context-row,.workspace-footer,.no-print{display:none!important}.railway-site{border:0}.railway-site .main-column{margin:0;width:100%}.railway-site main{padding:0;max-width:none}.panel{break-inside:avoid;box-shadow:none}.table-scroll{overflow:visible}body{background:white}}
 .guide-back{display:inline-block;margin-bottom:18px;color:#205886;text-underline-offset:3px}
+.workspace-masthead{gap:24px}
+.logout-control{position:relative;flex:none}
+.logout-control button{white-space:nowrap;border-color:#e6b9bd;color:#a51b23;background:#fff;font-size:12px}
+.logout-control button:hover{background:var(--red-soft);border-color:var(--red)}
+.logout-control p{position:absolute;right:0;top:100%;width:240px;z-index:10;padding:12px;background:#fff;border:1px solid #cc5a61;color:#971e26;font-size:12px}
+.railway-site .profile-summary{border-top-color:var(--red)}
+.railway-site .profile-tabs button[aria-pressed=true]{color:#a51b23;border-bottom-color:var(--red)}
+.railway-site .segmented button.active,.railway-site .register-tabs button[aria-pressed=true]{background:var(--red-soft);color:#a51b23;border-color:#e6b9bd}
+.railway-site .eyebrow,.railway-site .section-overline{color:#a51b23}
+.railway-site .workflow-context{border-left:3px solid var(--red);background:#faf5f5}
+.railway-site .workflow-context a,.help-page a,.guide-back{color:#a51b23}
+.authenticator-settings{margin-top:22px}.authenticator-form{display:grid;gap:16px;max-width:540px}.authenticator-form label{display:grid;gap:8px}.authenticator-form input{max-width:220px;letter-spacing:.18em}.authenticator-form code{overflow-wrap:anywhere;display:block;margin-top:12px}.authenticator-form p{margin:0;line-height:1.6}
+@media(max-width:800px){.workspace-masthead{gap:12px}.workspace-masthead>.logout-control{margin-left:auto}.workspace-masthead .account-profile{margin-left:auto;max-width:150px}.network-picker{order:4}.workspace-masthead>.logout-control button{min-height:34px;padding:7px 10px}}
+@media(max-width:480px){.workspace-masthead .account-profile{order:2;max-width:calc(100% - 95px);margin-left:0}.workspace-masthead .masthead-brand{width:100%}.workspace-masthead>.logout-control{order:3}.workspace-masthead .account-profile strong{max-width:175px}}

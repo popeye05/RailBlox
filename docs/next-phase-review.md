@@ -14,9 +14,18 @@ Reviewed 19 September 2026. This is a code-based assessment, not certification f
 
 ## Temporary MFA policy
 
-`REQUIRE_MFA=false` now explicitly turns off RailBLOX's authenticator gate and operational-role AAL2 requirement, including in production mode. The testing template sets this value. Omitting the variable in production still defaults to true; invalid values fail startup. Existing enrolled factors are not deleted. Password verification, role checks and division scoping remain enabled. Profile > Security reports the testing policy.
+`REQUIRE_MFA=false` waives mandatory enrollment for operational roles during testing. **It does not bypass MFA for accounts with a verified TOTP authenticator.** Every enrolled account, including Viewers, must present a provider-validated AAL2 session to access protected APIs. The backend reads factor state from Supabase's authenticated user response on every request, not editable profile metadata. Omitting the variable in production still defaults to true; invalid values fail startup. Password verification, role checks and division scoping remain enabled.
 
-For a deployed testing instance, set **the backend host's environment variable** to `REQUIRE_MFA=false` and deploy the updated backend. Editing an example file does not change Render's environment. Restore `true` before operational use. Preflight intentionally continues to report MFA-off as not production-ready.
+For a deployed testing instance, set **the backend host's environment variable** to `REQUIRE_MFA=false` and deploy the updated backend. Editing an example file does not change Render's environment. Restore `true` before operational use. Preflight intentionally continues to report optional enrollment as not production-ready.
+
+### Account security and visual identity follow-up — 20 September
+
+- Profile > Security offers **Enable MFA**: scan the QR code, then verify a six-digit code. An unfinished setup does not enforce MFA; cancellation removes only that setup. Verified enrollment is enforced on future password sign-ins even with `REQUIRE_MFA=false`. No live provider configuration or account factors were changed during development. Lost-authenticator recovery remains an administrator/provider process.
+- **Log out** is directly available in the workspace header; the Security page retains its sign-out control. Successful local sign-out clears the browser session and query cache. Logout failures show an error rather than falsely claiming the session ended. Demo mode has no authenticated session and its logout control is disabled.
+- The login screen uses a white logo panel and red sign-in panel. Figtree is loaded through Google Fonts with system fallbacks; the bundled Nginx CSP allows only the Google stylesheet and font origins needed for it. Network access to Google Fonts is required for the hosted font; no font is bundled locally.
+- Red accents identify primary actions, selected navigation and profile tabs. Safety/status colors remain distinct. Repetitive prototype branding was removed from the shell; provenance, saved-plan versions and operational-authority caveats remain.
+
+Verified locally: **90 backend tests**, **45 browser tests**, and the production build passed. Coverage includes optional MFA for every role with mandatory enrollment off, rejection of AAL1 API access after enrollment, malformed provider responses, wrong codes, cancellation, subsequent sign-in challenges, local logout and remote-revocation failure feedback. Login and workspace layouts were checked at 1440, 390 and 320 pixels; screenshots were reviewed. Supabase interactions are mocked in tests: real-provider enrollment, cross-session behavior and recovery still need a hosted smoke test after deploying both services. Two upstream backend deprecation warnings and one Windows browser-test connection-reset diagnostic were observed; tests completed successfully.
 
 No live Supabase settings, deployed environment, accounts or database were changed by local implementation. The previously reported exclusive-database-lock deployment issue is separate and remains unresolved by this phase.
 

@@ -120,6 +120,43 @@ def test_bootstrap_refuses_existing_admin(controlled):
         asyncio.run(bootstrap(Settings.load(),UUID(OTHER),'new@example.test'))
 
 
+@pytest.mark.parametrize('role', ['viewer', 'planner', 'officer', 'admin'])
+def test_opt_in_totp_enforced_with_mandatory_enrollment_off(controlled, role):
+    client, users, _ = controlled
+    user = users[OTHER]
+    user['app_metadata'] = {'railblox_role': role, 'railblox_division': 'division-a'}
+    user['user_metadata']['mfa_enrolled'] = False  # Editable metadata cannot disable MFA.
+    headers = {'Authorization': 'Bearer ' + OTHER}
+    factor = {'id': 'totp-factor', 'factor_type': 'totp', 'status': 'unverified'}
+    user['factors'] = [factor]
+    me = client.get('/api/auth/me', headers=headers).json()
+    assert not me['mfa_policy_enabled'] and not me['mfa_required'] and not me['mfa_enrolled']
+    assert client.get('/api/context', headers=headers).status_code == 200
+    # Provider-verified enrollment immediately closes all protected API routes.
+    factor['status'] = 'verified'
+    me = client.get('/api/auth/me', headers=headers).json()
+    assert me['mfa_enrolled'] and me['mfa_required'] and me['aal'] == 'aal1'
+    for path in ['/api/context', '/api/auth/permissions', '/api/auth/username']:
+        assert client.get(path, headers=headers).status_code == 403
+    assert client.post('/api/plans/generate', headers=headers, json={}).status_code == 403
+    def enc(value):
+        return base64.urlsafe_b64encode(json.dumps(value).encode()).decode().rstrip('=')
+    token = enc({'alg': 'RS256'}) + '.' + enc({'sub': OTHER, 'aal': 'aal2'}) + '.provider-validated'
+    assert client.get('/api/context', headers={'Authorization': 'Bearer ' + token}).status_code == 200
+    assert client.get('/api/context', headers={'Authorization': 'Bearer invalid'}).status_code == 401
+    # A provider-approved recovery/removal is reflected immediately; UI flags do not decide.
+    user['factors'] = []
+    user['user_metadata']['mfa_enrolled'] = True
+    assert not client.get('/api/auth/me', headers=headers).json()['mfa_required']
+
+
+@pytest.mark.parametrize('factors', [['not-a-factor'], {}, False, 'invalid'])
+def test_malformed_provider_factor_data_fails_closed(controlled, factors):
+    client, users, _ = controlled
+    users[ADMIN]['factors'] = factors
+    assert client.get('/api/context').status_code == 503
+
+
 def test_provider_errors_do_not_leak_secrets(controlled,monkeypatch):
     client,_,_=controlled
     async def bad(self,*args,**kwargs):raise httpx.ConnectError('private-admin-key')

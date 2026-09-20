@@ -51,7 +51,7 @@ class Settings:
         if os.getenv('REQUIRE_MFA', 'true').lower() not in {'true', 'false'}:
             raise RuntimeError('REQUIRE_MFA must be true or false')
         if settings.environment == 'production' and not settings.require_mfa:
-            log.warning('MFA enforcement is disabled for testing. Restore REQUIRE_MFA=true before operational use.')
+            log.warning('Mandatory role-based MFA enrollment is disabled for testing. Enrolled accounts still require MFA.')
         if not 1 <= settings.request_limit <= 10000:
             raise RuntimeError('API_RATE_LIMIT_PER_MINUTE must be between 1 and 10000')
         if settings.auth_mode not in {'demo', 'supabase'} or settings.environment not in {'development', 'production'}:
@@ -129,6 +129,15 @@ async def verify_user(token, settings, allow_pending=False):
     profile = user.get('user_metadata') or {}
     if not isinstance(profile, dict):
         profile = {}
+    # Factor state comes from the authenticated provider response, never editable
+    # user_metadata or a browser toggle. Testing may waive enrollment, not an
+    # already-enabled authenticator. Check on every request (no stale cache).
+    factors = user.get('factors')
+    if factors is None:
+        factors = []
+    if not isinstance(factors, list) or any(not isinstance(f, dict) for f in factors):
+        raise HTTPException(503, 'Identity service returned invalid factor information.')
+    enrolled = any(f.get('factor_type') == 'totp' and f.get('status') == 'verified' for f in factors)
     return {'id': user['id'], 'email': user.get('email', ''),
             'name': profile_text(profile.get('full_name')),
             'designation': profile_text(profile.get('designation'), 80),
@@ -141,7 +150,8 @@ async def verify_user(token, settings, allow_pending=False):
             'role': role if granted else None, 'division': settings.division,
             'access_pending': not granted, 'aal': aal,
             'mfa_policy_enabled': settings.require_mfa,
-            'mfa_required': settings.require_mfa and granted and role != 'viewer'}
+            'mfa_enrolled': enrolled,
+            'mfa_required': granted and (enrolled or (settings.require_mfa and role != 'viewer'))}
 
 
 def install_security(app, settings, store):

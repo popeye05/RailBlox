@@ -12,6 +12,8 @@ The SPEC 2 advisory MVP adds **Block queue, Operations, Insights and Reporting**
 
 The [SPEC 3 requirements](docs/SPEC%203.md) are implemented in the [SPEC 3 delivery and deployment handoff](docs/spec3-implementation.md): reviewed user access, invitations, profile editing, production MFA, role controls, authenticated refresh and SQL-free first-admin bootstrap. Live provider and host validation remain pre-deployment gates.
 
+Account security: the workspace header includes **Log out**. Under **Profile → Security → Enable MFA**, enroll and verify an authenticator. Verified accounts must complete MFA on new password sign-ins, including when `REQUIRE_MFA=false`; that setting only waives mandatory enrollment. Deploy both frontend and backend together. Figtree uses Google Fonts with a system fallback; deployments with a custom CSP must allow `https://fonts.googleapis.com` for styles and `https://fonts.gstatic.com` for fonts.
+
 The next product phase is specified in [Phase 2 — Asset Availability and Downtime Optimization](docs/phase-2-asset-availability.md). It defines the asset-health data contract, authorized source adapters, uptime/downtime objective, availability dashboard, and pilot acceptance tests.
 
 ## Run locally (Windows / PowerShell)

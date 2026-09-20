@@ -22,13 +22,13 @@ export const problems=[
   {title:'Evidence is stale or a proposal is no longer current',text:'Inspect source timestamps and location mappings. Refresh inputs and recompute the affected proposal, then have any changed recommendation reviewed again. Do not approve an old version just to bypass the warning.'},
   {title:'The solver cannot find a feasible plan',text:'Review mandatory tasks, readiness, deadlines, train occupancy, protection rules and resource calendars. Ask a Planner to correct inputs or reconsider the planning scope. Do not remove safety constraints simply to obtain a schedule.'},
   {title:'Username sign-in or password recovery fails',text:'Try your work email. Usernames must first be saved in your profile; username support also needs backend configuration. Password recovery uses your work email, not your username. Never send passwords, authentication codes or access tokens to support.'},
-  {title:'My account is awaiting approval or asks for MFA',text:'Confirm your email and ask your division Administrator to review the account. MFA enforcement depends on the deployment policy shown under Security; it can be temporarily off in testing. When enforcement is enabled, use the enrolled authenticator or your organization’s recovery process.'},
+  {title:'My account is awaiting approval or asks for MFA',text:'Confirm your email and ask your division Administrator to review the account. Verified authenticator enrollment always requires MFA, even if mandatory enrollment is off. Use your authenticator or contact your organization for recovery; an unfinished setup is not enabled.'},
 ];
 export const glossary=[
   ['Maintenance block','A protected track-closure window for work; not the freight-wagon block described in the research paper.'],
   ['Snapshot','A saved set of inputs. Check its source and timestamp; it is not automatically a live feed.'],
   ['Proposal / recommendation','A candidate decision awaiting review. Generation or validation does not equal approval.'],
-  ['Validation / approval','Validation checks encoded constraints. Approval records an authorized user’s review within this prototype, not official track-access authority.'],
+  ['Validation / approval','Validation checks encoded constraints. Approval records an authorized user’s review within RailBLOX, not official track-access authority.'],
   ['Optimal / feasible / infeasible','Optimal means the encoded objective was proven best. Feasible means a valid solution was found without that proof. Infeasible means the encoded constraints cannot all be satisfied.'],
   ['Unknown / time limit','The solver may stop before proving feasibility or optimality. This is not proof that no schedule exists. Inspect the returned status and any available solution.'],
 ];
